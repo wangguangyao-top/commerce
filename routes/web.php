@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//前台注册
+Route::any('/register','index\RegisterController@register');
+
+//后台首页
