@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+/**
+ * 商品后台管理系统
+ */
+Route::prefix('admin')->group(function(){
+	Route::get('index','admin\IndexController@index');
+});
