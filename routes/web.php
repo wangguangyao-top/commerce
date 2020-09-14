@@ -20,13 +20,13 @@ Route::get('index/login','index\LoginController@login');
 //前台注册
 Route::any('/register','index\RegisterController@register');
 
-//后台首页
 
 /**
  * 商品后台管理系统
  */
 Route::prefix('admin')->group(function(){
-	Route::get('index','admin\IndexController@index');
+	Route::get('index','admin\IndexController@index');//后台首页
 	//后台登录
 	Route::any('login','admin\LoginController@login');
+	Route::get('category','admin\CategoryController@cate');//分类
 });

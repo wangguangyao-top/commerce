@@ -14,7 +14,7 @@
         </div>
         <ul class="sidebar-menu"  >
             <li class="header">菜单</li>
-            <li id="admin-index"><a href="index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+            <li id="admin-index"><a href="{{url('admin/index')}}"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
             <!-- 菜单 -->
             <li class="treeview">
@@ -57,6 +57,11 @@
                     <li id="admin-login">
                         <a href="goods.html" target="iframe">
                             <i class="fa fa-circle-o"></i> 商品管理
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="{{url('admin/category')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 分类管理
                         </a>
                     </li>
                 </ul>
