@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//前台
+Route::get('index/login','index\LoginController@login');
