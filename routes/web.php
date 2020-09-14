@@ -23,6 +23,5 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function(){
 	Route::get('index','admin\IndexController@index');
 	//后台登录
-	Route::any('/login','Admin\LoginController@login');
-	Route::any('/index','Admin\LoginController@index');
+	Route::any('login','admin\LoginController@login');
 });

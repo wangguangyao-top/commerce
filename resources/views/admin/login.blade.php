@@ -9,8 +9,8 @@
 	 <link rel="icon" href="../assets/img/favicon.ico">
 
 
-    <link rel="stylesheet" type="text/css" href="admin/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="admin/css/pages-login-manage.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/pages-login-manage.css" />
 </head>
 
 <body>
@@ -81,10 +81,10 @@
 	</div>
 
 
-<script type="text/javascript" src="admin/js/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="admin/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="admin/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script src="admin/js/pages/jquery.slideunlock.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script src="/admin/js/pages/jquery.slideunlock.js"></script>
 <script>
 	$(function(){
 		var slider = new SliderUnlock("#slider",{
