@@ -17,6 +17,8 @@
             <li id="admin-index"><a href="{{url('admin/index')}}"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
             <!-- 菜单 -->
+
+            <!-- 基本管理 -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
@@ -39,6 +41,9 @@
                     </li>
                 </ul>
             </li>
+            <!-- 基本管理 -->
+
+            <!-- 商品管理 -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
@@ -59,6 +64,26 @@
                             <i class="fa fa-circle-o"></i> 商品管理
                         </a>
                     </li>
+                </ul>
+            </li>
+            <!-- 商品管理 -->
+
+            <!-- 分类管理 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>分类管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="goods_edit.html" target="iframe">
+                            <i class="fa fa-circle-o"></i> 新增商品
+                        </a>
+                    </li>
                     <li id="admin-login">
                         <a href="{{url('admin/category')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 分类管理
@@ -66,8 +91,7 @@
                     </li>
                 </ul>
             </li>
-
-            <!-- 菜单 /-->
+            <!-- 分类管理 /-->
 
         </ul>
     </section>

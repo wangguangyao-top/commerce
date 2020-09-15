@@ -26,7 +26,6 @@ Route::any('/register','index\RegisterController@register');
  */
 Route::prefix('admin')->group(function(){
 	Route::get('index','admin\IndexController@index');//后台首页
-	//后台登录
-	Route::any('login','admin\LoginController@login');
-	Route::get('category','admin\CategoryController@cate');//分类
+	Route::get('category','admin\CategoryController@cate');//分类管理
+	Route::any('login','admin\LoginController@login');//后台登录
 });
