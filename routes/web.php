@@ -21,6 +21,4 @@ Route::prefix('index')->group(function () {
     Route::any('/GoodsParticulars','index\ParticularsController@particulars');
     Route::any('/shopping','index\ShoppingController@shopping');
     Route::any('/cooperation','index\CooperationController@cooperation');
-
-
 });
