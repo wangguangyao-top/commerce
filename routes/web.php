@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('index')->group(function () {
+    Route::any('/','index\IndexController@index');
+    Route::any('/list','index\ListController@list');
+    Route::any('/GoodsSeckilling','index\ParticularsController@seckilling');
+    Route::any('/GoodsParticulars','index\ParticularsController@particulars');
+    Route::any('/shopping','index\ShoppingController@shopping');
+    Route::any('/cooperation','index\CooperationController@cooperation');
+
+
+});
