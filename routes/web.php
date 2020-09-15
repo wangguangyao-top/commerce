@@ -25,8 +25,20 @@ Route::any('/register','index\RegisterController@register');
  * 商品后台管理系统
  */
 Route::prefix('admin')->group(function(){
-	Route::get('index','admin\IndexController@index');//后台首页
+	//后台首页
+	Route::get('index','admin\IndexController@index');
 	//后台登录
-	Route::any('login','admin\LoginController@login');
-	Route::get('category','admin\CategoryController@cate');//分类
+	Route::get('login','admin\LoginController@login');
+
+	/**
+	 * 分类管理
+	 */
+	Route::prefix('category')->group(function(){
+		//分类展示
+		Route::get('/','admin\CategoryController@index');
+		//分类添加
+		Route::get('create','admin\CategoryController@cate');
+		//执行添加
+		Route::post('store','admin\CategoryController@store');
+	});//分类
 });
