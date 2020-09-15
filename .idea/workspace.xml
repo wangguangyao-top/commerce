@@ -113,8 +113,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/index" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\phpstudy_pro\WWW\1912\commerce\app\Http\Controllers\index" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\phpstudy_pro\WWW\1912\commerce\resources\views\index" />
+      <recent name="D:\phpstudy_pro\WWW\1912\commerce\resources\views" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -130,11 +139,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599977069257</updated>
-      <workItem from="1599977070495" duration="607000" />
+      <workItem from="1599977070495" duration="31880000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="446" y="88" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600086818783">
+      <screen x="0" y="0" width="1280" height="688" />
+    </state>
+    <state x="446" y="88" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.688@0.0.1280.688" timestamp="1600086818783" />
+    <state x="455" y="391" key="NewPhpFileDialog" timestamp="1600166808429">
+      <screen x="0" y="0" width="1280" height="688" />
+    </state>
+    <state x="455" y="391" key="NewPhpFileDialog/0.0.1280.688@0.0.1280.688" timestamp="1600166808429" />
+    <state x="339" y="47" width="603" height="594" key="find.popup" timestamp="1600099161529">
+      <screen x="0" y="0" width="1280" height="688" />
+    </state>
+    <state x="339" y="47" width="603" height="594" key="find.popup/0.0.1280.688@0.0.1280.688" timestamp="1600099161529" />
   </component>
 </project>
