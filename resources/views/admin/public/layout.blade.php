@@ -17,39 +17,9 @@
 
 
     <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="/admin/plugins/jQueryUI/jquery-ui.min.js"></script>
-    <script>
-        $.widget.bridge('uibutton', $.ui.button);
-    </script>
     <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/admin/plugins/raphael/raphael-min.js"></script>
-    <script src="/admin/plugins/morris/morris.min.js"></script>
-    <script src="/admin/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script src="/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="/admin/plugins/knob/jquery.knob.js"></script>
-    <script src="/admin/plugins/daterangepicker/moment.min.js"></script>
-    <script src="/admin/plugins/daterangepicker/daterangepicker.js"></script>
-    <script src="/admin/plugins/daterangepicker/daterangepicker.zh-CN.js"></script>
-    <script src="/admin/plugins/datepicker/bootstrap-datepicker.js"></script>
-    <script src="/admin/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
-    <script src="/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <script src="/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="/admin/plugins/fastclick/fastclick.js"></script>
-    <script src="/admin/plugins/iCheck/icheck.min.js"></script>
     <script src="/admin/plugins/adminLTE/js/app.min.js"></script>
-    <script src="/admin/plugins/treeTable/jquery.treetable.js"></script>
-    <script src="/admin/plugins/select2/select2.full.min.js"></script>
-    <script src="/admin/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-    <script src="/admin/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.zh-CN.js"></script>
-    <script src="/admin/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-    <script src="/admin/plugins/bootstrap-markdown/locale/bootstrap-markdown.zh.js"></script>
-    <script src="/admin/plugins/bootstrap-markdown/js/markdown.js"></script>
-    <script src="/admin/plugins/bootstrap-markdown/js/to-markdown.js"></script>
-    <script src="/admin/plugins/ckeditor/ckeditor.js"></script>
-    
 
-    
     <script type="text/javascript">
    
 		 function SetIFrameHeight(){
