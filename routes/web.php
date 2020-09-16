@@ -40,5 +40,13 @@ Route::prefix('admin')->group(function(){
 		Route::get('create','admin\CategoryController@cate');
 		//执行添加
 		Route::post('store','admin\CategoryController@store');
-	});//分类
+	});
+
+    /**
+     * 品牌管理
+     */
+    Route::prefix('brand')->group(function(){
+        //品牌展示
+        Route::get('/','admin\BrandController@index');
+    });
 });

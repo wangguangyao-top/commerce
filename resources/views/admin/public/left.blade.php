@@ -93,6 +93,31 @@
             </li>
             <!-- 分类管理 /-->
 
+            <!-- 品牌管理开始 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>品牌管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="{{url('admin/brand/create')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 品牌添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="{{url('admin/brand')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 品牌管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 品牌管理管理 -->
+
         </ul>
     </section>
     <!-- /.sidebar -->
