@@ -176,14 +176,13 @@
 				   		 	</span>
                 </a>
                 <ul class="treeview-menu">
-
                     <li id="admin-login">
                         <a href="{{url('admin/category/create')}}">
                             <i class="fa fa-circle-o"></i> 新增分类
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="goods.html">
+                        <a href="{{url('admin/category/index')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 分类管理
                         </a>
                     </li>
