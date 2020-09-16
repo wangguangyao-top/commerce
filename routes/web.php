@@ -35,9 +35,9 @@ Route::prefix('admin')->group(function(){
 	 */
 	Route::prefix('category')->group(function(){
 		//分类展示
-		Route::get('/','admin\CategoryController@index');
+		Route::get('index','admin\CategoryController@index');
 		//分类添加
-		Route::get('create','admin\CategoryController@cate');
+		Route::get('create','admin\CategoryController@create');
 		//执行添加
 		Route::post('store','admin\CategoryController@store');
 	});//分类
