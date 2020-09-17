@@ -54,7 +54,7 @@
 									      <td>{{$v->nav_name}}</td>
 									      <td>{{$v->nav_url}}</td>
 									      <td>{{$v->is_weigh}}</td>
-									      <td>{{$v->is_show}}</td>
+									      <td>{{$v->is_show==1?'是':'否'}}</td>
 									      <td>{{$v->is_del}}</td>
 									      <td>{{date("Y-m-d",$v->add_time)}}</td>
 		                                  <td class="text-center">		                                     
@@ -77,6 +77,7 @@
 			            var id = $(this).attr("id");
 			            var data = {nav_id:id};
 			            var url = "{{url('/admin/nav/edit')}}";
+			            console.log(url);
 			            if(window.confirm("是否删除")){
 			                $.ajax({
 			                    type:"post",
