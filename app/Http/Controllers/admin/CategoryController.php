@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin/category');
+        return view('admin/cate/category');
     }
 
     /**
@@ -24,8 +24,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.cate.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -46,7 +47,24 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=request()->all();
+        $data['add_time']=time();
+        $data['is_del']=1;
+        $info = FootModel::insert($data);
+        if($info){
+            $arr=[
+                "success"=>200,
+                "msg"=>"添加成功",
+                "url"=>"/admin/footst",
+            ];
+        }else{
+            $arr=[
+                "success"=>1000,
+                "msg"=>"添加失败",
+                "url"=>"",
+            ];
+        }
+      echo json_encode($arr);
     }
 
     /**
