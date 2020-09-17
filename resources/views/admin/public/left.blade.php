@@ -1,3 +1,4 @@
+
 <!-- 导航侧栏 -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -92,7 +93,50 @@
                 </ul>
             </li>
             <!-- 分类管理 /-->
+            <!-- 角色管理 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>角色管理</span>
+                    <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
 
+                    <li id="admin-login">
+                        <a href="{{url('admin/category/create')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 角色添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="goods.html" target="iframe">
+                            <i class="fa fa-circle-o"></i> 角色管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 角色管理 /-->
+            <!-- 轮播图管理 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>轮播图管理</span>
+                    <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="{{url('admin/slide/slide_show')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 轮播图展示
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <!-- 轮播图管理 /-->
         </ul>
     </section>
     <!-- /.sidebar -->

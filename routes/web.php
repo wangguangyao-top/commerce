@@ -40,4 +40,12 @@ Route::prefix('admin')->group(function(){
 		//执行添加
 		Route::post('store','admin\CategoryController@store');
 	});
+    /**
+     * 轮播图管理
+     */
+    Route::any('slide/slide_add','admin\SlideController@slide_add');
+    Route::any('slide/slide_show','admin\SlideController@slide_show');
+    Route::any('slide/slide_del','admin\SlideController@slide_del');
+    Route::any('slide/slide_upd/{id?}','admin\SlideController@slide_upd');
+    Route::any('slide/slide_upddo/{id?}','admin\SlideController@slide_upddo');
 });
