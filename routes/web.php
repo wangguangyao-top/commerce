@@ -44,10 +44,11 @@ Route::prefix('admin')->group(function(){
      * 轮播图管理
      */
     Route::any('slide/slide_add','admin\SlideController@slide_add');
+    Route::any('slide/slide_img','admin\SlideController@addimg');
     Route::any('slide/slide_show','admin\SlideController@slide_show');
     Route::any('slide/slide_del','admin\SlideController@slide_del');
-    Route::any('slide/slide_upd/{id?}','admin\SlideController@slide_upd');
-    Route::any('slide/slide_upddo/{id?}','admin\SlideController@slide_upddo');
+    Route::any('slide/slide_upd/{id}','admin\SlideController@slide_upd');
+    Route::any('slide/slide_upddo','admin\SlideController@slide_upddo');
 
     /**
      * 品牌管理
@@ -74,4 +75,11 @@ Route::prefix('admin')->group(function(){
         //执行删除
         Route::get('destroy/{id}','admin\AttrController@destroy');
     });
+    /**
+     * 用户管理
+     */
+    Route::any('user/user_add','admin\UserController@user_add');
+    Route::any('user/user_show','admin\UserController@user_show');
+    Route::any('user/user_del','admin\UserController@user_del');
+
 });
