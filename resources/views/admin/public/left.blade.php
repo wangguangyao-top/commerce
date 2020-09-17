@@ -54,12 +54,12 @@
 				   		 	</span>
                 </a>
                 <ul class="treeview-menu">
-<<<<<<< HEAD
+
 
                     <li id="admin-login">
                         <a href="goods_edit.html">
                             <i class="fa fa-circle-o"></i> 新增商品
-=======
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-folder"></i>
@@ -67,7 +67,7 @@
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
->>>>>>> 1095b4c3311424442a4dffe16887c8070bf852b8
+
                         </a>
                         <ul class="treeview-menu">
 
@@ -83,11 +83,11 @@
                             </li>
                         </ul>
                     </li>
-<<<<<<< HEAD
+
                     <li id="admin-login">
                         <a href="goods.html">
                             <i class="fa fa-circle-o"></i> 商品管理
-=======
+
                     {{--商品属性管理开始--}}
                     <li class="treeview">
                         <a href="#">
@@ -96,7 +96,7 @@
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
->>>>>>> 1095b4c3311424442a4dffe16887c8070bf852b8
+
                         </a>
                         <ul class="treeview-menu">
                             {{--商品属性名称管理开始--}}
@@ -272,7 +272,7 @@
                 </ul>
             </li>
             <!-- 品牌管理管理 -->
-<<<<<<< HEAD
+
 
              <!-- 友情链接管理 -->
             <li class="treeview">
@@ -299,8 +299,7 @@
             </li>
             <!-- 友情链接管理 /-->
 
-=======
->>>>>>> 1095b4c3311424442a4dffe16887c8070bf852b8
+
         </ul>
     </section>
     <!-- /.sidebar -->
