@@ -40,6 +40,24 @@ Route::prefix('admin')->group(function(){
 		//执行添加
 		Route::post('store','admin\CategoryController@store');
 	});
+
+	/**
+	 * 导航管理
+	 */
+	Route::prefix('nav')->group(function(){
+		//分类展示
+		Route::get('index','admin\NavController@index');
+		//分类添加
+		Route::get('create','admin\NavController@create');
+		//执行添加
+		Route::post('store','admin\NavController@store');
+		//删除
+		Route::post('edit','admin\NavController@edit');
+		//修改
+		Route::get('upda/{id}','admin\NavController@upda');
+		//执行修改
+		Route::any('updata','admin\NavController@updata');
+	});
     /**
      * 轮播图管理
      */
