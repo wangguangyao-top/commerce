@@ -1,8 +1,6 @@
 @extends('admin/public/layout')
 @section('content')
 <!-- 内容区域 -->
-
-
             <!-- 内容头部 -->
             <section class="content-header">
                 <h1>
