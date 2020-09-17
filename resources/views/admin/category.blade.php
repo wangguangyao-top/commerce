@@ -63,30 +63,6 @@
 		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" >修改</button>                                           
 		                                  </td>
 			                          </tr>
-									  <tr >
-			                              <td><input  type="checkbox"> </td>			                              
-				                          <td>983</td>
-									      <td>手镯/手链/脚链</td>									    
-									      <td>
-									      	11    
-									      </td>									      
-		                                  <td class="text-center">		                                     
-		                                      <button type="button" class="btn bg-olive btn-xs" >查询下级</button> 		                                     
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" >修改</button>                                           
-		                                  </td>
-			                          </tr>
-									  <tr >
-			                              <td><input  type="checkbox" ></td>			                              
-				                          <td>984</td>
-									      <td>戒指/耳饰</td>									    
-									      <td>
-									      	11    
-									      </td>									      
-		                                  <td class="text-center">		                                     
-		                                      <button type="button" class="btn bg-olive btn-xs" >查询下级</button> 		                                     
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" >修改</button>                                           
-		                                  </td>
-			                          </tr>
 			                      </tbody>
 			                  </table>
 			                  <!--数据列表/-->                      
