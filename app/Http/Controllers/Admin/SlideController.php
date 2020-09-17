@@ -66,7 +66,7 @@ class SlideController extends Controller
         $file = request()->file($img);
         // dd($file);
         if($file->isValid()){
-            $info = $file->store('upload');
+            $info = $file->store('/uploads');
         }
         return $info;
     }

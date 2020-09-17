@@ -19,7 +19,6 @@
     <script src="/admin/plugins/adminLTE/js/app.min.js"></script>
 
     <script type="text/javascript">
-
 		 function SetIFrameHeight(){
 		  	  var iframeid=document.getElementById("iframe"); //iframe id
 		  	  if (document.getElementById){
