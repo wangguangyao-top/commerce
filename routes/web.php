@@ -5,6 +5,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//前台商品
 Route::prefix('index')->group(function () {
     Route::any('/', 'index\IndexController@index');
     Route::any('/list', 'index\ListController@list');
@@ -13,9 +14,9 @@ Route::prefix('index')->group(function () {
     Route::any('/shopping', 'index\ShoppingController@shopping');
     Route::any('/cooperation', 'index\CooperationController@cooperation');
 });
+
 //前台
 Route::get('index/login','index\LoginController@login');
-
 //前台注册
 Route::any('/register','index\RegisterController@register');
 
@@ -58,6 +59,22 @@ Route::prefix('admin')->group(function(){
     });
 
     /**
+     * 友情链接管理
+     */
+    Route::prefix('foot')->group(function(){
+        //列表展示
+        Route::get('/list','admin\FootController@index');
+        //友情链接添加
+        Route::any('create','admin\FootController@create');
+        //执行添加
+        Route::any('store','admin\FootController@store');
+        //修改
+        Route::get('edit/{id}','admin\FootController@edit');
+        // 执行修改
+        Route::any('update','admin\FootController@update');
+        //执行删除
+        Route::post('Fdel','admin\FootController@Fdel');
+
      * 商品属性名称管理
      */
     Route::prefix('attr')->group(function(){
