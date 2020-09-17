@@ -1,0 +1,315 @@
+[33mcommit da7a94e29376706a22cd4851fb818c5441615879[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Liar <1930804855@qq.com>
+Date:   Thu Sep 17 15:30:27 2020 +0800
+
+    修改web
+
+[33mcommit a13a040d9caa5751fd1c591ecea3c42089a1046a[m
+Merge: 18dcbb1 15f7362
+Author: Liar <1930804855@qq.com>
+Date:   Thu Sep 17 15:28:10 2020 +0800
+
+    Merge branch 'master' of github.com:wangguangyao-top/commerce
+
+[33mcommit 18dcbb11a9c2e158234623848a86d0a6fcba30fb[m
+Author: Liar <1930804855@qq.com>
+Date:   Thu Sep 17 15:27:40 2020 +0800
+
+    商品属性值CURD
+
+[33mcommit 15f736210eee70e472fa7f06ec0e4d0482836d41[m
+Merge: 0dd12de 1095b4c
+Author: liuxinyue <1479450158@qq.com>
+Date:   Thu Sep 17 10:31:23 2020 +0800
+
+    解决冲突
+
+[33mcommit 0dd12ded1edd8399b0219d5a1fcb601e2feac07a[m
+Author: liuxinyue <1479450158@qq.com>
+Date:   Thu Sep 17 10:05:43 2020 +0800
+
+    友情链接
+
+[33mcommit 1095b4c3311424442a4dffe16887c8070bf852b8[m
+Author: xieyufei <a1678029050@163.com>
+Date:   Thu Sep 17 09:10:19 2020 +0800
+
+    文件上传
+
+[33mcommit 91ff91eb7fa73309e6d3b4cbd8f78cca19e6030e[m
+Merge: 8128303 b5b878a
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Thu Sep 17 08:30:02 2020 +0800
+
+    解决冲突
+
+[33mcommit 8128303fe6d49342026ac376a87ec0d4d02a1a01[m
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Thu Sep 17 08:28:08 2020 +0800
+
+    导航管理CURD
+
+[33mcommit b5b878ae686a6213b0ca92362c152b6799d7bc9a[m
+Merge: da10de2 c8cbf0a
+Author: xieyufei <a1678029050@163.com>
+Date:   Thu Sep 17 08:12:00 2020 +0800
+
+    解决冲突
+
+[33mcommit da10de2f7277d62ba4dc368e6814bc7ae025d4d1[m
+Author: xieyufei <a1678029050@163.com>
+Date:   Thu Sep 17 08:07:35 2020 +0800
+
+    轮播图CURD
+
+[33mcommit c8cbf0a06a8f87829c24494aaa3254af5ada1046[m
+Merge: 468c5b0 7e72c68
+Author: Liar <1930804855@qq.com>
+Date:   Wed Sep 16 22:18:45 2020 +0800
+
+    解决冲突
+
+[33mcommit 468c5b00bad5dfa09ef7bb46818efa1d5ab481cb[m[33m ([m[1;32mtao[m[33m)[m
+Author: Liar <1930804855@qq.com>
+Date:   Wed Sep 16 22:13:07 2020 +0800
+
+    商品属性名称CURD
+
+[33mcommit 7e72c685d7280228eb6a67d50725e537db0d49f1[m
+Merge: 7548c4f 50b254c
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Wed Sep 16 15:40:32 2020 +0800
+
+    资源控制器
+
+[33mcommit 7548c4f22448034120316c4eb6c1c4e7ebe0ed60[m
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Wed Sep 16 15:17:53 2020 +0800
+
+    更改了分类还有路由
+
+[33mcommit 50b254cc42d11b5c8ec38029e6b553f9ae692742[m
+Author: Liar <1930804855@qq.com>
+Date:   Wed Sep 16 15:12:48 2020 +0800
+
+    链接数据库
+
+[33mcommit 181945e2696ffad530144f52d4fb75aa4d08924f[m
+Author: Liar <1930804855@qq.com>
+Date:   Wed Sep 16 15:08:46 2020 +0800
+
+    链接数据库
+
+[33mcommit 82d6a5b3eedb40ed4973e0d06383c2eec960a000[m
+Author: Liar <1930804855@qq.com>
+Date:   Wed Sep 16 10:12:09 2020 +0800
+
+    删除多余配置文件
+
+[33mcommit ff6fbe965eb161978e52ca3dc329b2921a237a6e[m
+Merge: 4abfe92 5ac4671
+Author: Liar <1930804855@qq.com>
+Date:   Wed Sep 16 09:59:53 2020 +0800
+
+    解决冲突
+
+[33mcommit 4abfe926b7efc7756ab2f8b259be88dce7e032c7[m
+Author: Liar <1930804855@qq.com>
+Date:   Wed Sep 16 09:57:32 2020 +0800
+
+    品牌管理
+
+[33mcommit 5ac4671b15d4781f1c9a3dd7f639bcce41e72b39[m
+Merge: d13ab0a 97fb52e
+Author: wangguangyao <‘2019768476@qq.com>
+Date:   Tue Sep 15 21:20:56 2020 +0800
+
+    上传前台模块
+
+[33mcommit d13ab0a87da526e96b516565727c038d84941b1a[m
+Author: wangguangyao <‘2019768476@qq.com>
+Date:   Tue Sep 15 20:57:25 2020 +0800
+
+    上传前台.idea
+
+[33mcommit 9f931c80e45b0371f7f88d391ec10d2802d1a0ec[m
+Author: wangguangyao <‘2019768476@qq.com>
+Date:   Tue Sep 15 20:52:34 2020 +0800
+
+    上传前台web
+
+[33mcommit a23ca04fa964672c844702b1eade713b482ef1ef[m
+Author: wangguangyao <‘2019768476@qq.com>
+Date:   Tue Sep 15 20:34:25 2020 +0800
+
+    上传前台搭页面
+
+[33mcommit 97fb52ee2aeea092112b9f3de9464ebf742cf12b[m
+Merge: 2ffbecd 3cd8fee
+Author: Liar <1930804855@qq.com>
+Date:   Tue Sep 15 20:30:55 2020 +0800
+
+    解决冲突
+
+[33mcommit 2ffbecd9307fadd7fb18cc496fd5e733a7c49176[m
+Author: Liar <1930804855@qq.com>
+Date:   Tue Sep 15 19:50:36 2020 +0800
+
+    提交分类
+
+[33mcommit 3cd8fee2471c809a22968bf8240539051ad0bc4f[m
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Tue Sep 15 10:40:29 2020 +0800
+
+    左侧栏加了一个分类管理
+
+[33mcommit f40d2556bf1541f7a36d83d460ab076293c6087c[m
+Author: Liar <1930804855@qq.com>
+Date:   Tue Sep 15 07:52:18 2020 +0800
+
+    阻止图片上传
+
+[33mcommit 3144cf9e97ee848fb8ae4406268cc0a52b49030c[m
+Author: Liar <1930804855@qq.com>
+Date:   Tue Sep 15 07:49:23 2020 +0800
+
+    删除图片
+
+[33mcommit 678536bd474d7ca9fe593dc0c10583dbd699dfb8[m
+Merge: 0b25eaf 5d5c00c
+Author: Liar <1930804855@qq.com>
+Date:   Mon Sep 14 22:18:42 2020 +0800
+
+    Merge branch 'master' of github.com:wangguangyao-top/commerce
+
+[33mcommit 5d5c00cb5409e37b9779b1d197a0ff5eaae77372[m
+Merge: 79f546b 6d1a31a
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Mon Sep 14 22:18:00 2020 +0800
+
+    分类
+
+[33mcommit 0b25eaf1ac94d500d99fcd431ffa65bbb31109b7[m
+Author: Liar <1930804855@qq.com>
+Date:   Mon Sep 14 22:14:12 2020 +0800
+
+    登录页面
+
+[33mcommit 6d1a31affcb3176b165be0b996d906c3143122e3[m
+Merge: 5543047 a24d68b
+Author: liuxinyue <1479450158@qq.com>
+Date:   Mon Sep 14 22:09:16 2020 +0800
+
+    Merge branch 'master' of github.com:wangguangyao-top/commerce
+
+[33mcommit 79f546b1961956131f62fbdca0069ead8a2f680b[m
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Mon Sep 14 22:03:51 2020 +0800
+
+    分类模板路由控制器
+
+[33mcommit a24d68bfc75cb2ba1c5000b40ec3f2baecd10089[m
+Merge: b5b942c 4cd8a07
+Author: xieyufei <a1678029050@163.com>
+Date:   Mon Sep 14 21:39:37 2020 +0800
+
+    前台登录删除  .idea文件夹
+
+[33mcommit 5543047b9703c1a3b760ccdf6c3694968e2a9f33[m
+Author: liuxinyue <1479450158@qq.com>
+Date:   Mon Sep 14 21:39:23 2020 +0800
+
+    跳转
+
+[33mcommit ffc515986e68d45d5f4c3f6fad4a2b660f6d11ca[m
+Author: liuxinyue <1479450158@qq.com>
+Date:   Mon Sep 14 21:37:15 2020 +0800
+
+    登录后台
+
+[33mcommit 2405392186311781bff527b1df9484ce7d9d8a2a[m
+Merge: bb8a7cc 63a6152
+Author: liuxinyue <1479450158@qq.com>
+Date:   Mon Sep 14 21:21:13 2020 +0800
+
+    登录页面
+
+[33mcommit b5b942cea8f94f1a99dd99c803e184751c6f99c6[m
+Author: xieyufei <a1678029050@163.com>
+Date:   Mon Sep 14 21:20:45 2020 +0800
+
+    前台登录
+
+[33mcommit 4cd8a07506ac173cba29383c0ce85268098c987c[m
+Merge: 9d30396 3e4089c
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Mon Sep 14 21:14:36 2020 +0800
+
+    解决冲突
+
+[33mcommit bb8a7ccc7586f3ac01707d6b39157d1b9d75d22c[m
+Merge: 8439fb3 3e4089c
+Author: liuxinyue <1479450158@qq.com>
+Date:   Mon Sep 14 21:13:24 2020 +0800
+
+    Merge branch 'master' of github.com:wangguangyao-top/commerce
+
+[33mcommit 9d3039684f7105fdc25c2e97674d30e86ade2b29[m
+Author: zhangzilianga <2297760371@qq.com>
+Date:   Mon Sep 14 21:12:45 2020 +0800
+
+    模板前台注册方法
+
+[33mcommit 63a6152f22a6acfe5f2686e1fb5d7fda13d82ae4[m
+Author: liuxinyue <1479450158@qq.com>
+Date:   Mon Sep 14 21:12:33 2020 +0800
+
+    后台登录页面
+
+[33mcommit 3e4089c1c884e68fdbd1299d4aed154cbe2d0973[m
+Author: Liar <1930804855@qq.com>
+Date:   Mon Sep 14 20:36:45 2020 +0800
+
+    后台模板布局
+
+[33mcommit 8439fb3c3f43c436cad4783d910fe1bfc317200c[m
+Author: liuxinyue <1479450158@qq.com>
+Date:   Mon Sep 14 14:20:44 2020 +0800
+
+    视图
+
+[33mcommit 939fbff97f3575442a1ea9c9242f8ac49d70cc00[m
+Author: Liar <1930804855@qq.com>
+Date:   Mon Sep 14 11:41:38 2020 +0800
+
+    上传laravel
+
+[33mcommit 168b83311e18878f277688cb379ce4053ee87623[m
+Author: Liar <1930804855@qq.com>
+Date:   Mon Sep 14 11:40:03 2020 +0800
+
+    git 练习
+
+[33mcommit 8675c6bd74f3146adbdf665163074c187a6477a8[m
+Author: wangguangyao <‘2019768476@qq.com>
+Date:   Mon Sep 14 11:29:51 2020 +0800
+
+    上传laravel所有东西
+
+[33mcommit cead7d6e2906bb1f9cbc192c38ee9bc7c79c2617[m
+Author: wangguangyao <‘2019768476@qq.com>
+Date:   Mon Sep 14 11:00:57 2020 +0800
+
+    上传.env
+
+[33mcommit c5084d8210b3bc3ef60abbcda4d318ea18bd38ef[m
+Author: wangguangyao <‘2019768476@qq.com>
+Date:   Mon Sep 14 10:20:14 2020 +0800
+
+    上传vendor
+
+[33mcommit b1d0cb639f8a1d1e6045e89bab56d5ef10a93138[m
+Author: wangguangyao <‘2019768476@qq.com>
+Date:   Sun Sep 13 17:36:33 2020 +0800
+
+    上传laravel
