@@ -31,12 +31,12 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="seller.html">
+                        <a href="seller.html" target="iframe">
                             <i class="fa fa-circle-o"></i> 修改资料
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="password.html">
+                        <a href="password.html" target="iframe">
                             <i class="fa fa-circle-o"></i> 修改密码
                         </a>
                     </li>
@@ -54,12 +54,6 @@
 				   		 	</span>
                 </a>
                 <ul class="treeview-menu">
-<<<<<<< HEAD
-
-                    <li id="admin-login">
-                        <a href="goods_edit.html">
-                            <i class="fa fa-circle-o"></i> 新增商品
-=======
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-folder"></i>
@@ -67,7 +61,6 @@
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
->>>>>>> 1095b4c3311424442a4dffe16887c8070bf852b8
                         </a>
                         <ul class="treeview-menu">
 
@@ -83,11 +76,6 @@
                             </li>
                         </ul>
                     </li>
-<<<<<<< HEAD
-                    <li id="admin-login">
-                        <a href="goods.html">
-                            <i class="fa fa-circle-o"></i> 商品管理
-=======
                     {{--商品属性管理开始--}}
                     <li class="treeview">
                         <a href="#">
@@ -96,7 +84,6 @@
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
->>>>>>> 1095b4c3311424442a4dffe16887c8070bf852b8
                         </a>
                         <ul class="treeview-menu">
                             {{--商品属性名称管理开始--}}
@@ -196,7 +183,6 @@
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="goods.html">
                         <a href="{{url('admin/category/index')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 分类管理
                         </a>
@@ -260,47 +246,18 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="{{url('admin/brand/create')}}">
+                        <a href="{{url('admin/brand/create')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 品牌添加
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="{{url('admin/brand')}}">
+                        <a href="{{url('admin/brand')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 品牌管理
                         </a>
                     </li>
                 </ul>
             </li>
             <!-- 品牌管理管理 -->
-<<<<<<< HEAD
-
-             <!-- 友情链接管理 -->
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i>
-                    <span>友情链接管理</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                </a>
-                <ul class="treeview-menu">
-
-                    <li id="admin-login">
-                        <a href="{{url('admin/foot/create')}}">
-                            <i class="fa fa-circle-o"></i> 友情链接添加
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="{{url('admin/foot/list')}}">
-                            <i class="fa fa-circle-o"></i> 列表管理
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- 友情链接管理 /-->
-
-=======
->>>>>>> 1095b4c3311424442a4dffe16887c8070bf852b8
         </ul>
     </section>
     <!-- /.sidebar -->
