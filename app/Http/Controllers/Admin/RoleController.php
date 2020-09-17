@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin/cate/category');
+        //
     }
 
     /**
@@ -24,9 +24,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.cate.create');
+        return view('admin.role.create');
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -47,24 +46,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $data=request()->all();
-        $data['add_time']=time();
-        $data['is_del']=1;
-        $info = FootModel::insert($data);
-        if($info){
-            $arr=[
-                "success"=>200,
-                "msg"=>"添加成功",
-                "url"=>"/admin/footst",
-            ];
-        }else{
-            $arr=[
-                "success"=>1000,
-                "msg"=>"添加失败",
-                "url"=>"",
-            ];
-        }
-      echo json_encode($arr);
+        //
     }
 
     /**
