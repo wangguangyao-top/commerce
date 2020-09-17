@@ -74,4 +74,22 @@ Route::prefix('admin')->group(function(){
         //执行删除
         Route::get('destroy/{id}','admin\AttrController@destroy');
     });
+
+    /**
+     * 商品属性值管理
+     */
+    Route::prefix('attrval')->group(function(){
+        //商品属性值展示
+        Route::get('/','admin\AttrvalController@index');
+        //商品属性值添加页面
+        Route::get('add','admin\AttrvalController@create');
+        //执行添加
+        Route::post('store','admin\AttrvalController@store');
+        //修改页面
+        Route::get('edit/{id}','admin\AttrvalController@edit');
+        //执行修改
+        Route::post('update/{id}','admin\AttrvalController@update');
+        //删除
+        Route::get('destroy/{id}','admin\AttrvalController@destroy');
+    });
 });

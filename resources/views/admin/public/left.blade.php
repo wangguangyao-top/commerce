@@ -123,12 +123,12 @@
                                 <ul class="treeview-menu">
 
                                     <li id="admin-login">
-                                        <a href="seller.html" target="iframe">
+                                        <a href="{{url('admin/attrval/add')}}">
                                             <i class="fa fa-circle-o"></i>新增属性值
                                         </a>
                                     </li>
                                     <li id="admin-login">
-                                        <a href="password.html" target="iframe">
+                                        <a href="{{url('admin/attrval')}}">
                                             <i class="fa fa-circle-o"></i>属性值展示
                                         </a>
                                     </li>
@@ -226,7 +226,7 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="{{url('admin/slide/slide_show')}}" target="iframe">
+                        <a href="{{url('admin/slide/slide_show')}}">
                             <i class="fa fa-circle-o"></i> 轮播图展示
                         </a>
                     </li>
