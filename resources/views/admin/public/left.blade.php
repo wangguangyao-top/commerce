@@ -184,14 +184,11 @@
                     <li id="admin-login">
                         <a href="{{url('admin/nav/index')}}">
                             <i class="fa fa-circle-o"></i> 导航管理
-                        <a href="{{url('admin/category/index')}}">
-                            <i class="fa fa-circle-o"></i> 分类管理
                         </a>
                     </li>
                 </ul>
             </li>
             <!-- 导航管理 /-->
-            <!-- 分类管理 /-->
             <!-- 角色管理 -->
             <li class="treeview">
                 <a href="#">
