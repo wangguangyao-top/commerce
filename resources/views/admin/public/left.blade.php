@@ -47,27 +47,36 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
-                    <span>商品管理</span>
+                    <span>商品模块</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
                 </a>
+
                 <ul class="treeview-menu">
+                    <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>商品管理</span>
+                        <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="admin-login">
+                            <a href="{{url('/admin/goods/goodsEdit')}}" target="iframe">
+                                <i class="fa fa-circle-o"></i> 新增商品
+                            </a>
+                        </li>
+                        <li id="admin-login">
+                            <a href="/admin/goods/goodsShow" target="iframe">
+                                <i class="fa fa-circle-o"></i> 商品修改
+                            </a>
+                        </li>
+                    </ul>
 
-                    <li id="admin-login">
-                        <a href="goods_edit.html" target="iframe">
-                            <i class="fa fa-circle-o"></i> 新增商品
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="goods.html" target="iframe">
-                            <i class="fa fa-circle-o"></i> 商品管理
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    </ul>
             <!-- 商品管理 -->
-
+            </li>
             <!-- 分类管理 -->
             <li class="treeview">
                 <a href="#">
@@ -85,7 +94,7 @@
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="goods.html" target="iframe">
+                        <a href="{{url('admin/category')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 分类管理
                         </a>
                     </li>

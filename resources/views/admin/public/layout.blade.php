@@ -11,25 +11,30 @@
     <!-- 页面meta /-->
     <link rel="stylesheet" href="/admin/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/admin/plugins/adminLTE/css/AdminLTE.css">
+
     <link rel="stylesheet" href="/admin/plugins/adminLTE/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="/admin/css/style.css">
-
-
+    <link rel="stylesheet" href="/admin/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/admin/css/style.css">
 
     <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="/admin/plugins/adminLTE/js/app.min.js"></script>
 
+    <!-- 富文本编辑器 -->
+    <script type="text/javascript" charset="utf-8" src="/admin/uploaded/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/admin/uploaded/ueditor.all.js"></script>
+
     <script type="text/javascript">
-   
+
 		 function SetIFrameHeight(){
 		  	  var iframeid=document.getElementById("iframe"); //iframe id
 		  	  if (document.getElementById){
-		  		iframeid.height =document.documentElement.clientHeight;			   	   
+		  		iframeid.height =document.documentElement.clientHeight;
 			  }
 		 }
-    
-	</script>    
+
+	</script>
 
 </head>
 
@@ -50,7 +55,7 @@
 			{{--<iframe width="100%" id="iframe" name="iframe"	onload="SetIFrameHeight()" frameborder="0" src=""></iframe>--}}
             @section('content')
             @show
- 
+
         </div>
         <!-- 内容区域 /-->
 
