@@ -65,7 +65,7 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="seller.html" target="iframe">
+                                <a href="{{url('')}}" target="iframe">
                                     <i class="fa fa-circle-o"></i>新增商品
                                 </a>
                             </li>
@@ -148,12 +148,12 @@
                                 <ul class="treeview-menu">
 
                                     <li id="admin-login">
-                                        <a href="seller.html" target="iframe">
+                                        <a href="{{url('admin/sku/add')}}">
                                             <i class="fa fa-circle-o"></i>新增属性
                                         </a>
                                     </li>
                                     <li id="admin-login">
-                                        <a href="password.html" target="iframe">
+                                        <a href="{{url('admin/sku')}}">
                                             <i class="fa fa-circle-o"></i>属性展示
                                         </a>
                                     </li>
@@ -185,14 +185,12 @@
                     <li id="admin-login">
                         <a href="{{url('admin/nav/index')}}">
                             <i class="fa fa-circle-o"></i> 导航管理
-                        <a href="{{url('admin/category/index')}}">
-                            <i class="fa fa-circle-o"></i> 分类管理
                         </a>
                     </li>
                 </ul>
             </li>
             <!-- 导航管理 /-->
-            <!-- 分类管理 /-->
+
             <!-- 角色管理 -->
             <li class="treeview">
                 <a href="#">
