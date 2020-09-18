@@ -29,7 +29,7 @@ Route::prefix('admin')->group(function(){
 	Route::get('index','admin\IndexController@index');
 	//后台登录
 	Route::get('login','admin\LoginController@login');
-});
+
 	/**
 	 * 分类管理
 	 */
@@ -56,6 +56,17 @@ Route::prefix('admin')->group(function(){
     Route::prefix('brand')->group(function(){
         //品牌展示
         Route::get('/','admin\BrandController@index');
+        //品牌添加
+        Route::get('/create','admin\BrandController@create');
+        //执行添加
+        Route::any('/store','admin\BrandController@store');
+        //执行删除
+        Route::any('/Fdel','admin\BrandController@Fdel');
+        Route::any('/addimg','admin\BrandController@addimg');
+        //修改
+        Route::any('edit/{brand_id}','admin\BrandController@edit');
+        //执行修改
+        Route::any('update','admin\BrandController@update');
     });
 
     /**
@@ -74,6 +85,7 @@ Route::prefix('admin')->group(function(){
         Route::any('update','admin\FootController@update');
         //执行删除
         Route::post('Fdel','admin\FootController@Fdel');
+
 });
 
      /* 商品属性名称管理
@@ -91,4 +103,5 @@ Route::prefix('admin')->group(function(){
         Route::post('update/{id}','admin\AttrController@update');
         //执行删除
         Route::get('destroy/{id}','admin\AttrController@destroy');
+});
 });

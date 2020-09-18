@@ -266,7 +266,7 @@
                     </li>
                     <li id="admin-login">
                         <a href="{{url('admin/brand')}}">
-                            <i class="fa fa-circle-o"></i> 品牌管理
+                            <i class="fa fa-circle-o"></i> 品牌列表管理
                         </a>
                     </li>
                 </ul>
