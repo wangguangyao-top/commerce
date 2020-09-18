@@ -1,6 +1,5 @@
 <?php
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,18 +27,28 @@ Route::prefix('admin')->group(function(){
 	Route::get('index','admin\IndexController@index');
 	//后台登录
 	Route::get('login','admin\LoginController@login');
+    /**
+     * 商品表
+     */
+    Route::any('/goods/goodsEdit','admin\GoodsController@goods');
+    Route::any('/goods/goodsShow','admin\GoodsController@goodsShow');
+    Route::any('/goods/goodsDel','admin\GoodsController@goodsDel');
+    Route::any('/goods/goodsUpdate','admin\GoodsController@goodsUpdate');
+    Route::any('/goods/update','admin\GoodsController@update');
+    Route::any('/goodsImg/uploader','admin\GoodsController@goodsImg');
 
-	/**
+    /**
 	 * 分类管理
 	 */
 	Route::prefix('category')->group(function(){
 		//分类展示
-		Route::get('index','admin\CategoryController@index');
+		Route::any('/','admin\CategoryController@getShow');
 		//分类添加
-		Route::get('create','admin\CategoryController@create');
-		//执行添加
-		Route::post('store','admin\CategoryController@store');
-	});
+		Route::any('create','admin\CategoryController@cate');
+        Route::any('createDel','admin\CategoryController@createDel');
+        Route::any('ClassShow','admin\CategoryController@ClassShow');
+        Route::any('ClassUpdate','admin\CategoryController@ClassUpdate');
+    });
 
 	/**
 	 * 导航管理
