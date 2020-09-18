@@ -77,7 +77,7 @@ class Shop_attrModel extends Model
      */
     public function destroyData($id){
         //调用自身进行删除
-        $bol=$this->where(['id'=>$id])->delete();
+        $bol=$this->where(['id'=>$id])->update(['is_del'=>2]);
         //返回结果
         return $bol;
     }

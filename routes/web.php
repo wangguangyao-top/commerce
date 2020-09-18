@@ -40,6 +40,24 @@ Route::prefix('admin')->group(function(){
 		//执行添加
 		Route::post('store','admin\CategoryController@store');
 	});
+
+	/**
+	 * 导航管理
+	 */
+	Route::prefix('nav')->group(function(){
+		//分类展示
+		Route::get('index','admin\NavController@index');
+		//分类添加
+		Route::get('create','admin\NavController@create');
+		//执行添加
+		Route::post('store','admin\NavController@store');
+		//删除
+		Route::post('edit','admin\NavController@edit');
+		//修改
+		Route::get('upda/{id}','admin\NavController@upda');
+		//执行修改
+		Route::any('updata','admin\NavController@updata');
+	});
     /**
      * 轮播图管理
      */
@@ -75,6 +93,7 @@ Route::prefix('admin')->group(function(){
         //执行删除
         Route::get('destroy/{id}','admin\AttrController@destroy');
     });
+
     /**
      * 用户管理
      */
@@ -82,4 +101,22 @@ Route::prefix('admin')->group(function(){
     Route::any('user/user_show','admin\UserController@user_show');
     Route::any('user/user_del','admin\UserController@user_del');
 
+
+    /**
+     * 商品属性值管理
+     */
+    Route::prefix('attrval')->group(function(){
+        //商品属性值展示
+        Route::get('/','admin\AttrvalController@index');
+        //商品属性值添加页面
+        Route::get('add','admin\AttrvalController@create');
+        //执行添加
+        Route::post('store','admin\AttrvalController@store');
+        //修改页面
+        Route::get('edit/{id}','admin\AttrvalController@edit');
+        //执行修改
+        Route::post('update/{id}','admin\AttrvalController@update');
+        //删除
+        Route::get('destroy/{id}','admin\AttrvalController@destroy');
+    });
 });
