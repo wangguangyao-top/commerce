@@ -1,6 +1,5 @@
 <?php
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,18 +27,28 @@ Route::prefix('admin')->group(function(){
 	Route::get('index','admin\IndexController@index');
 	//后台登录
 	Route::get('login','admin\LoginController@login');
+    /**
+     * 商品表
+     */
+    Route::any('/goods/goodsEdit','admin\GoodsController@goods');
+    Route::any('/goods/goodsShow','admin\GoodsController@goodsShow');
+    Route::any('/goods/goodsDel','admin\GoodsController@goodsDel');
+    Route::any('/goods/goodsUpdate','admin\GoodsController@goodsUpdate');
+    Route::any('/goods/update','admin\GoodsController@update');
+    Route::any('/goodsImg/uploader','admin\GoodsController@goodsImg');
 
-	/**
+    /**
 	 * 分类管理
 	 */
 	Route::prefix('category')->group(function(){
 		//分类展示
-		Route::get('index','admin\CategoryController@index');
+		Route::any('/','admin\CategoryController@getShow');
 		//分类添加
-		Route::get('create','admin\CategoryController@create');
-		//执行添加
-		Route::post('store','admin\CategoryController@store');
-	});
+		Route::any('create','admin\CategoryController@cate');
+        Route::any('createDel','admin\CategoryController@createDel');
+        Route::any('ClassShow','admin\CategoryController@ClassShow');
+        Route::any('ClassUpdate','admin\CategoryController@ClassUpdate');
+    });
 
 	/**
 	 * 导航管理
@@ -74,6 +83,35 @@ Route::prefix('admin')->group(function(){
     Route::prefix('brand')->group(function(){
         //品牌展示
         Route::get('/','admin\BrandController@index');
+        //品牌添加
+        Route::get('/create','admin\BrandController@create');
+        //执行添加
+        Route::any('/store','admin\BrandController@store');
+        //执行删除
+        Route::any('/Fdel','admin\BrandController@Fdel');
+        Route::any('/addimg','admin\BrandController@addimg');
+        //修改
+        Route::any('edit/{brand_id}','admin\BrandController@edit');
+        //执行修改
+        Route::any('update','admin\BrandController@update');
+    });
+
+    /**
+     * 友情链接管理
+     */
+    Route::prefix('foot')->group(function(){
+        //列表展示
+        Route::get('list','admin\FootController@index');
+        //友情链接添加
+        Route::any('create','admin\FootController@create');
+        //执行添加
+        Route::any('store','admin\FootController@store');
+        //修改
+        Route::get('edit/{id}','admin\FootController@edit');
+        // 执行修改
+        Route::any('update','admin\FootController@update');
+        //执行删除
+        Route::post('Fdel','admin\FootController@Fdel');
     });
 
     /**
@@ -93,6 +131,13 @@ Route::prefix('admin')->group(function(){
         //执行删除
         Route::get('destroy/{id}','admin\AttrController@destroy');
     });
+
+    /**
+     * 用户管理
+     */
+    Route::any('user/user_add','admin\UserController@user_add');
+    Route::any('user/user_show','admin\UserController@user_show');
+    Route::any('user/user_del','admin\UserController@user_del');
 
     /**
      * 商品属性值管理
@@ -153,6 +198,5 @@ Route::prefix('admin')->group(function(){
         Route::any('update','admin\FootController@update');
         //执行删除
         Route::post('Fdel','admin\FootController@Fdel');
-
     });
 });

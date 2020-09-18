@@ -92,9 +92,9 @@ class FootController extends Controller
     {
     	$id= request()->id;
         $data = request()->except('id');
-        $info = FootModel::where('id',$id)->update($data);
+        $info = FootModel::where('id','=',$id)->update($data);
         // $foot_name = request()->post('foot_name');
-         if($info){
+         if($info!==false){
       	$arr=[
       		"success"=>200,
       		"msg"=>"修改成功",
