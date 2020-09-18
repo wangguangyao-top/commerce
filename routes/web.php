@@ -175,4 +175,3 @@ Route::prefix('admin')->group(function(){
         Route::post('Fdel','admin\FootController@Fdel');
     });
 });
-});
