@@ -12,6 +12,6 @@ class IndexController extends Controller
      */
     public function index(){
     	//渲染首页视图
-    	return view('admin/index');
+    	return view('admin.index');
     }
 }
