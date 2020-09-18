@@ -63,12 +63,12 @@
                         </a>
                         <ul class="treeview-menu">
                             <li id="admin-login">
-                                <a href="{{url('/admin/goods/goodsEdit')}}" target="iframe">
+                                <a href="{{url('/admin/goods/goodsEdit')}}">
                                     <i class="fa fa-circle-o"></i> 新增商品
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="/admin/goods/goodsShow" target="iframe">
+                                <a href="/admin/goods/goodsShow">
                                     <i class="fa fa-circle-o"></i> 商品展示
                                 </a>
                             </li>
@@ -237,6 +237,7 @@
                 </ul>
             </li>
             <!-- 角色管理 /-->
+
             <!-- 轮播图管理 -->
             <li class="treeview">
                 <a href="#">
@@ -281,6 +282,7 @@
                 </ul>
             </li>
             <!-- 品牌管理管理 -->
+
             <!-- 用户管理 -->
             <li class="treeview">
                 <a href="#">
@@ -299,6 +301,7 @@
                 </ul>
             </li>
             <!-- 用户管理 /-->
+
             <!-- 友情链接管理 -->
             <li class="treeview">
                 <a href="#">
@@ -322,6 +325,7 @@
                 </ul>
             </li>
             <!-- 友情链接管理 /-->
+
         </ul>
     </section>
     <!-- /.sidebar -->
