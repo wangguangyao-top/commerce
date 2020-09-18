@@ -112,7 +112,25 @@ Route::prefix('admin')->group(function(){
         Route::any('update','admin\FootController@update');
         //执行删除
         Route::post('Fdel','admin\FootController@Fdel');
-});
+    });
+
+    /**
+     * 友情链接管理
+     */
+    Route::prefix('foot')->group(function(){
+        //列表展示
+        Route::get('list','admin\FootController@index');
+        //友情链接添加
+        Route::any('create','admin\FootController@create');
+        //执行添加
+        Route::any('store','admin\FootController@store');
+        //修改
+        Route::get('edit/{id}','admin\FootController@edit');
+        // 执行修改
+        Route::any('update','admin\FootController@update');
+        //执行删除
+        Route::post('Fdel','admin\FootController@Fdel');
+    });
 
      /* 商品属性名称管理
      * 商品属性名称管理
@@ -156,6 +174,31 @@ Route::prefix('admin')->group(function(){
         //删除
         Route::get('destroy/{id}','admin\AttrvalController@destroy');
     });
+
+    /**
+     * SKU管理
+     */
+    Route::prefix('sku')->group(function(){
+        //商品属性展示
+        Route::get('/','admin\SkuController@index');
+        //商品属性添加
+        Route::get('add','admin\SkuController@create');
+        //商品属性执行添加
+        Route::post('store','admin\SkuController@store');
+        //商品属性修改页面
+        Route::get('edit/{id}','admin\SkuController@edit');
+        //商品属性执行修改
+        Route::post('update/{id}','admin\SkuController@update');
+        //商品属性删除
+        Route::get('destroy/{id}','admin\SkuController@destroy');
+    });
+
+    /**
+     * 用户管理
+     */
+    Route::any('user/user_add','admin\UserController@user_add');
+    Route::any('user/user_show','admin\UserController@user_show');
+    Route::any('user/user_del','admin\UserController@user_del');
 
     /**
      * 友情链接管理
