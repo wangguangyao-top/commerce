@@ -1,5 +1,7 @@
 @extends('admin/public/layout')
 @section('content')
+    <link rel="stylesheet" href="/uploadify/uploadify.css">
+    <script src="/uploadify/jquery.uploadify.js"></script>
     <meta name="csrf-token" content="{{ csrf_token()}}">
     <div class="box-header with-border">
         <h3 class="box-title">轮播图管理
@@ -47,7 +49,7 @@
                 </thead>
                 <tbody>
                 @foreach($res as $k=>$v)
-                    <tr >
+                    <tr>
                         <td>{{$v->slide_id}}</td>
                         <td>
                             <img src="{{env('UPLOAD_URL')}}{{$v->slide_url}}" width="150px" height="100px">
@@ -85,18 +87,21 @@
                     <h3 id="myModalLabel">轮播图添加</h3>
                 </div>
                 <form action="{{url('/admin/slide/slide_add')}}" method="post" enctype="multipart/form-data">
-                   @csrf
+
                     <div class="modal-body">
 
                         <table class="table table-bordered table-striped"  width="800px">
                             <tr>
                                 <td>轮播图</td>
-                                <td><input type="file" id="fileupload" name="slide_url" class="form-control" >  </td>
+                                <td><input type="file" id="img_path">
+                                    <div class="showimg"></div>
+                                    <input type="hidden" name="slide_url" id="slide_url"></td>
                             </tr>
                             <tr>
                                 <td>权重</td>
                                 <td><input type="text" id="fileupload" name="slide_weight" class="form-control" >  </td>
                             </tr>
+
                         </table>
 
                     </div>
@@ -113,6 +118,21 @@
             headers:{
                 'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
             }
+        });
+        $(document).ready(function(){
+
+            $("#img_path").uploadify({
+
+                uploader: "/admin/slide/slide_img",
+                swf: "/uploadify/uploadify.swf",
+                onUploadSuccess:function(res,data,msg){
+                    var imgPath  = data;
+                    var imgstr = "<img src='"+imgPath+"' style='width: 50px;height: 50px;'>";
+                    $("input[name='slide_url']").val(imgPath);
+                    $(".showimg").append(imgstr);
+
+                }
+            });
         });
         $(document).on("click",".del",function(){
             var slide_id = $(this).attr("slide_id");
@@ -136,8 +156,25 @@
                 })
 
             }
-
         })
-
+        $(document).on("click",".btn",function(){
+            var data = {};
+            // data.img_path= $("#img_path").val();
+            data.slide_url = $("input[name = 'slide_url']").val();
+            data.slide_weight = $("input[name='slide_weight']").val();
+            // data.slide_id = slide_id;
+            var url = "admin/slide/slide_add";
+            $.ajax({
+                type:"post",
+                data:data,
+                url:url,
+                dataType:"json",
+                success:function (msg) {
+                    if(msg.success == true){
+                        window.location.href = "admin/slide/slide_show";
+                    }
+                }
+            })
+        })
     </script>
 @endsection

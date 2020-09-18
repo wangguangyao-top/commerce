@@ -1,4 +1,3 @@
-
 <!-- 导航侧栏 -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -48,33 +47,63 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
-                    <span>商品管理</span>
+                    <span>商品模块</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
                 </a>
+               <li id="admin-login">
+                        <a href="goods_edit.html">
+                            <i class="fa fa-circle-o"></i> 新增商品
                 <ul class="treeview-menu">
+                    <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>商品管理</span>
+                        <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="admin-login">
+                            <a href="{{url('/admin/goods/goodsEdit')}}" target="iframe">
+                                <i class="fa fa-circle-o"></i> 新增商品
+                            </a>
+                        </li>
+                        <li id="admin-login">
+                            <a href="/admin/goods/goodsShow" target="iframe">
+                                <i class="fa fa-circle-o"></i> 商品展示
+                            </a>
+                        </li>
+                    </ul>
+
+                    </ul>
+            <!-- 商品管理 -->
+            </li>
+            <!-- 分类管理 -->
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-folder"></i>
-                            <span>商品</span>
+                            <span>分类管理</span>
 				            <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
                         </a>
                         <ul class="treeview-menu">
                             <li id="admin-login">
-                                <a href="seller.html" target="iframe">
-                                    <i class="fa fa-circle-o"></i>新增商品
+                                <a href="/admin/category/create" target="iframe">
+                                    <i class="fa fa-circle-o"></i>新增分类
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="password.html" target="iframe">
-                                    <i class="fa fa-circle-o"></i>商品展示
+                                <a href="/admin/category" target="iframe">
+                                    <i class="fa fa-circle-o"></i>分类展示
                                 </a>
                             </li>
                         </ul>
                     </li>
+                     <li id="admin-login">
+                        <a href="goods.html">
+                            <i class="fa fa-circle-o"></i> 商品管理
                     {{--商品属性管理开始--}}
                     <li class="treeview">
                         <a href="#">
@@ -199,14 +228,13 @@
 				   		 	</span>
                 </a>
                 <ul class="treeview-menu">
-
                     <li id="admin-login">
                         <a href="{{url('admin/category/create')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 角色添加
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="goods.html" target="iframe">
+                        <a href="{{url('admin/category')}}" target="iframe">
                             <i class="fa fa-circle-o"></i> 角色管理
                         </a>
                     </li>
@@ -251,24 +279,40 @@
                     </li>
                     <li id="admin-login">
                         <a href="{{url('admin/brand')}}">
-                            <i class="fa fa-circle-o"></i> 品牌管理
+                            <i class="fa fa-circle-o"></i> 品牌列表管理
                         </a>
                     </li>
                 </ul>
             </li>
             <!-- 品牌管理管理 -->
-
-             <!-- 友情链接管理 -->
+            <!-- 用户管理 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>用户管理</span>
+                    <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="{{url('admin/user/user_show')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 用户展示
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 用户管理 /-->
+            <!-- 友情链接管理 -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
                     <span>友情链接管理</span>
-                            <span class="pull-right-container">
+                    <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                 </a>
                 <ul class="treeview-menu">
-
                     <li id="admin-login">
                         <a href="{{url('admin/foot/create')}}">
                             <i class="fa fa-circle-o"></i> 友情链接添加
