@@ -33,9 +33,13 @@ class SkuController extends Controller
         $attr=new Shop_attrModel();
         //调用查询商品属性名称
         $attr_info=$attr->selectData();
-        dd($attr_info);
+        //循环获取属性值
+        foreach($attr_info as $k=>$v){
+            $attrval_info=Shop_attrval::where(['attr_id'=>$v->id])->get();
+            $v['attrval_info']=$attrval_info->Toarray();
+        }
         //渲染视图
-        return view('admin/sku/add');
+        return view('admin/sku/add',compact('attr_info'));
     }
 
     /**
