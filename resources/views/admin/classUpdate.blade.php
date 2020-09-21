@@ -30,9 +30,9 @@
                                 <tr>
                                     <td>
                                         <select class="form-control" name="p_id">
-                                            <option value="0">--请选择--</option>
+                                            <option value="0">--顶级分类--</option>
                                             @foreach($class2 as $v)
-                                            <option value="{{$v->cate_id}}" {{$v->cate_id==$data->cate_id?'selected':''}}>{{str_repeat('--',$v->level)}}{{$v->cate_name}}</option>
+                                            <option value="{{$v->cate_id}}" {{$v->cate_id==$data->p_id?'selected':''}}>{{str_repeat('--',$v->level)}}{{$v->cate_name}}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -59,6 +59,28 @@
 <!-- 正文区域 /-->
 <script>
     $(function (){
+        $(document).on('blur','#cate_name',function (){
+            var cate_name=$('#cate_name').val();
+            if(cate_name==''){
+                alert('分类名称必填');
+                return false;
+            }
+            var cate_id={{$data->cate_id}}
+            var data={cate_id:cate_id,cate_name:cate_name};
+            var url='/admin/category/classVerify2';
+            $.ajax({
+                type:'post',
+                url:url,
+                data:data,
+                dataType:'json',
+                success:function (info){
+                    if(info.code==1000){
+                        alert(info.msg);
+                    }
+                }
+            })
+            return false;
+        });
         $(document).on('click','.btn',function (){
             var cate_name=$('#cate_name').val();
             var cate_show=$('#cate_show:checked').val();

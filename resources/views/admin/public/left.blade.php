@@ -42,6 +42,123 @@
                 </ul>
             </li>
             <!-- 基本管理 -->
+            <!-- 管理员 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>管理员管理</span>
+                    <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>角色管理</span>
+                            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            <li id="admin-login">
+                                <a  href="{{url('admin/role/role_add')}}" target="iframe">
+                                    <i class="fa fa-circle-o"></i>角色添加
+                                </a>
+                            </li>
+                            <li id="admin-login">
+                                <a href="{{url('admin/role/role_show')}}" target="iframe">
+                                    <i class="fa fa-circle-o"></i>角色展示
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>权限管理</span>
+                            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            <li id="admin-login">
+                                <a href="{{url('admin/permission/per_add')}}" target="iframe">
+                                    <i class="fa fa-circle-o"></i>权限添加
+                                </a>
+                            </li>
+                            <li id="admin-login">
+                                <a href="{{url('admin/permission/per_show')}}" target="iframe">
+                                    <i class="fa fa-circle-o"></i>权限展示
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>管理员管理</span>
+                            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            <li id="admin-login">
+                                <a  href="{{url('admin/user/user_show')}}"  target="iframe">
+                                    <i class="fa fa-circle-o"></i>管理员展示
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+{{--                    <li class="treeview">--}}
+{{--                        <a href="#">--}}
+{{--                            <i class="fa fa-folder"></i>--}}
+{{--                            <span>管理员角色管理</span>--}}
+{{--                            <span class="pull-right-container">--}}
+{{--				       			<i class="fa fa-angle-left pull-right"></i>--}}
+{{--				   		 	</span>--}}
+{{--                        </a>--}}
+{{--                        <ul class="treeview-menu">--}}
+
+{{--                            <li id="admin-login">--}}
+{{--                                <a href="/admin/adminrole/aadd" target="iframe">--}}
+{{--                                    <i class="fa fa-circle-o"></i>管理员角色添加--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li id="admin-login">--}}
+{{--                                <a href="/admin/adminrole/adoadd" target="iframe">--}}
+{{--                                    <i class="fa fa-circle-o"></i>管理员角色展示--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>角色权限管理</span>
+                            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            <li id="admin-login">
+                                <a href="{{url('admin/rolepermission/rpadd')}}" target="iframe">
+                                    <i class="fa fa-circle-o"></i>角色权限添加
+                                </a>
+                            </li>
+                            <li id="admin-login">
+                                <a href="{{url('admin/rolepermission/show')}}" target="iframe">
+                                    <i class="fa fa-circle-o"></i>角色权限展示
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
 
             <!-- 商品管理 -->
             <li class="treeview">
@@ -283,24 +400,6 @@
             </li>
             <!-- 品牌管理管理 -->
 
-            <!-- 用户管理 -->
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i>
-                    <span>用户管理</span>
-                    <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li id="admin-login">
-                        <a href="{{url('admin/user/user_show')}}" target="iframe">
-                            <i class="fa fa-circle-o"></i> 用户展示
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- 用户管理 /-->
 
             <!-- 友情链接管理 -->
             <li class="treeview">

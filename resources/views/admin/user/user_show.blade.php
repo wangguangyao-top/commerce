@@ -51,7 +51,8 @@
                         <td>{{date("Y-m-d",$v->add_time)}}</td>
                         <td class="text-center">
                             <button type="button" user_id="{{$v->user_id}}" class="btn bg-olive btn-xs del" >删除</button>
-                            <a href="{{url('/admin/user/user_upd/'.$v->user_id)}}" class="btn bg-olive btn-xs">修改</a>
+
+                            <a href="{{url('/admin/adminrole/aadd/'.$v->user_id)}}" class="btn bg-olive btn-xs" >角色操作</a>
                         </td>
                     </tr>
                 @endforeach
@@ -90,6 +91,7 @@
                     <div class="modal-footer">
                         <input type="submit" class="btn btn-success" value="保存">
                         <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+
                     </div>
                 </form>
             </div>

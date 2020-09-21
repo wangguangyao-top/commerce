@@ -22,11 +22,15 @@ Route::any('/register','index\RegisterController@register');
 /**
  * 商品后台管理系统
  */
-Route::prefix('admin')->group(function(){
+//后台登录
+Route::get('admin/login','admin\LoginController@login');
+
+Route::any('admin/do','admin\LoginController@do');
+
+Route::prefix('admin')->middleware('checkLogin')->group(function(){
 	//后台首页
 	Route::get('index','admin\IndexController@index');
-	//后台登录
-	Route::get('login','admin\LoginController@login');
+
     /**
      * 商品表
      */
@@ -36,18 +40,22 @@ Route::prefix('admin')->group(function(){
     Route::any('/goods/goodsUpdate','admin\GoodsController@goodsUpdate');
     Route::any('/goods/update','admin\GoodsController@update');
     Route::any('/goodsImg/uploader','admin\GoodsController@goodsImg');
+    Route::any('/goodsVerify','admin\GoodsController@goodsVerify');
+    Route::any('/goodsVerify2','admin\GoodsController@goodsVerify2');
 
     /**
 	 * 分类管理
 	 */
 	Route::prefix('category')->group(function(){
 		//分类展示
-		Route::any('/','admin\CategoryController@getShow');
-		//分类添加
+        Route::any('/','admin\CategoryController@getShow');
 		Route::any('create','admin\CategoryController@cate');
         Route::any('createDel','admin\CategoryController@createDel');
         Route::any('ClassShow','admin\CategoryController@ClassShow');
         Route::any('ClassUpdate','admin\CategoryController@ClassUpdate');
+        Route::any('classVerify','admin\CategoryController@classVerify');
+        Route::any('classVerify2','admin\CategoryController@classVerify2');
+
     });
 
 	/**
@@ -134,7 +142,7 @@ Route::prefix('admin')->group(function(){
         Route::post('Fdel','admin\FootController@Fdel');
     });
 
-     /* 商品属性名称管理
+    /** 商品属性名称管理
      * 商品属性名称管理
      */
     Route::prefix('attr')->group(function(){
@@ -218,5 +226,48 @@ Route::prefix('admin')->group(function(){
         Route::any('update','admin\FootController@update');
         //执行删除
         Route::post('Fdel','admin\FootController@Fdel');
+    });
+
+    //角色
+    Route::prefix('role')->group(function(){
+       //角色添加
+        Route::any('role_add','admin\RoleController@role_add');
+        Route::any('role_adddo','admin\RoleController@role_adddo');
+        //角色展示
+        Route::any('role_show','admin\RoleController@role_show');
+        //角色删除
+        Route::any('role_del','admin\RoleController@role_del');
+        //角色修改
+        Route::any('/role_upd/{id}','admin\RoleController@role_upd');
+        Route::any('role_upddo','admin\RoleController@role_upddo');
+    });
+
+    Route::prefix('permission')->group(function(){
+        //权限
+        //权限添加
+        Route::any('per_add','admin\PermissionController@per_add');
+        Route::any('per_adddo','admin\PermissionController@per_adddo');
+        //权限展示
+        Route::any('per_show','admin\PermissionController@per_show');
+        //权限删除
+        Route::any('per_del','admin\PermissionController@per_del');
+        //权限修改
+        Route::any('per_upd/{id}','admin\PermissionController@per_upd');
+        Route::any('per_upddo','admin\PermissionController@per_upddo');
+    });
+    //权限角色
+    Route::prefix('rolepermission')->group(function (){
+        Route::any('rpadd','admin\RolepermissionController@rpadd');
+        Route::any('rpdoadd','admin\RolepermissionController@rpdoadd');
+        Route::any('show','admin\RolepermissionController@rpshow');
+        Route::any('edit','admin\RolepermissionController@edit');
+        Route::any('editUpdate','admin\RolepermissionController@edit2');
+        Route::any('del','admin\RolepermissionController@del');
+    });
+    //用户角色
+    Route::prefix('adminrole')->group(function (){
+        Route::any('/aadd/{id?}','admin\AdminroleController@aadd');
+        Route::any('/adoadd','admin\AdminroleController@adoadd');
+        Route::any('/show','admin\AdminroleController@show');
     });
 });
