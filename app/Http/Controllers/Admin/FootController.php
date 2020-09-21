@@ -14,8 +14,22 @@ class FootController extends Controller
      */
     public function index()
     {
-    	 $foot=FootModel::where(['is_del'=>1])->get();
-        return view('admin.footlist',['foot'=>$foot]);
+      //搜索        
+        $foot_name=request()->foot_name ? request()->foot_name : '';
+        // $foot_name = $data['foot_name'];
+        // dd($data);
+        $where=[
+            ['is_del','=',1]
+        ];
+        if(!empty($foot_name)){
+          $where[]=['foot_name','like',"%$foot_name%"];
+        }
+    	 $foot=FootModel::where($where)->paginate(3);
+        // ajax分页
+        if(request()->ajax()){
+             return view('ajaxindex',['foot'=>$foot,'foot_name'=>$foot_name]);
+        }
+        return view('admin.footlist',['foot'=>$foot,'foot_name'=>$foot_name]);
 
     }
 
@@ -131,6 +145,18 @@ class FootController extends Controller
                 "code"=>00002,
                 "message"=>"删除成功",
                 "success"=>true,
+            ];
+        }
+    }
+
+    // 验证友情链接标题唯一性
+    public function foot_name(){
+       $foot_name = request()->foot_name;
+        $res=FootModel::where("foot_name",$foot_name)->first();
+        // dd($res);
+        if($res){
+            return $message = [
+                "code"=>1,
             ];
         }
     }

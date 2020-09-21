@@ -12,10 +12,24 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brand = BrandModel::where(['is_del'=>1])->get();
-        return view('admin.brand.index',['brand'=>$brand]);
+        //搜索        
+        $brand_name=request()->brand_name ? request()->brand_name : '';
+        // $brand_name = $data['brand_name'];
+        // dd($data);
+        $where=[
+            ['is_del','=',1]
+        ];
+        if(!empty($brand_name)){
+          $where[]=['brand_name','like',"%$brand_name%"];
+        }
+        $brand = BrandModel::where($where)->paginate(3);
+        // ajax分页
+        if(request()->ajax()){
+             return view('admin.brand.ajaxindex',['brand'=>$brand,'brand_name'=>$brand_name]);
+        }
+            return view('admin.brand.index',['brand'=>$brand,'brand_name'=>$brand_name]);
     }
 
     /**
@@ -145,5 +159,23 @@ class BrandController extends Controller
                 "success"=>true,
             ];
         }
+    }
+    /**
+     * 验证品牌名称唯一性
+     */
+    public function brand_name(){
+        $brand_name = request()->brand_name;
+        $res=BrandModel::where("brand_name",$brand_name)->first();
+        if($res){
+            return $message = [
+                "code"=>1,
+            ];
+        }
+        // }else{
+        //     return $message = [
+        //         "code"=>0,
+        //         "message"=>"ok",
+        //     ];
+        // }
     }
 }

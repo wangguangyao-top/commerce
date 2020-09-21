@@ -50,6 +50,18 @@
 	        var brand_url = $("#brand_url").val();
 	        var brand_log = $("#log_path").val();
 	        var brand_show = $("#brand_show:checked").val();
+	         if(brand_name==''){
+        	alert('品牌名称必填');
+        	return false;
+        }
+        if(brand_url==''){
+        	alert('品牌网址必填');
+        	return false;
+        }
+        if(brand_log==''){
+        	alert('请为该品牌选择logo哦');
+        	return false;
+        }
 	        // console.log(brand_show);
 	        var url = "/admin/brand/update";
 	        var data={};

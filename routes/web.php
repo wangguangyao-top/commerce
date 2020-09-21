@@ -94,6 +94,8 @@ Route::prefix('admin')->group(function(){
         Route::any('edit/{brand_id}','admin\BrandController@edit');
         //执行修改
         Route::any('update','admin\BrandController@update');
+        //验证品牌名称
+        Route::any("brand_name","admin\BrandController@brand_name");
     });
 
     /**
@@ -112,6 +114,8 @@ Route::prefix('admin')->group(function(){
         Route::any('update','admin\FootController@update');
         //执行删除
         Route::post('Fdel','admin\FootController@Fdel');
+        //验证友情链接名称
+        Route::any("foot_name","admin\FootController@foot_name");
 });
 
      /* 商品属性名称管理
@@ -174,5 +178,4 @@ Route::prefix('admin')->group(function(){
         //执行删除
         Route::post('Fdel','admin\FootController@Fdel');
     });
-});
 });
