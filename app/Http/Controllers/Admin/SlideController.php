@@ -33,6 +33,7 @@ class SlideController extends Controller
 //        }
         $data = [
 //            "img_path"=>$ta['img_path'],
+            "slide_log"=>$ta['slide_log'],
             "slide_url"=>$ta['slide_url'],
             "is_show"=>1,
             "add_time"=>time(),
@@ -61,6 +62,7 @@ class SlideController extends Controller
 //        dd($ta);
         $data = [
 //            "img_path"=>$ta['img_path'],
+            "slide_log"=>$ta['slide_log'],
             "slide_url"=>$ta['slide_url'],
             "is_show"=>1,
             "add_time"=>time(),

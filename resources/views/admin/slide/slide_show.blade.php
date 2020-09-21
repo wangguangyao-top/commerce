@@ -52,7 +52,7 @@
                     <tr>
                         <td>{{$v->slide_id}}</td>
                         <td>
-                            <img src="{{env('UPLOAD_URL')}}{{$v->slide_url}}" width="150px" height="100px">
+                            <img src="{{env('UPLOAD_URL')}}{{$v->slide_log}}" width="150px" height="100px">
                         </td>
                         <td>
                             @if($v->is_show==1)
@@ -95,7 +95,11 @@
                                 <td>轮播图</td>
                                 <td><input type="file" id="img_path">
                                     <div class="showimg"></div>
-                                    <input type="hidden" name="slide_url" id="slide_url"></td>
+                                    <input type="hidden" name="slide_log" id="slide_url"></td>
+                            </tr>
+                            <tr>
+                                <td>轮播图路径</td>
+                                <td><input type="text" id="fileupload" name="slide_url" class="form-control" >  </td>
                             </tr>
                             <tr>
                                 <td>权重</td>
@@ -128,7 +132,7 @@
                 onUploadSuccess:function(res,data,msg){
                     var imgPath  = data;
                     var imgstr = "<img src='"+imgPath+"' style='width: 50px;height: 50px;'>";
-                    $("input[name='slide_url']").val(imgPath);
+                    $("input[name='slide_log']").val(imgPath);
                     $(".showimg").append(imgstr);
 
                 }
@@ -160,8 +164,9 @@
         $(document).on("click",".btn",function(){
             var data = {};
             // data.img_path= $("#img_path").val();
-            data.slide_url = $("input[name = 'slide_url']").val();
+            data.slide_log = $("input[name = 'slide_log']").val();
             data.slide_weight = $("input[name='slide_weight']").val();
+            data.slide_url = $("input[name = 'slide_url']").val();
             // data.slide_id = slide_id;
             var url = "admin/slide/slide_add";
             $.ajax({

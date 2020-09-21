@@ -44,12 +44,7 @@
 							<div class="input-prepend"><span class="add-on loginpwd"></span>
 								<input id="prependedInput" type="password" placeholder="请输入密码" class="span2 input-xfat" name="password">
 							</div>
-							<div class="setting">
-								 <div id="slider">
-									<div id="slider_bg"></div>
-									<span id="label">>></span> <span id="labelTip">拖动滑块验证</span>
-									</div>
-							</div>
+
 							<div class="logined">
 								<button type="button" class="sui-btn btn-block btn-xlarge btn-danger" >登 录</button>
 							</div>
@@ -86,15 +81,6 @@
 <script type="text/javascript" src="/admin/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
 <script src="/admin/js/pages/jquery.slideunlock.js"></script>
 <script>
-	$(function(){
-		var slider = new SliderUnlock("#slider",{
-				successLabelTip : "欢迎访问品优购"
-			},function(){
-				// alert("验证成功,即将跳转至首页");
-            	// window.location.href="index.html"
-        	});
-        slider.init();
-	});
     $(document).ready(function() {
         $(".sui-btn").click(function() {
             // alert(111);
@@ -108,8 +94,9 @@
                 url: url,
                 dataType: "json",
                 success: function (msg) {
-                    if (msg.status == 200) {
-                        window.location.href = '{{url('/admin/index')}}';
+                    if (msg.code == 200) {
+                        alert(msg.msg);
+                        window.location.href = '/admin/index';
                     } else {
                         alert(msg.msg);
                     }

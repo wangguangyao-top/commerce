@@ -34,11 +34,12 @@ class CommonController extends Controller
      * 失败返回的数据
      */
     public function fail( $msg = '', $status = 1, $data = [] ){
-        return [
-            'status' => $status,
+        echo json_encode([
+            'code' => $status,
             'msg' => $msg,
             'data' => $data
-        ];
+        ],JSON_UNESCAPED_UNICODE);
+        die;
     }
 
     /**

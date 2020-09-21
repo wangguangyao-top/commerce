@@ -30,21 +30,16 @@ class LoginController extends CommonController
             $user_model = new UserModel();
 
             $admin_obj = $user_model -> where( $where ) -> first();
-
             if( empty( $admin_obj ) ){
                 return $this -> fail('该账号不存在');
             }
-
-//            $check =  $this -> checkAdminStatus( $admin_obj );
-
-//            if( $check['status'] != 200 ){
-//                return $check;
-//            }
-
-            # 记录成功，记录用户信息
-            $request -> session() -> put('admin_info', $admin_obj -> toArray());
-
-            return $this -> success();
+            if(md5($password) != $admin_obj->user_pwd){
+                return $this->fail('密码错误');
+            }
+            session(['user_id'=>$admin_obj->user_id]);
+            session(['user_name'=>$admin_obj->user_name]);
+            $request->session()->save();
+            return ['code'=>200,'msg'=>'OK'];
         }
     }
 

@@ -1,11 +1,11 @@
 @extends('admin/public/layout')
 @section('content')
-<center>	
+    <link rel="stylesheet" href="/uploadify/uploadify.css">
+    <script src="/uploadify/jquery.js"></script>
+    <script src="/uploadify/jquery.uploadify.js"></script>
+<center>
 	<h2>品牌添加</h2>
 </center>
-<script src="/uploadify/jquery.js"></script>
-<link rel="stylesheet" href="/uploadify/uploadify.css">
-<script src="/uploadify/jquery.uploadify.js"></script>
 <div class="form-horizontal">
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">品牌名称</label>
@@ -37,7 +37,7 @@
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="submit" ="" class="btn tj btn-default">添加</button>
+			<button type="submit" class="btn tj btn-default">添加</button>
 		</div>
 	</div>
 </div>
