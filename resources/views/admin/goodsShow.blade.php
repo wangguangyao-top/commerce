@@ -80,7 +80,7 @@
                         @endforeach
                     </td>
                     <td>{{$v['goods_store']}}</td>
-                    <td>{{$v['goods_desc']}}</td>
+                    <td>{!! $v['goods_desc'] !!}</td>
                     <td>{{$v['is_show']}}</td>
                     <td>{{$v['is_hot']}}</td>
                     <td>{{$v['is_up']}}</td>

@@ -36,7 +36,8 @@ Route::prefix('admin')->group(function(){
     Route::any('/goods/goodsUpdate','admin\GoodsController@goodsUpdate');
     Route::any('/goods/update','admin\GoodsController@update');
     Route::any('/goodsImg/uploader','admin\GoodsController@goodsImg');
-
+    Route::any('/goodsVerify','admin\GoodsController@goodsVerify');
+    Route::any('/goodsVerify2','admin\GoodsController@goodsVerify2');
     /**
 	 * 分类管理
 	 */
@@ -48,6 +49,9 @@ Route::prefix('admin')->group(function(){
         Route::any('createDel','admin\CategoryController@createDel');
         Route::any('ClassShow','admin\CategoryController@ClassShow');
         Route::any('ClassUpdate','admin\CategoryController@ClassUpdate');
+        Route::any('classVerify','admin\CategoryController@classVerify');
+        Route::any('classVerify2','admin\CategoryController@classVerify2');
+
     });
 
 	/**
