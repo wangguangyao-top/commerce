@@ -15,8 +15,21 @@ class NavController extends Controller
      */
     public function index()
     {
-        $nav = NavModel::get();
-        return view('admin/cate/nav',['data'=>$nav]);
+        //搜索        
+        $name=request()->name ? request()->name : '';
+        // $nav_name = $data['nav_name'];
+        // dd($data);
+            $where=[['is_del','=',2]];
+        if(!empty($name)){
+          $where=[['nav_name','like',"%$name%"],['is_del','=',2]];
+        }
+        $nav = NavModel::where($where)->paginate(3);
+        //判断ajax分页请求
+        if(Request()->Ajax()){
+            return view('admin/cate/ajaxnav',['data'=>$nav,'nav_name'=>$name]);
+        }else{
+             return view('admin/cate/nav',['data'=>$nav,'nav_name'=>$name]);
+        }
     }
 
     /**
@@ -38,7 +51,7 @@ class NavController extends Controller
     public function store(Request $request)
     {
         $data=request()->all();
-        $data['is_del']=1;
+        $data['is_del']=2;
         $data['add_time']=time();
         // dd($data);
         $info = NavModel::insert($data);
@@ -131,8 +144,15 @@ class NavController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         //
+        $nav_name = request()->nav_name;
+        $res=NavModel::where("nav_name",$nav_name)->first();
+        if($res){
+            return $message = [
+                "code"=>1,
+            ];
+        }
     }
 }
