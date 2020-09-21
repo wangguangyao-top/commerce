@@ -114,8 +114,6 @@ Route::prefix('admin')->group(function(){
         Route::any('update','admin\FootController@update');
         //执行删除
         Route::post('Fdel','admin\FootController@Fdel');
-        //验证友情链接名称
-        Route::any("foot_name","admin\FootController@foot_name");
 });
 
      /* 商品属性名称管理

@@ -39,10 +39,10 @@
 					<div id="profile" class="tab-pane  active">
 						<form class="sui-form">
 							<div class="input-prepend"><span class="add-on loginname"></span>
-								<input id="prependedInput" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+								<input id="prependedInput" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat" name="user_name">
 							</div>
 							<div class="input-prepend"><span class="add-on loginpwd"></span>
-								<input id="prependedInput" type="password" placeholder="请输入密码" class="span2 input-xfat">
+								<input id="prependedInput" type="password" placeholder="请输入密码" class="span2 input-xfat" name="password">
 							</div>
 							<div class="setting">
 								 <div id="slider">
@@ -51,7 +51,7 @@
 									</div>
 							</div>
 							<div class="logined">
-								<a class="sui-btn btn-block btn-xlarge btn-danger" href="/admin/index" target="_blank">登&nbsp;&nbsp;录</a>
+								<button type="button" class="sui-btn btn-block btn-xlarge btn-danger" >登 录</button>
 							</div>
 						</form>
 
@@ -88,13 +88,35 @@
 <script>
 	$(function(){
 		var slider = new SliderUnlock("#slider",{
-				successLabelTip : "欢迎访问品优购"	
+				successLabelTip : "欢迎访问品优购"
 			},function(){
 				// alert("验证成功,即将跳转至首页");
             	// window.location.href="index.html"
         	});
         slider.init();
-	})
+	});
+    $(document).ready(function() {
+        $(".sui-btn").click(function() {
+            // alert(111);
+            var data = {};
+            data.username = $("input[name = 'user_name']").val();
+            data.password = $("input[name = 'password']").val();
+            var url = "/admin/do";
+            $.ajax({
+                type: "post",
+                data: data,
+                url: url,
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.status == 200) {
+                        window.location.href = '{{url('/admin/index')}}';
+                    } else {
+                        alert(msg.msg);
+                    }
+                }
+            })
+            });
+        });
 	</script>
 </body>
 
