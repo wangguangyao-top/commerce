@@ -55,7 +55,7 @@ Route::prefix('admin')->group(function(){
 	 */
 	Route::prefix('nav')->group(function(){
 		//分类展示
-		Route::get('index','admin\NavController@index');
+		Route::any('index','admin\NavController@index');
 		//分类添加
 		Route::get('create','admin\NavController@create');
 		//执行添加
@@ -66,6 +66,8 @@ Route::prefix('admin')->group(function(){
 		Route::get('upda/{id}','admin\NavController@upda');
 		//执行修改
 		Route::any('updata','admin\NavController@updata');
+		//执行修改
+		Route::any('destroy','admin\NavController@destroy');
 	});
     /**
      * 轮播图管理
