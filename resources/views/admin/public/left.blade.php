@@ -1,4 +1,3 @@
-
 <!-- 导航侧栏 -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -171,36 +170,36 @@
 				   		 	</span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="treeview">
+                    <li id="admin-login">
                         <a href="#">
                             <i class="fa fa-folder"></i>
                             <span>商品</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
+                            <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
                         </a>
                         <ul class="treeview-menu">
-
                             <li id="admin-login">
-                                <a href="seller.html" target="iframe">
-                                    <i class="fa fa-circle-o"></i>新增商品
+                                <a href="{{url('/admin/goods/goodsEdit')}}">
+                                    <i class="fa fa-circle-o"></i> 新增商品
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="password.html" target="iframe">
-                                    <i class="fa fa-circle-o"></i>商品展示
+                                <a href="/admin/goods/goodsShow">
+                                    <i class="fa fa-circle-o"></i> 商品展示
                                 </a>
                             </li>
                         </ul>
                     </li>
+
                     {{--商品属性管理开始--}}
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-folder"></i>
                             <span>商品属性</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
                         </a>
                         <ul class="treeview-menu">
                             {{--商品属性名称管理开始--}}
@@ -208,9 +207,9 @@
                                 <a href="#">
                                     <i class="fa fa-folder"></i>
                                     <span>商品属性名称</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
                                 </a>
                                 <ul class="treeview-menu">
 
@@ -233,9 +232,9 @@
                                 <a href="#">
                                     <i class="fa fa-folder"></i>
                                     <span>商品属性值</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
                                 </a>
                                 <ul class="treeview-menu">
 
@@ -258,19 +257,19 @@
                                 <a href="#">
                                     <i class="fa fa-folder"></i>
                                     <span>商品属性</span>
-				            <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
                                 </a>
                                 <ul class="treeview-menu">
 
                                     <li id="admin-login">
-                                        <a href="seller.html" target="iframe">
+                                        <a href="{{url('admin/sku/add')}}">
                                             <i class="fa fa-circle-o"></i>新增属性
                                         </a>
                                     </li>
                                     <li id="admin-login">
-                                        <a href="password.html" target="iframe">
+                                        <a href="{{url('admin/sku')}}">
                                             <i class="fa fa-circle-o"></i>属性展示
                                         </a>
                                     </li>
@@ -283,6 +282,30 @@
                 </ul>
             </li>
             <!-- 商品管理 -->
+
+            <!-- 分类管理 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>分类管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="/admin/category/create" target="iframe">
+                            <i class="fa fa-circle-o"></i>新增分类
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/category" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类展示
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 分类管理 -->
 
             <!-- 导航管理 -->
             <li class="treeview">
@@ -302,14 +325,35 @@
                     <li id="admin-login">
                         <a href="{{url('admin/nav/index')}}">
                             <i class="fa fa-circle-o"></i> 导航管理
-                        <a href="{{url('admin/category/index')}}">
-                            <i class="fa fa-circle-o"></i> 分类管理
                         </a>
                     </li>
                 </ul>
             </li>
             <!-- 导航管理 /-->
-            <!-- 分类管理 /-->
+
+            <!-- 角色管理 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>角色管理</span>
+                    <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="{{url('admin/category/create')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 角色添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="{{url('admin/category')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 角色管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 角色管理 /-->
 
             <!-- 轮播图管理 -->
             <li class="treeview">
@@ -349,7 +393,7 @@
                     </li>
                     <li id="admin-login">
                         <a href="{{url('admin/brand')}}">
-                            <i class="fa fa-circle-o"></i> 品牌管理
+                            <i class="fa fa-circle-o"></i> 品牌列表管理
                         </a>
                     </li>
                 </ul>
@@ -380,6 +424,7 @@
                 </ul>
             </li>
             <!-- 友情链接管理 /-->
+
         </ul>
     </section>
     <!-- /.sidebar -->
