@@ -184,7 +184,7 @@ Route::prefix('admin')->group(function(){
         //商品属性添加
         Route::get('add','admin\SkuController@create');
         //商品属性执行添加
-        Route::post('store','admin\SkuController@store');
+        Route::any('store/{id}','admin\SkuController@store');
         //商品属性修改页面
         Route::get('edit/{id}','admin\SkuController@edit');
         //商品属性执行修改
