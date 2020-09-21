@@ -56,7 +56,7 @@
                 @foreach($info as $k=>$v)
                     <tr>
                         <td>{{$v['cate_id']}}</td>
-                        <td>{{$v['cate_name']}}</td>
+                        <td>{{str_repeat('--',$v->level)}}{{$v->cate_name}}</td>
                         <td>{{$v['p_id']}}</td>
                         <td>{{$v['cate_show']}}</td>
                         <td>{{$v['goods_price']}}</td>

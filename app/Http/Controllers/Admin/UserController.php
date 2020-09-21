@@ -39,7 +39,6 @@ class UserController extends Controller
     //展示
     public function user_show(){
         $res = UserModel::where("is_del",1)->paginate(2);
-//        print_r($res);die;
         return view("admin.user.user_show",['res'=>$res]);
     }
 //    //修改

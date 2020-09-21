@@ -33,6 +33,7 @@ class SlideController extends Controller
 //        }
         $data = [
 //            "img_path"=>$ta['img_path'],
+            "slide_log"=>$ta['slide_log'],
             "slide_url"=>$ta['slide_url'],
             "is_show"=>1,
             "add_time"=>time(),
@@ -58,16 +59,18 @@ class SlideController extends Controller
     public function slide_upddo(){
         $id= request()->slide_id;
         $ta = request()->all();
+//        dd($ta);
         $data = [
 //            "img_path"=>$ta['img_path'],
+            "slide_log"=>$ta['slide_log'],
             "slide_url"=>$ta['slide_url'],
             "is_show"=>1,
             "add_time"=>time(),
             "slide_weight"=>$ta['slide_weight'],
         ];
-        if(request()->hasFile('slide_url')){ //hasFile 方法判断文件在请求中是否存在
-            $data['slide_url'] = $this->Moreupload('slide_url');
-        }
+//        if(request()->hasFile('slide_url')){ //hasFile 方法判断文件在请求中是否存在
+//            $data['slide_url'] = $this->Moreupload('slide_url');
+//        }
 
         $res = slideModel::where("slide_id",$id)->update($data);
 //        print_r($res);die;
