@@ -52,7 +52,7 @@
 
         <div class="btn-toolbar list-toolbar">
             <button class="btn btn-primary" id="sub">提交</button>
-            <button class="btn btn-danger"><a href="{{url('admin/rolepermission/role_show')}}" style="color: #ffffff">返回列表页面</a></button>
+            <button class="btn btn-danger"><a href="{{url('admin/rolepermission/rpshow')}}" style="color: #ffffff">返回列表页面</a></button>
         </div>
         </div>
     </section>

@@ -30,6 +30,8 @@ Route::any('admin/do','admin\LoginController@do');
 Route::prefix('admin')->middleware('checkLogin')->group(function(){
 	//后台首页
 	Route::get('index','admin\IndexController@index');
+	//执行退出登录
+    Route::get('quit','admin\LoginController@quit');
 
     /**
      * 商品表
@@ -176,7 +178,6 @@ Route::prefix('admin')->middleware('checkLogin')->group(function(){
      */
     Route::any('adminrole/aadd/{id}','admin\AdminroleController@aadd');
     Route::any('adminrole/adoadd','admin\AdminroleController@adoadd');
-
 
     /**
      * 商品属性值管理

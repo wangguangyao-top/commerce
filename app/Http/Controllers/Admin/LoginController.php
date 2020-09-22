@@ -44,8 +44,8 @@ class LoginController extends CommonController
     }
 
 
-    public function logout(){
-        session(['admin'=>null]);
+    public function quit(){
+        session(['user_id'=>null]);
         request()->session()->save();
         return redirect('admin/login');
     }
