@@ -118,7 +118,7 @@ Route::prefix('admin')->middleware('checkLogin')->group(function(){
         Route::any('update','admin\FootController@update');
         //执行删除
         Route::post('Fdel','admin\FootController@Fdel');
-});
+    });
 
      /* 商品属性名称管理
      * 商品属性名称管理
@@ -196,5 +196,21 @@ Route::prefix('admin')->middleware('checkLogin')->group(function(){
         Route::get('destroy/{id}','admin\AttrvalController@destroy');
     });
 
-
+    /**
+     * SKU管理
+     */
+    Route::prefix('sku')->group(function(){
+        //商品属性展示
+        Route::get('/','admin\SkuController@index');
+        //商品属性添加
+        Route::get('add','admin\SkuController@create');
+        //商品属性执行添加
+        Route::any('store/{id}','admin\SkuController@store');
+        //商品属性修改页面
+        Route::get('edit/{id}','admin\SkuController@edit');
+        //商品属性执行修改
+        Route::post('update/{id}','admin\SkuController@update');
+        //商品属性删除
+        Route::get('destroy/{id}','admin\SkuController@destroy');
+    });
 });
