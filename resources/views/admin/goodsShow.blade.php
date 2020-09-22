@@ -34,8 +34,8 @@
                     <option value="2">审核通过</option>
                     <option value="3">已驳回</option>
                 </select>
-                商品名称：<input>
-                <button class="btn btn-default">查询</button>
+                商品名称：<input placeholder="请输入关键字" id="goods_name">
+                <button class="btn ss btn-default">查询</button>
             </div>
         </div>
         <!--工具栏/-->
@@ -44,9 +44,9 @@
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
             <thead>
             <tr>
-{{--                <th class="" style="padding-right:0px">--}}
-{{--                    <input id="selall" type="checkbox" class="icheckbox_square-blue">--}}
-{{--                </th>--}}
+            <th class="" style="padding-right:0px">
+                    <input id="selall" type="checkbox" class="icheckbox_square-blue">
+            </th>
                 <th>商品ID</th>
                 <th>商品名称</th>
                 <th>分类ID</th>
@@ -65,10 +65,10 @@
                 <th class="text-center">操作</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody  id='goods_info'>
             @foreach($info as $k=>$v)
                 <tr>
-{{--                    <td><input type="checkbox"></td>--}}
+                    <td><input type="checkbox"></td>
                     <td>{{$v['goods_id']}}</td>
                     <td>{{$v['goods_name']}}</td>
                     <td>{{$v['cate_id']}}</td>
@@ -76,7 +76,7 @@
                     <td>{{$v['goods_price']}}</td>
                     <td>
                         @foreach($v['goods_img'] as $v1)
-                            <img src="{{$v1}}" width="10px">
+                            <img src="{{$v1}}" width="60px">
                         @endforeach
                     </td>
                     <td>{{$v['goods_store']}}</td>
@@ -108,7 +108,32 @@
 </div>
 <!-- /.box-body -->
 <script>
+     // 搜索
+        $(document).on("click",".ss",function(){
+            var goods_name = $("#goods_name").val();
+            // alert(goods_name);
+             var url = "/admin/goods/goodsShow";
+             var data={};
+             data.goods_name = goods_name;
+              $.ajax({
+                url:url,
+                data:data,
+                type:"get",
+                success: function(res){
+                    $('#goods_info').html(res)
+            }
+        });
+    });
     $(function (){
+         //无刷新分页
+        $(document).on('click','.page-item a',function(){
+            var url = $(this).attr('href');
+            //alert(url);
+            $.get(url,function(res){
+            $('tbody').html(res);
+        });
+         return false;
+    })
         $(document).on('click','#del',function (){
             var goods_id=$(this).data('id');
             var url='/admin/goods/goodsDel';
