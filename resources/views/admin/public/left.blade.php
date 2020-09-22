@@ -63,12 +63,12 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="goods_edit.html">
+                                <a href="{{url('admin/goods/goodsEdit')}}">
                                     <i class="fa fa-circle-o"></i>新增商品
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="goods.html">
+                                <a href="{{url('admin/goods/goodsShow')}}">
                                     <i class="fa fa-circle-o"></i>商品展示
                                 </a>
                             </li>
@@ -88,12 +88,12 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="goods_edit.html">
+                                <a href="{{url('admin/attr/add')}}">
                                     <i class="fa fa-circle-o"></i>新增商品属性名称
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="goods.html">
+                                <a href="{{url('admin/attr')}}">
                                     <i class="fa fa-circle-o"></i>商品属性名称管理
                                 </a>
                             </li>
@@ -113,12 +113,12 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="goods_edit.html">
+                                <a href="{{url('admin/attrval/add')}}">
                                     <i class="fa fa-circle-o"></i>新增商品属性值
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="goods.html">
+                                <a href="{{url('admin/attrval')}}">
                                     <i class="fa fa-circle-o"></i>商品属性值管理
                                 </a>
                             </li>
@@ -138,12 +138,12 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="goods_edit.html">
+                                <a href="{{url('admin/sku/add')}}">
                                     <i class="fa fa-circle-o"></i>新增商品属性
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="goods.html">
+                                <a href="{{url('admin/sku')}}">
                                     <i class="fa fa-circle-o"></i>商品属性管理
                                 </a>
                             </li>
