@@ -52,7 +52,7 @@
                     <tr>
                         <td>{{$v->slide_id}}</td>
                         <td>
-                            <img src="{{env('UPLOAD_URL')}}{{$v->slide_log}}" width="150px" height="100px">
+                            <img src="{{$v->slide_log}}" width="150px" height="100px">
                         </td>
                         <td>
                             @if($v->is_show==1)

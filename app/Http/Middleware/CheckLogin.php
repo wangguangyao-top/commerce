@@ -15,71 +15,49 @@ class CheckLogin
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
 
     {
-        $user=session('user_id');
-        if(empty($user)){
+        $user = session('user_id');
+        if (empty($user)) {
             return redirect('/admin/login');
         }
-        $user_id=UserModel::where(['user_id'=>$user])->first();
-        if(!empty($user_id)){
-            if($user_id->user_name == '王光耀'){
-                return $next($request);
-            }else{
-                $url = $request->path();
-                if($url=='admin/index') {
-                    return $next($request);
-                }
-                $user_role = AdminroleModel::where('user_id',$user)->orderBy('id','desc')->first();
-                if($user_role == null){
-                    echo "<script>alert('您没有权限访问~请联系管理员添加权限')</script>";
-                    exit;
-                }else{
-                    $role_id = trim($user_role->role_id,',');
-                    //explode将字符串转化为数组
-                    $user_role->role_id = explode(',',$role_id);
-//                    dd($user_role);
-                    $arr_poter = [];
-                    foreach ($user_role->role_id as $v){
-                        $role_poter = RolepermissionModel::
-                            where('role_id','=',$v)
-                            ->orderBy('id','desc')->first();
-                        $arr_poter [] = $role_poter;
+        $user1=UserModel::where(['is_del'=>1,'user_id'=>$user])->first();
+        $user2=AdminroleModel::orderBy('add_time','desc')->where('user_id',$user)->first();
+        if(empty($user1)) {
+            echo "<script>alert('你没有权限访问~请联系管理员添加权限');history.back(-1);</script>";
+            exit;
+        }
+        if($user1->user_name== '王光耀'){
+            return $next($request);
+        }
+        if(empty($user2)){
+            echo "<script>alert('你没有权限访问~请联系管理员添加权限');history.back(-1);</script>";
+            exit;
+        }
+            $user2_arr=explode(',',trim($user2->role_id,','));
+            $role_arr=RolepermissionModel::where('is_del',1)->whereIn('role_id',$user2_arr)->get()->toArray();
+            if(empty($role_arr)){
+                echo "<script>alert('你没有权限访问~请联系管理员添加权限');history.back(-1);</script>";
+                exit;
+            }
+            $url=$request->path();
+            foreach ($role_arr as $k=>$v) {
+                $permission_id=explode(',',trim($v['p_id'],','));
+                asort($permission_id);
+                $arr=PerssionModel::where('is_del',1)->whereIN('p_id',$permission_id)->get('p_node')->toArray();
+                foreach ($arr as $k1=>$v1) {
+                    if($url==$v1['p_node'] || $url=='admin/index'){
+                        return $next($request);
+                    }else{
+                        echo "<script>alert('你没有权限访问~请联系管理员添加权限');history.go(-1);</script>";
+                        exit;
                     }
-                    foreach ($arr_poter as &$vv){
-                        if(!empty($vv)){
-//                            dd($vv);
-                            $pid = trim($vv->p_id,',');
-                            $arr_poter2= array_unique(explode(',',$pid));
-                        }
-                    }
-                   foreach($arr_poter2 as $vv2){
-                       foreach($vv2 as $vv3){
-
-                            $poter = PerssionModel::whereIN('p_id',$arr_poter2)->get('p_node')->toArray();
-                            foreach ($poter as $key2=>$value2) {
-                                $poter2[]=$value2['p_node'];
-                            }
-                           if(!empty($poter)){
-                               $poter2[] = $poter->url;
-                           }
-                       }
-                   }
-                }
-//        dd($url);
-                if(in_array($url,$poter2)){
-                    return $next($request);
-                }else{
-                    echo "<script>alert('你没有权限访问~请联系管理员添加权限');history.back(-1);</script>";
-                    exit;
                 }
             }
-        }
-        return $next($request);
     }
 }

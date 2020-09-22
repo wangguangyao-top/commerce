@@ -81,10 +81,10 @@
                     </td>
                     <td>{{$v['goods_store']}}</td>
                     <td>{!! $v['goods_desc'] !!}</td>
-                    <td>{{$v['is_show']}}</td>
-                    <td>{{$v['is_hot']}}</td>
-                    <td>{{$v['is_up']}}</td>
-                    <td>{{$v['is_new']}}</td>
+                    <td>{{$v['is_show']==1?'√':'×'}}</td>
+                    <td>{{$v['is_hot']==1?'√':'×'}}</td>
+                    <td>{{$v['is_up']==1?'√':'×'}}</td>
+                    <td>{{$v['is_new']==1?'√':'×'}}</td>
                     <td>
                         {{$v['goods_store']}}
                     </td>

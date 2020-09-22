@@ -6,8 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\models\GoodsModel;
 use Illuminate\Support\Facades\Redis;
+use App\Http\Controllers\admin\CategoryController;
+//引入分类model
+use App\models\ClassModel;
+//引入品牌model
+use App\Model\BrandModel;
 
-class GoodsController extends Controller
+class GoodsController extends CategoryController
 {
     /**
      * @param Request $request
@@ -31,7 +36,12 @@ class GoodsController extends Controller
                 return ['code'=>1000,'msg'=>'NO','data'=>[]];
             }
         }
-        return view('admin/goodsEdit');
+        //分类
+        $category_info=ClassModel::where(['is_del'=>1])->get();
+        $category=$this->getTree($category_info);
+        //商品
+        $brand=BrandModel::where(['is_del'=>1])->get();
+        return view('admin/goodsEdit',compact('category','brand'));
     }
 
     /**
