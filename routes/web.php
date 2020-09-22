@@ -174,7 +174,7 @@ Route::prefix('admin')->middleware('checkLogin')->group(function(){
     /**
      * 用户角色管理
      */
-    Route::any('adminrole/aadd','admin\AdminroleController@aadd');
+    Route::any('adminrole/aadd/{id}','admin\AdminroleController@aadd');
     Route::any('adminrole/adoadd','admin\AdminroleController@adoadd');
 
 
