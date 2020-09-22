@@ -1,7 +1,6 @@
 @extends('admin/public/layout')
 @section('content')
     <link rel="stylesheet" href="/uploadify/uploadify.css">
-    <script src="/uploadify/jquery.js"></script>
     <script src="/uploadify/jquery.uploadify.js"></script>
 <center>
 	<h2>品牌添加</h2>
