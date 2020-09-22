@@ -20,7 +20,7 @@
 
                         <div class="col-md-10 data">
                            <table>
-                               <select class="form-control">
+                               <select class="form-control" id="cate_id" name="cate_id">
                                 <option value="">请选择商品分类...</option>
                                 @foreach($category as $k=>$v)
                                     <option value="{{$v->cate_id}}">{{str_repeat('--',$v->level)}}{{$v->cate_name}}</option>
@@ -43,7 +43,7 @@
 
                         <div class="col-md-2 title">品牌</div>
                         <div class="col-md-10 data">
-                            <select class="form-control" >
+                            <select class="form-control" id="brand_id" name="brand_id">
                                 <option value="">请选择商品品牌...</option>
                                 @foreach($brand as $k=>$v)
                                     <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
@@ -213,6 +213,8 @@
             var is_hot=$('#is_hot').val();
             var is_up=$('#is_up').val();
             var is_new=$('#is_new').val();
+            var cate_id=$('#cate_id').val();
+            var brand_id=$('#brand_id').val();
             var goods_score=$('#goods_score').val();
             if(goods_score==''){
                 $('.span_score').text('商品积分奖励必填');
@@ -252,6 +254,8 @@
                 goods_desc:goods_desc,
                 goods_store:goods_store,
                 goods_img:goods_img,
+                cate_id:cate_id,
+                brand_id:brand_id,
                 is_show:is_show,
                 is_hot:is_hot,
                 is_up:is_up,
