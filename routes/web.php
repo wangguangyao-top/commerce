@@ -179,7 +179,6 @@ Route::prefix('admin')->middleware('checkLogin')->group(function(){
     Route::any('adminrole/aadd/{id}','admin\AdminroleController@aadd');
     Route::any('adminrole/adoadd','admin\AdminroleController@adoadd');
 
-
     /**
      * 商品属性值管理
      */
