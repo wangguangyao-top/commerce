@@ -76,7 +76,7 @@
                     <td>{{$v['goods_price']}}</td>
                     <td>
                         @foreach($v['goods_img'] as $v1)
-                            <img src="{{$v1}}" width="10px">
+                            <img src="{{$v1}}" width="60px">
                         @endforeach
                     </td>
                     <td>{{$v['goods_store']}}</td>
