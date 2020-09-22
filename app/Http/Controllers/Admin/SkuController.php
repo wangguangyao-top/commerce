@@ -12,7 +12,7 @@ use App\Model\Shop_attrval;
 use App\models\GoodsModel;
 //引入商品属性表 model
 use App\Model\Shop_skuModel;
-
+//商品表
 class SkuController extends Controller
 {
     /**
@@ -60,7 +60,6 @@ class SkuController extends Controller
      */
     public function store($goods_id,Request $request)
     {
-
             $data=$request->all();
             //添加时间戳
             $data1=array();
@@ -70,42 +69,37 @@ class SkuController extends Controller
             $cart=$this->CartesianProduct($data1);
             $count=count($cart);
             $data2=[];
-            $arr=[];
-            foreach($cart as $K1=>$v1){
-                $data2[$K1]['sku']=$v1;
-                $data2[$K1]['goods_id']=$goods_id;
-                $data2[$K1]['add_time']=time();
+            foreach($cart as $k1=>$v1){
+                $data2[$k1]['sku']=$v1;
+                $data2[$k1]['goods_id']=$goods_id;
+                $data2[$k1]['add_time']=time();
             }
             //实例化 model
             $sku=new Shop_skuModel();
-            //调用model进行添加
-            $info=$sku::where('is_del',1)->orderBy('add_time','desc')->limit($count)->get()->toArray();
-            foreach($info as $vv3){
-                $arr3[]=explode(',',$vv3['sku']);
-            }
-
-            $attrval=new Shop_attrval;
-            foreach($arr3 as $vv4){
-                $arr4[]=$attrval::select('attr_id','attrval_name')->whereIn('id',$vv4)->get()->toArray();
-            }
-            $Shop_attrModel=new Shop_attrModel;
-            $attrInfo=$Shop_attrModel::where('is_del',1)->get()->toArray();
-                foreach($arr4 as $kkk1=>&$vvv1){
-                    foreach($vvv1 as $kkk2=>&$vvv2){
-                        $arr5=($Shop_attrModel::where(['is_del'=>1,'id'=>$vvv2['attr_id']])->get('attr_name'));
-                        foreach($arr5 as $kkk3=>$vvv3){
-                            $vvv2['attr_id']=$vvv3->attr_name;
-                        }
-                    }
-                }
-        dump($arr4);
-
-        dd($arr4);
-            return ['code'=>200,'msg'=>'OK','data'=>$info];
             $bol=$sku->insertData($data2);
             if($bol){
+                //调用model进行添加
+                $info=$sku::join('shop_goods','shop_goods.goods_id','=','shop_sku.goods_id')->select('shop_sku.id','shop_sku.goods_id','shop_sku.sku','shop_goods.goods_name')->where('shop_sku.is_del',1)->orderBy('shop_sku.add_time','desc')->limit($count)->get()->toArray();
+                $attrval=new Shop_attrval;
+                $Shop_attrModel=new Shop_attrModel;
+                foreach($info as $kk3=>&$vv3){
+                    $vv3['sku']=explode(',',$vv3['sku']);
+                    $vv3['sku']=$attrval::select('attr_id','attrval_name')->whereIn('id',$vv3['sku'])->get()->toArray();
+                    $str='';
+                    foreach($vv3['sku'] as $kkk2=>&$vvv2){
+                        $arr5=($Shop_attrModel::where(['is_del'=>1,'id'=>$vvv2['attr_id']])->get('attr_name'));
+                        foreach($arr5 as $kkk3=>$vvv3){
+                            $vvv2['attr_id']=$vvv3->attr_name.'：'.$vvv2['attrval_name'];
+                        }
+                        $str.=$vvv2['attr_id'].',';
+                        $vvv2['attr_id']=$str;
+                    }
+                    $vv3['sku']=array_pop($vv3['sku']);
+                    $vv3['sku']=$vv3['sku']['attr_id'];
+                }
+                return ['code'=>200,'msg'=>'OK','data'=>$info];
             }else{
-                return ['code'=>1000,'msg'=>'NO'];
+                return ['code'=>1000,'msg'=>'NO','data'=>[]];
             }
 
         //返回结果
@@ -147,7 +141,7 @@ class SkuController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -185,5 +179,15 @@ class SkuController extends Controller
     {
         //
         echo "执行删除";
+    }
+    public function addSku(Request $request){
+        $id=$request->id;
+        $data=$request->except('id');
+        $shop=Shop_skuModel::where('id',$id)->update($data);
+        if($shop!==false){
+            return ['code'=>200,'msg'=>'OK','data'=>[]];
+        }else{
+            return ['code'=>1000,'msg'=>'NO','data'=>[]];
+        }
     }
 }
