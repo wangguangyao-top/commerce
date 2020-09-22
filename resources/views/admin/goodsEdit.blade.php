@@ -18,7 +18,7 @@
                     <div class="row data-type">
                         <div class="col-md-2 title">商品分类</div>
 
-                        <div class="col-md-10 data">
+                        <div class="col-md-10 sku6">
                             <select class="form-control">
                                 <option value="">请选择商品分类...</option>
                                 @foreach($category as $k=>$v)
@@ -28,19 +28,19 @@
                         </div>
 
                         <div class="col-md-2 title">商品名称</div>
-                        <div class="col-md-10 data">
+                        <div class="col-md-10 sku6">
                             <input type="text" class="form-control"  id="goods_name"  placeholder="商品名称" >
                             <span style="color:red" class="span_name">*</span>
                         </div>
 
                         <div class="col-md-2 title">商品货号</div>
-                        <div class="col-md-10 data">
+                        <div class="col-md-10 sku6">
                             <input type="text" class="form-control"  id="goods_sn"  placeholder="商品货号" >
                             <span style="color:red" class="span_sn">*</span>
                         </div>
 
                         <div class="col-md-2 title">品牌</div>
-                        <div class="col-md-10 data">
+                        <div class="col-md-10 sku6">
                             <select class="form-control" >
                                 <option value="">请选择商品品牌...</option>
                                 @foreach($brand as $k=>$v)
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="col-md-2 title">商品价格</div>
-                        <div class="col-md-10 data">
+                        <div class="col-md-10 sku6">
                             <div class="input-group">
                                 <span class="input-group-addon">¥</span>
                                 <input type="text" class="form-control"  id="goods_price" placeholder="价格">
@@ -59,12 +59,12 @@
                         </div>
 
                         <div class="col-md-2 title">商品图片</div>
-                        <div class="col-md-10 data" >
+                        <div class="col-md-10 sku6" >
                             <input type="file" multiple name="goods_img" id="goods_img">
                             <input type="hidden" value="" class="img">
                         </div>
                         <div class="col-md-2 title rowHeight2x">商品库存</div>
-                        <div class="col-md-10 data rowHeight2x">
+                        <div class="col-md-10 sku6">
                             <input type="text" class="form-control" id="goods_store"  placeholder="商品库存" value="">
                             <span style="color:red" class="span_store">*</span>
                         </div>
