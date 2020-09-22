@@ -351,10 +351,31 @@
                 </ul>
              </li>
              <!-- 导航模块 /-->
-            
+            <li class="treeview">
+                <a href=" ">
+                <i class="fa fa-folder"></i>
+                <span>分类管理</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="/admin/category/create" target="iframe">
+                            <i class="fa fa-circle-o"></i>新增分类
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/category" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类展示
+                        </a>
+                    </li>
+
             </li>
             <!-- 管理员管理结束 -->
 
+            </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

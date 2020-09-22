@@ -88,7 +88,7 @@
                     <td>
                         {{$v['goods_store']}}
                     </td>
-                    <td>
+                    <td>w
                         {{$v['goods_content']}}
                     </td>
                     <td>
@@ -96,7 +96,7 @@
                     </td>
                     <td class="text-center">
                         <button type="button" id="del" data-id="{{$v['goods_id']}}" class="btn bg-olive btn-xs">删除</button>
-                        <a href="/admin/goods/goodsUpdate?goods_id={{$v['goods_id']}}">修改</a>
+                        <a href="/admin/goods/goodsUpdate?goods_id={{$v['goods_id']}}" class="btn bg-olive btn-xs">修改</a>
                     </td>
                 </tr>
             @endforeach
