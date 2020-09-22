@@ -152,10 +152,57 @@
                     <!-- 商品属性值结束 -->
                 </ul>
                 <!-- 商品管理结束 -->
-
+                
             </li>
 
-            <!-- 菜单 /-->
+            <!-- 品牌管理 /-->
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>品牌管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="{{url('admin/brand/create')}}">
+                            <i class="fa fa-circle-o"></i> 新增品牌
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="{{url('admin/brand')}}">
+                            <i class="fa fa-circle-o"></i> 列表管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+             <!-- 友情链接 /-->
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>友情链接管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="{{url('admin/foot/create')}}">
+                            <i class="fa fa-circle-o"></i> 新增友情链接
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="{{url('admin/foot/list')}}">
+                            <i class="fa fa-circle-o"></i> 列表管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
 
         </ul>
     </section>
