@@ -19,24 +19,12 @@
                         <div class="col-md-2 title">商品分类</div>
 
                         <div class="col-md-10 data">
-{{--                            <table>--}}
-{{--                                <tr>--}}
-{{--                                    <td>--}}
-{{--                                        <select class="form-control" >--}}
-{{--                                        </select>--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        <select class="form-control select-sm" ></select>--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        <select class="form-control select-sm" ></select>--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        模板ID:19--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                            </table>--}}
-
+                            <select class="form-control">
+                                <option value="">请选择商品分类...</option>
+                                @foreach($category as $k=>$v)
+                                    <option value="{{$v->cate_id}}">{{str_repeat('--',$v->level)}}{{$v->cate_name}}</option>
+                                    @endforeach
+                            </select>
                         </div>
 
                         <div class="col-md-2 title">商品名称</div>
@@ -53,7 +41,12 @@
 
                         <div class="col-md-2 title">品牌</div>
                         <div class="col-md-10 data">
-{{--                            <select class="form-control" ></select>--}}
+                            <select class="form-control" >
+                                <option value="">请选择商品品牌...</option>
+                                @foreach($brand as $k=>$v)
+                                    <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
+                                    @endforeach
+                            </select>
                         </div>
 
                         <div class="col-md-2 title">商品价格</div>

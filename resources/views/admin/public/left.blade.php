@@ -63,12 +63,12 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="goods_edit.html">
+                                <a href="{{url('admin/goods/goodsEdit')}}">
                                     <i class="fa fa-circle-o"></i>新增商品
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="goods.html">
+                                <a href="{{url('admin/goods/goodsShow')}}">
                                     <i class="fa fa-circle-o"></i>商品展示
                                 </a>
                             </li>
@@ -88,12 +88,12 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="goods_edit.html">
+                                <a href="{{url('admin/attr/add')}}">
                                     <i class="fa fa-circle-o"></i>新增商品属性名称
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="goods.html">
+                                <a href="{{url('admin/attr')}}">
                                     <i class="fa fa-circle-o"></i>商品属性名称管理
                                 </a>
                             </li>
@@ -113,12 +113,12 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="goods_edit.html">
+                                <a href="{{url('admin/attrval/add')}}">
                                     <i class="fa fa-circle-o"></i>新增商品属性值
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="goods.html">
+                                <a href="{{url('admin/attrval')}}">
                                     <i class="fa fa-circle-o"></i>商品属性值管理
                                 </a>
                             </li>
@@ -138,12 +138,12 @@
                         <ul class="treeview-menu">
 
                             <li id="admin-login">
-                                <a href="goods_edit.html">
+                                <a href="{{url('admin/sku/add')}}">
                                     <i class="fa fa-circle-o"></i>新增商品属性
                                 </a>
                             </li>
                             <li id="admin-login">
-                                <a href="goods.html">
+                                <a href="{{url('admin/sku')}}">
                                     <i class="fa fa-circle-o"></i>商品属性管理
                                 </a>
                             </li>
@@ -152,7 +152,7 @@
                     <!-- 商品属性值结束 -->
                 </ul>
                 <!-- 商品管理结束 -->
-                
+
             </li>
 
             <!-- 品牌管理 /-->
@@ -201,8 +201,148 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+             </li>
+             <!-- 友情链接 /-->
 
+            <!-- 管理员管理开始 -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>管理员管理</span>
+                    <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>用户管理</span>
+                            <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="admin-login">
+                                <a href="{{url('admin/user/user_show')}}">
+                                    <i class="fa fa-circle-o"></i>管理员展示
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="admin-login">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>角色管理</span>
+                            <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="admin-login">
+                                <a href="{{url('admin/role/role_add')}}">
+                                    <i class="fa fa-circle-o"></i>角色添加
+                                </a>
+                            </li>
+                            <li id="admin-login">
+                                <a href="{{url('admin/role/role_show')}}">
+                                    <i class="fa fa-circle-o"></i>角色展示
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="admin-login">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>权限管理</span>
+                            <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="admin-login">
+                                <a href="{{url('admin/permission/per_add')}}">
+                                    <i class="fa fa-circle-o"></i>权限添加
+                                </a>
+                            </li>
+                            <li id="admin-login">
+                                <a href="{{url('admin/permission/per_show')}}">
+                                    <i class="fa fa-circle-o"></i>权限列表
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="admin-login">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>角色权限管理</span>
+                            <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="admin-login">
+                                <a href="{{url('admin/rolepermission/rpadd')}}">
+                                    <i class="fa fa-circle-o"></i>角色权限添加
+                                </a>
+                            </li>
+                            <li id="admin-login">
+                                <a href="{{url('admin/rolepermission/rpshow')}}">
+                                    <i class="fa fa-circle-o"></i>角色权限展示
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- 轮播图 /-->
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>轮播图</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="{{url('admin/slide/slide_show')}}">
+                            <i class="fa fa-circle-o"></i> 轮播图管理
+                        </a>
+                    </li>
+
+                </ul>
+             </li>
+             <!-- 轮播图 /-->
+
+             <!-- 导航模块 /-->
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>导航管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="{{url('admin/nav/create')}}">
+                            <i class="fa fa-circle-o"></i> 导航管理添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="{{url('admin/nav/index')}}">
+                            <i class="fa fa-circle-o"></i> 导航管理展示
+                        </a>
+                    </li>
+
+                </ul>
+             </li>
+             <!-- 导航模块 /-->
+            
+            </li>
+            <!-- 管理员管理结束 -->
 
         </ul>
     </section>

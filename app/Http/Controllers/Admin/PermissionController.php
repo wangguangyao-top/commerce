@@ -14,8 +14,8 @@ class PermissionController extends Controller
     public function per_adddo(){
         $res  =request()->all();
         $data = [
-            'p_name'=>$res['p_name'],
-            'p_node'=>$res['p_node'],
+            'p_name'=>isset($res['p_name']) ? $res['p_name'] : '',
+            'p_node'=>isset($res['p_node']) ? $res['p_node'] : '',
             "add_time"=>time(),
         ];
         $res = PerssionModel::insert($data);
