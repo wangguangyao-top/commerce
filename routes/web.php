@@ -22,11 +22,17 @@ Route::any('/register','index\RegisterController@register');
 /**
  * 商品后台管理系统
  */
-Route::prefix('admin')->group(function(){
+//后台登录
+Route::get('admin/login','admin\LoginController@login');
+//执行登录
+Route::any('admin/do','admin\LoginController@do');
+
+Route::prefix('admin')->middleware('checkLogin')->group(function(){
 	//后台首页
 	Route::get('index','admin\IndexController@index');
-	//后台登录
-	Route::get('login','admin\LoginController@login');
+	//执行退出登录
+    Route::get('quit','admin\LoginController@quit');
+
     /**
      * 商品表
      */
@@ -134,12 +140,44 @@ Route::prefix('admin')->group(function(){
         Route::get('destroy/{id}','admin\AttrController@destroy');
     });
 
-    /**
+      /**
      * 用户管理
      */
     Route::any('user/user_add','admin\UserController@user_add');
     Route::any('user/user_show','admin\UserController@user_show');
     Route::any('user/user_del','admin\UserController@user_del');
+    /**
+     * 角色管理
+     */
+    Route::any('role/role_add','admin\RoleController@role_add');
+    Route::any('role/role_adddo','admin\RoleController@role_adddo');
+    Route::any('role/role_show','admin\RoleController@role_show');
+    Route::any('role/role_upd/{id}','admin\RoleController@role_upd');
+    Route::any('role/role_upddo/{id}','admin\RoleController@role_upddo');
+    Route::any('role/role_del','admin\RoleController@role_del');
+    /**
+     * 权限管理
+     */
+    Route::any('permission/per_add','admin\PermissionController@per_add');
+    Route::any('permission/per_adddo','admin\PermissionController@per_adddo');
+    Route::any('permission/per_show','admin\PermissionController@per_show');
+    Route::any('permission/per_del','admin\PermissionController@per_del');
+    Route::any('permission/per_upd/{id}','admin\PermissionController@per_upd');
+    Route::any('permission/per_upddo/{id}','admin\PermissionController@per_upddo');
+    /**
+     * 角色权限管理
+     */
+    Route::any('rolepermission/rpadd','admin\RolepermissionController@rpadd');
+    Route::any('rolepermission/rpdoadd','admin\RolepermissionController@rpdoadd');
+    Route::any('rolepermission/rpshow','admin\RolepermissionController@rpshow');
+    Route::any('rolepermission/edit/{id}','admin\RolepermissionController@edit');
+    Route::any('rolepermission/edit2/{id}','admin\RolepermissionController@edit2');
+    Route::any('rolepermission/del','admin\RolepermissionController@del');
+    /**
+     * 用户角色管理
+     */
+    Route::any('adminrole/aadd/{id}','admin\AdminroleController@aadd');
+    Route::any('adminrole/adoadd','admin\AdminroleController@adoadd');
 
     /**
      * 商品属性值管理
@@ -176,30 +214,5 @@ Route::prefix('admin')->group(function(){
         //商品属性删除
         Route::get('destroy/{id}','admin\SkuController@destroy');
         Route::any('addSku','admin\SkuController@addSku');
-    });
-
-    /**
-     * 用户管理
-     */
-    Route::any('user/user_add','admin\UserController@user_add');
-    Route::any('user/user_show','admin\UserController@user_show');
-    Route::any('user/user_del','admin\UserController@user_del');
-
-    /**
-     * 友情链接管理
-     */
-    Route::prefix('foot')->group(function(){
-        //列表展示
-        Route::get('list','admin\FootController@index');
-        //友情链接添加
-        Route::any('create','admin\FootController@create');
-        //执行添加
-        Route::any('store','admin\FootController@store');
-        //修改
-        Route::get('edit/{id}','admin\FootController@edit');
-        // 执行修改
-        Route::any('update','admin\FootController@update');
-        //执行删除
-        Route::post('Fdel','admin\FootController@Fdel');
     });
 });
