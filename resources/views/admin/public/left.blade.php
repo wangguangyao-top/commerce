@@ -300,6 +300,53 @@
                         </ul>
                     </li>
                 </ul>
+                <!-- 轮播图 /-->
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>轮播图</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="{{url('admin/slide/slide_show')}}">
+                            <i class="fa fa-circle-o"></i> 轮播图管理
+                        </a>
+                    </li>
+
+                </ul>
+             </li>
+             <!-- 轮播图 /-->
+
+             <!-- 导航模块 /-->
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>导航管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="{{url('admin/nav/create')}}">
+                            <i class="fa fa-circle-o"></i> 导航管理添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="{{url('admin/nav/index')}}">
+                            <i class="fa fa-circle-o"></i> 导航管理展示
+                        </a>
+                    </li>
+
+                </ul>
+             </li>
+             <!-- 导航模块 /-->
+            
             </li>
             <!-- 管理员管理结束 -->
         </ul>

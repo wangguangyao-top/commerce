@@ -58,19 +58,18 @@ class CheckLogin
                             $arr_poter2= array_unique(explode(',',$pid));
                         }
                     }
+                   foreach($arr_poter2 as $vv2){
+                       foreach($vv2 as $vv3){
 
-//                    foreach($arr_poter2 as $vv2){
-//                        foreach($vv2 as $vv3){
-//                        dd($)
                             $poter = PerssionModel::whereIN('p_id',$arr_poter2)->get('p_node')->toArray();
                             foreach ($poter as $key2=>$value2) {
                                 $poter2[]=$value2['p_node'];
                             }
-//                            if(!empty($poter)){
-//                                $poter2[] = $poter->url;
-//                            }
-//                        }
-//                    }
+                           if(!empty($poter)){
+                               $poter2[] = $poter->url;
+                           }
+                       }
+                   }
                 }
 //        dd($url);
                 if(in_array($url,$poter2)){
