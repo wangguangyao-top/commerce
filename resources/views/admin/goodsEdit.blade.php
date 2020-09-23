@@ -19,8 +19,12 @@
                         <div class="col-md-2 title">商品分类</div>
 
                         <div class="col-md-10 data">
+
+                            <select class="form-control">
+
                            <table>
                                <select class="form-control" id="cate_id" name="cate_id">
+
                                 <option value="">请选择商品分类...</option>
                                 @foreach($category as $k=>$v)
                                     <option value="{{$v->cate_id}}">{{str_repeat('--',$v->level)}}{{$v->cate_name}}</option>
@@ -43,7 +47,11 @@
 
                         <div class="col-md-2 title">品牌</div>
                         <div class="col-md-10 data">
+
+                            <select class="form-control" >
+
                             <select class="form-control" id="brand_id" name="brand_id">
+
                                 <option value="">请选择商品品牌...</option>
                                 @foreach($brand as $k=>$v)
                                     <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
@@ -66,7 +74,11 @@
                             <input type="hidden" value="" class="img">
                         </div>
                         <div class="col-md-2 title rowHeight2x">商品库存</div>
+
+                        <div class="col-md-10 data">
+
                         <div class="col-md-10 data rowHeight2x">
+
                             <input type="text" class="form-control" id="goods_store"  placeholder="商品库存" value="">
                             <span style="color:red" class="span_store">*</span>
                         </div>
