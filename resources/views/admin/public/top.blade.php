@@ -225,7 +225,7 @@
                                     <img src="/admin/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
-                                       chendahai - 陈大海
+                                       {{session('user_name')}}
                                         <small>最后登录 11:20AM</small>
                                     </p>
                                 </li>

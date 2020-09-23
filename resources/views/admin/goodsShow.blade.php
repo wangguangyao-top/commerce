@@ -49,7 +49,7 @@
             </th>
                 <th>商品ID</th>
                 <th>商品名称</th>
-                <th>分类ID</th>
+                <th>分类</th>
                 <th>品牌</th>
                 <th>商品价格</th>
                 <th>商品图片</th>
@@ -75,8 +75,18 @@
                     <td>{{$v['brand_name']}}</td>
                     <td>{{$v['goods_price']}}</td>
                     <td>
-                        @foreach($v->goods_img as $v1)
+
+                        @foreach($v['goods_img'] as $v1)
+                            @php
+                                $type=substr($v1,strpos($v1,'.')+1,strlen($v1)-strpos($v1,'.'));
+                            @endphp
+                        @if($type=='mp4')
+                            <video width="60px" controls>
+                                <source src="{{$v1}}" type="video/mp4">
+                            </video>
+                        @else
                             <img src="{{$v1}}" width="60px">
+                        @endif
                         @endforeach
                     </td>
                     <td>{{$v->goods_store}}</td>
@@ -147,6 +157,5 @@
                 }
             })
         })
-    })
 </script>
 @endsection
