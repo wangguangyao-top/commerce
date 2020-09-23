@@ -8,6 +8,7 @@
                 <img src="/admin/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
+                <p> chendahai</p>
                 <p>{{session('user_name')}}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
@@ -39,8 +40,9 @@
                     </li>
                 </ul>
             </li>
+            <!-- 基本管理 -->
 
-            <!-- 商品管理开始 -->
+            <!-- 商品管理 -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
@@ -207,12 +209,12 @@
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="{{url('admin/foot/list')}}">
-                            <i class="fa fa-circle-o"></i> 列表管理
+                        <a href="{{url('admin/nav/index')}}">
+                            <i class="fa fa-circle-o"></i> 导航管理
                         </a>
                     </li>
                 </ul>
-             </li>
+                </li>
              <!-- 友情链接 /-->
 
             <!-- 管理员管理开始 -->
@@ -242,6 +244,8 @@
                         </ul>
                     </li>
                     <li id="admin-login">
+                        <a href="{{url('admin/category')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 角色管理
                         <a href="#">
                             <i class="fa fa-folder"></i>
                             <span>角色管理</span>
@@ -351,10 +355,31 @@
                 </ul>
              </li>
              <!-- 导航模块 /-->
-            
+            <li class="treeview">
+                <a href=" ">
+                <i class="fa fa-folder"></i>
+                <span>分类管理</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="/admin/category/create" target="iframe">
+                            <i class="fa fa-circle-o"></i>新增分类
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admin/category" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类展示
+                        </a>
+                    </li>
+
             </li>
             <!-- 管理员管理结束 -->
 
+            </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

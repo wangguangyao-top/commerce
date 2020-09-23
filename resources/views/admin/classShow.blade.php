@@ -65,7 +65,7 @@
                         </td>
                         <td class="text-center">
                             <button type="button" id="del" data-id="{{$v['cate_id']}}" class="btn bg-olive btn-xs">删除</button>
-                            <a href="/admin/category/ClassShow?cate_id={{$v['cate_id']}}">修改</a>
+                            <a href="/admin/category/ClassShow?cate_id={{$v['cate_id']}}" class="btn bg-olive btn-xs">修改</a>
                         </td>
                     </tr>
                 @endforeach
