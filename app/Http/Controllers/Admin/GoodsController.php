@@ -26,6 +26,7 @@ class GoodsController extends CategoryController
                 return ['code'=>1000,'msg'=>'缺少必要参数','data'=>[]];
             }
             $data['goods_img']=trim($data['goods_img'],',');
+//            dd( $data['goods_img']);
             $data['add_time']=time();
             $data['is_del']=1;
             $goods=new GoodsModel();
@@ -67,8 +68,7 @@ class GoodsController extends CategoryController
                 ->leftjoin('shop_brand', 'shop_goods.brand_id', '=', 'shop_brand.brand_id')
                 ->where($where)
                 ->paginate(5);
-            foreach ($info as &$v) {
-
+            foreach ($info as $v) {
                 $v->goods_img = explode(',', $v->goods_img);
             }
             return view('admin/goodsShow', ['info' => $info, 'goods_name' => $goods_name]);
