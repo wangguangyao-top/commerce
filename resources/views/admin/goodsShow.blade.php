@@ -69,19 +69,11 @@
             @foreach($info as $k=>$v)
                 <tr>
                     <td><input type="checkbox"></td>
-<<<<<<< HEAD
-                    <td>{{$v->goods_id}}</td>
-                    <td>{{$v->goods_name}}</td>
-                    <td>{{$v->cate_id}}</td>
-                    <td>{{$v->brand_id}}</td>
-                    <td>{{$v->goods_price}}</td>
-=======
                     <td>{{$v['goods_id']}}</td>
                     <td>{{$v['goods_name']}}</td>
                     <td>{{$v['cate_name']}}</td>
                     <td>{{$v['brand_name']}}</td>
                     <td>{{$v['goods_price']}}</td>
->>>>>>> 019057decc10056f69ada91e2fbe00abfa95cf1f
                     <td>
                         @foreach($v->goods_img as $v1)
                             <img src="{{$v1}}" width="60px">
@@ -100,11 +92,7 @@
                         {{$v->goods_content}}
                     </td>
                     <td>
-<<<<<<< HEAD
-                        {{$v->add_time}}
-=======
                         {{date('Y-m-d H:i:s',$v['add_time'])}}
->>>>>>> 019057decc10056f69ada91e2fbe00abfa95cf1f
                     </td>
                     <td class="text-center">
                         <button type="button" id="del" data-id="{{$v->goods_id}}" class="btn bg-olive btn-xs">删除</button>
