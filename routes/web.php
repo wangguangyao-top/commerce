@@ -6,6 +6,8 @@ Route::get('/', function () {
 
 Route::prefix('index')->group(function () {
     Route::any('/', 'index\IndexController@index');
+    Route::any('/ClassLest', 'index\IndexController@ClassLest');
+
     Route::any('/list', 'index\ListController@list');
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');

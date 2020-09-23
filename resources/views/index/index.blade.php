@@ -4,7 +4,6 @@
 @section('title','品优购，优质！优质！')
 @section('subject')
     <link rel="icon" href="../index/assets/img/favicon.ico">
-
     <link rel="stylesheet" type="text/css" href="../index/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="../index/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="../index/css/widget-jquery.autocomplete.css" />
@@ -159,18 +158,11 @@
                     <h3>今日推荐</h3>
                 </div>
             </li>
+           @foreach($goods_img as $kk1=>$vv1)
             <li class="yui3-u-5-24">
-                <a href="list.html" target="_blank"><img src="img/today01.png" /></a>
+                <a href="" target="_blank"><img width="163px" height="248px" src="{{$vv1['goods_img']}}"/></a>
             </li>
-            <li class="yui3-u-5-24">
-                <img src="img/today02.png" />
-            </li>
-            <li class="yui3-u-5-24">
-                <img src="img/today03.png" />
-            </li>
-            <li class="yui3-u-5-24">
-                <img src="img/today04.png" />
-            </li>
+            @endforeach
         </ul>
     </div>
 </div>
@@ -184,119 +176,19 @@
         </div>
         <div class="bd">
             <ul class="clearfix yui3-g Favourate picLB" id="picLBxxl">
+                @foreach($goods as $kk2=>$vv2)
                 <li class="yui3-u-1-6">
                     <dl class="picDl huozhe">
                         <dd>
-                            <a href="" class="pic"><img src="img/like_02.png" alt="" /></a>
+                            <a href="" class="pic"><img src="{{$vv2['goods_img']}}" alt="" /></a>
                             <div class="like-text">
-                                <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-                                <h3>¥116.00</h3>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="" class="pic"><img src="img/like_01.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-                                <h3>¥116.00</h3>
+                                <p>{{$vv2['goods_name']}}</p>
+                                <h3>¥{{$vv2['goods_price']}}</h3>
                             </div>
                         </dd>
                     </dl>
                 </li>
-                <li class="yui3-u-1-6">
-                    <dl class="picDl jilu">
-                        <dd>
-                            <a href="" class="pic"><img src="img/like_03.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-                                <h3>¥116.00</h3>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="" class="pic"><img src="img/like_02.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-                                <h3>¥116.00</h3>
-                            </div>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="yui3-u-1-6">
-                    <dl class="picDl tuhua">
-                        <dd>
-                            <a href="" class="pic"><img src="img/like_01.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>捷波朗 </p>
-                                <p>（jabra）BOOSI劲步</p>
-                                <h3>¥236.00</h3>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="" class="pic"><img nsrc="assets/img/like_02.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>三星（G5500）</p>
-                                <p>移动联通双网通</p>
-                                <h3>¥566.00</h3>
-                            </div>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="yui3-u-1-6">
-                    <dl class="picDl huozhe">
-                        <dd>
-                            <a href="" class="pic"><img src="img/like_02.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>阳光美包新款单肩包女包时尚子母包四件套女</p>
-                                <h3>¥116.00</h3>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="" class="pic"><img src="img/like_01.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>爱仕达 30CM炒锅不粘锅NWG8330E电磁炉炒</p>
-                                <h3>¥116.00</h3>
-                            </div>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="yui3-u-1-6">
-                    <dl class="picDl jilu">
-                        <dd>
-                            <a href="http://sc.chinaz.com/" class="pic"><img src="img/like_03.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>捷波朗 </p>
-                                <p>（jabra）BOOSI劲步</p>
-                                <h3>¥236.00</h3>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="http://sc.chinaz.com/" class="pic"><img src="img/like_02.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>欧普</p>
-                                <p>JYLZ08面板灯平板灯铝</p>
-                                <h3>¥456.00</h3>
-                            </div>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="yui3-u-1-6">
-                    <dl class="picDl tuhua">
-                        <dd>
-                            <a href="http://sc.chinaz.com/" class="pic"><img src="img/like_01.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>三星（G5500）</p>
-                                <p>移动联通双网通</p>
-                                <h3>¥566.00</h3>
-                            </div>
-                        </dd>
-                        <dd>
-                            <a href="http://sc.chinaz.com/" class="pic"><img nsrc="assets/img/like_02.png" alt="" /></a>
-                            <div class="like-text">
-                                <p>韩国所望紧致湿润精华露400ml</p>
-                                <h3>¥896.00</h3>
-                            </div>
-                        </dd>
-                    </dl>
-                </li>
+                @endforeach
             </ul>
         </div>
     </div>
