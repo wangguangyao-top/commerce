@@ -49,7 +49,7 @@ class GoodsController extends CategoryController
      * 商品展示页面
      */
     public function goodsShow(Request $request){
-         //搜索        
+         //搜索
         $goods_name=request()->goods_name ? request()->goods_name : '';
         $goods=new GoodsModel();
         $where=[
@@ -58,13 +58,11 @@ class GoodsController extends CategoryController
         if(!empty($goods_name)){
           $where[]=['goods_name','like',"%$goods_name%"];
         }
-        $info=$goods::where($where)->get();
-        $info1=json_encode($info);
-        $info2=json_decode($info1,true);
-        foreach ($info2 as &$v) {
-            $v['goods_img']=explode(',',$v['goods_img']);
+        $info=$goods::where($where)->paginate(5);
+        foreach ($info as $v) {
+            $v->goods_img=explode(',',$v->goods_img);
         }
-        return view('admin/goodsShow',['info'=>$info2,'goods_name'=>$goods_name]);
+        return view('admin/goodsShow',['info'=>$info,'goods_name'=>$goods_name]);
     }
 
     /**

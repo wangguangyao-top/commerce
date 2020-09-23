@@ -69,40 +69,41 @@
             @foreach($info as $k=>$v)
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>{{$v['goods_id']}}</td>
-                    <td>{{$v['goods_name']}}</td>
-                    <td>{{$v['cate_id']}}</td>
-                    <td>{{$v['brand_id']}}</td>
-                    <td>{{$v['goods_price']}}</td>
+                    <td>{{$v->goods_id}}</td>
+                    <td>{{$v->goods_name}}</td>
+                    <td>{{$v->cate_id}}</td>
+                    <td>{{$v->brand_id}}</td>
+                    <td>{{$v->goods_price}}</td>
                     <td>
-                        @foreach($v['goods_img'] as $v1)
+                        @foreach($v->goods_img as $v1)
                             <img src="{{$v1}}" width="60px">
                         @endforeach
                     </td>
-                    <td>{{$v['goods_store']}}</td>
-                    <td>{!! $v['goods_desc'] !!}</td>
-                    <td>{{$v['is_show']==1?'√':'×'}}</td>
-                    <td>{{$v['is_hot']==1?'√':'×'}}</td>
-                    <td>{{$v['is_up']==1?'√':'×'}}</td>
-                    <td>{{$v['is_new']==1?'√':'×'}}</td>
+                    <td>{{$v->goods_store}}</td>
+                    <td>{!! $v->goods_desc !!}</td>
+                    <td>{{$v->is_show==1?'√':'×'}}</td>
+                    <td>{{$v->is_hot==1?'√':'×'}}</td>
+                    <td>{{$v->is_up==1?'√':'×'}}</td>
+                    <td>{{$v->is_new==1?'√':'×'}}</td>
                     <td>
-                        {{$v['goods_store']}}
+                        {{$v->goods_store}}
                     </td>
                     <td>w
-                        {{$v['goods_content']}}
+                        {{$v->goods_content}}
                     </td>
                     <td>
-                        {{$v['add_time']}}
+                        {{$v->add_time}}
                     </td>
                     <td class="text-center">
-                        <button type="button" id="del" data-id="{{$v['goods_id']}}" class="btn bg-olive btn-xs">删除</button>
-                        <a href="/admin/goods/goodsUpdate?goods_id={{$v['goods_id']}}" class="btn bg-olive btn-xs">修改</a>
+                        <button type="button" id="del" data-id="{{$v->goods_id}}" class="btn bg-olive btn-xs">删除</button>
+                        <a href="/admin/goods/goodsUpdate?goods_id={{$v->goods_id}}" class="btn bg-olive btn-xs">修改</a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        <!--数据列表/-->
+        {{$info->links()}}
+    <!--数据列表/-->
     </div>
     <!-- 数据表格 /-->
 </div>
