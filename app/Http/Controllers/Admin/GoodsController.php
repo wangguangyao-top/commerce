@@ -48,21 +48,31 @@ class GoodsController extends CategoryController
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * 商品展示页面
      */
-    public function goodsShow(Request $request){
-         //搜索
-        $goods_name=request()->goods_name ? request()->goods_name : '';
-        $goods=new GoodsModel();
-        $where=[
-            ['is_del','=',1]
+    public function goodsShow(Request $request)
+    {
+        //搜索
+        $goods_name = request()->goods_name ? request()->goods_name : '';
+        $goods = new GoodsModel();
+        $where = [
+            ['shop_goods.is_del', '=', 1]
         ];
-        if(!empty($goods_name)){
-          $where[]=['goods_name','like',"%$goods_name%"];
+        if (!empty($goods_name)) {
+            $where[] = ['goods_name', 'like', "%$goods_name%"];
         }
-        $info=$goods::where($where)->paginate(5);
+
+        $info = $goods::where($where)->paginate(5);
         foreach ($info as $v) {
-            $v->goods_img=explode(',',$v->goods_img);
+            $info = $goods::select('shop_goods.*', 'cate_name', 'brand_name')
+                ->leftjoin('shop_class', 'shop_goods.cate_id', '=', 'shop_class.cate_id')
+                ->leftjoin('shop_brand', 'shop_goods.brand_id', '=', 'shop_brand.brand_id')
+                ->where($where)
+                ->paginate(5);
+            foreach ($info as &$v) {
+
+                $v->goods_img = explode(',', $v->goods_img);
+            }
+            return view('admin/goodsShow', ['info' => $info, 'goods_name' => $goods_name]);
         }
-        return view('admin/goodsShow',['info'=>$info,'goods_name'=>$goods_name]);
     }
 
     /**

@@ -69,11 +69,19 @@
             @foreach($info as $k=>$v)
                 <tr>
                     <td><input type="checkbox"></td>
+<<<<<<< HEAD
                     <td>{{$v->goods_id}}</td>
                     <td>{{$v->goods_name}}</td>
                     <td>{{$v->cate_id}}</td>
                     <td>{{$v->brand_id}}</td>
                     <td>{{$v->goods_price}}</td>
+=======
+                    <td>{{$v['goods_id']}}</td>
+                    <td>{{$v['goods_name']}}</td>
+                    <td>{{$v['cate_name']}}</td>
+                    <td>{{$v['brand_name']}}</td>
+                    <td>{{$v['goods_price']}}</td>
+>>>>>>> 019057decc10056f69ada91e2fbe00abfa95cf1f
                     <td>
                         @foreach($v->goods_img as $v1)
                             <img src="{{$v1}}" width="60px">
@@ -92,7 +100,11 @@
                         {{$v->goods_content}}
                     </td>
                     <td>
+<<<<<<< HEAD
                         {{$v->add_time}}
+=======
+                        {{date('Y-m-d H:i:s',$v['add_time'])}}
+>>>>>>> 019057decc10056f69ada91e2fbe00abfa95cf1f
                     </td>
                     <td class="text-center">
                         <button type="button" id="del" data-id="{{$v->goods_id}}" class="btn bg-olive btn-xs">删除</button>
@@ -104,6 +116,7 @@
         </table>
         {{$info->links()}}
     <!--数据列表/-->
+        <!--数据列表/-->
     </div>
     <!-- 数据表格 /-->
 </div>
@@ -122,19 +135,9 @@
                 type:"get",
                 success: function(res){
                     $('#goods_info').html(res)
-            }
+                }
+              });
         });
-    });
-    $(function (){
-         //无刷新分页
-        $(document).on('click','.page-item a',function(){
-            var url = $(this).attr('href');
-            //alert(url);
-            $.get(url,function(res){
-            $('tbody').html(res);
-        });
-         return false;
-    })
         $(document).on('click','#del',function (){
             var goods_id=$(this).data('id');
             var url='/admin/goods/goodsDel';
