@@ -88,7 +88,7 @@
                     <td>
                         {{$v['goods_store']}}
                     </td>
-                    <td>w
+                    <td>
                         {{$v['goods_content']}}
                     </td>
                     <td>
@@ -99,7 +99,11 @@
                         <a href="/admin/goods/goodsUpdate?goods_id={{$v['goods_id']}}" class="btn bg-olive btn-xs">修改</a>
                     </td>
                 </tr>
+                <tr>
+                </tr>
             @endforeach
+                    
+               
             </tbody>
         </table>
         <!--数据列表/-->
