@@ -71,8 +71,8 @@
                     <td><input type="checkbox"></td>
                     <td>{{$v['goods_id']}}</td>
                     <td>{{$v['goods_name']}}</td>
-                    <td>{{$v['cate_id']}}</td>
-                    <td>{{$v['brand_id']}}</td>
+                    <td>{{$v['cate_name']}}</td>
+                    <td>{{$v['brand_name']}}</td>
                     <td>{{$v['goods_price']}}</td>
                     <td>
                         @foreach($v['goods_img'] as $v1)
@@ -92,7 +92,7 @@
                         {{$v['goods_content']}}
                     </td>
                     <td>
-                        {{$v['add_time']}}
+                        {{date('Y-m-d H:i:s',$v['add_time'])}}
                     </td>
                     <td class="text-center">
                         <button type="button" id="del" data-id="{{$v['goods_id']}}" class="btn bg-olive btn-xs">删除</button>
@@ -102,6 +102,7 @@
             @endforeach
             </tbody>
         </table>
+        {{$info->links()}}
         <!--数据列表/-->
     </div>
     <!-- 数据表格 /-->
@@ -121,19 +122,9 @@
                 type:"get",
                 success: function(res){
                     $('#goods_info').html(res)
-            }
+                }
+              });
         });
-    });
-    $(function (){
-         //无刷新分页
-        $(document).on('click','.page-item a',function(){
-            var url = $(this).attr('href');
-            //alert(url);
-            $.get(url,function(res){
-            $('tbody').html(res);
-        });
-         return false;
-    })
         $(document).on('click','#del',function (){
             var goods_id=$(this).data('id');
             var url='/admin/goods/goodsDel';
