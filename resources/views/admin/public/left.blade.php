@@ -39,8 +39,9 @@
                     </li>
                 </ul>
             </li>
+            <!-- 基本管理 -->
 
-            <!-- 商品管理开始 -->
+            <!-- 商品管理 -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
@@ -207,12 +208,12 @@
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="{{url('admin/foot/list')}}">
-                            <i class="fa fa-circle-o"></i> 列表管理
+                        <a href="{{url('admin/nav/index')}}">
+                            <i class="fa fa-circle-o"></i> 导航管理
                         </a>
                     </li>
                 </ul>
-             </li>
+                </li>
              <!-- 友情链接 /-->
 
             <!-- 管理员管理开始 -->
@@ -242,6 +243,8 @@
                         </ul>
                     </li>
                     <li id="admin-login">
+                        <a href="{{url('admin/category')}}" target="iframe">
+                            <i class="fa fa-circle-o"></i> 角色管理
                         <a href="#">
                             <i class="fa fa-folder"></i>
                             <span>角色管理</span>

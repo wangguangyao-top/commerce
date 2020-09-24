@@ -61,7 +61,7 @@
                         <td>{{$v['cate_show']}}</td>
                         <td>{{$v['goods_price']}}</td>
                         <td>
-                            {{$v['add_time']}}
+                            {{date('Y-m-d H:i:s',$v['add_time'])}}
                         </td>
                         <td class="text-center">
                             <button type="button" id="del" data-id="{{$v['cate_id']}}" class="btn bg-olive btn-xs">删除</button>

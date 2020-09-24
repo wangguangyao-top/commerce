@@ -4,10 +4,14 @@ namespace App\Http\Controllers\index;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\models\NavModel;
 
 class IndexController extends Controller
 {
     public function index(){
-        return view('index/index');
+        $navdata = NavModel::where('is_del',1)->get();
+        //compact 引入变量
+        return view('index/index',compact('navdata'));
     }
+
 }

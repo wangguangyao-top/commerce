@@ -213,5 +213,6 @@ Route::prefix('admin')->middleware('checkLogin')->group(function(){
         Route::post('update/{id}','admin\SkuController@update');
         //商品属性删除
         Route::get('destroy/{id}','admin\SkuController@destroy');
+        Route::any('addSku','admin\SkuController@addSku');
     });
 });

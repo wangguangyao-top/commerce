@@ -26,6 +26,7 @@ class GoodsController extends CategoryController
                 return ['code'=>1000,'msg'=>'缺少必要参数','data'=>[]];
             }
             $data['goods_img']=trim($data['goods_img'],',');
+//            dd( $data['goods_img']);
             $data['add_time']=time();
             $data['is_del']=1;
             $goods=new GoodsModel();
@@ -48,23 +49,30 @@ class GoodsController extends CategoryController
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * 商品展示页面
      */
-    public function goodsShow(Request $request){
-         //搜索        
-        $goods_name=request()->goods_name ? request()->goods_name : '';
-        $goods=new GoodsModel();
-        $where=[
-            ['is_del','=',1]
+    public function goodsShow(Request $request)
+    {
+        //搜索
+        $goods_name = request()->goods_name ? request()->goods_name : '';
+        $goods = new GoodsModel();
+        $where = [
+            ['shop_goods.is_del', '=', 1]
         ];
-        if(!empty($goods_name)){
-          $where[]=['goods_name','like',"%$goods_name%"];
+        if (!empty($goods_name)) {
+            $where[] = ['goods_name', 'like', "%$goods_name%"];
         }
-        $info=$goods::where($where)->get();
-        $info1=json_encode($info);
-        $info2=json_decode($info1,true);
-        foreach ($info2 as &$v) {
-            $v['goods_img']=explode(',',$v['goods_img']);
+
+        $info = $goods::where($where)->paginate(5);
+        foreach ($info as $v) {
+            $info = $goods::select('shop_goods.*', 'cate_name', 'brand_name')
+                ->leftjoin('shop_class', 'shop_goods.cate_id', '=', 'shop_class.cate_id')
+                ->leftjoin('shop_brand', 'shop_goods.brand_id', '=', 'shop_brand.brand_id')
+                ->where($where)
+                ->paginate(5);
+            foreach ($info as $v) {
+                $v->goods_img = explode(',', $v->goods_img);
+            }
+            return view('admin/goodsShow', ['info' => $info, 'goods_name' => $goods_name]);
         }
-        return view('admin/goodsShow',['info'=>$info2,'goods_name'=>$goods_name]);
     }
 
     /**
