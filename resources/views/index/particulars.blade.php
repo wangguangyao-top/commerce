@@ -172,14 +172,6 @@
 
                     </div>
 
-
-
-
-
-
-
-
-
                     <div class="summary-wrap">
                         <div class="fl title">
                             <div class="control-group">

@@ -3,12 +3,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::prefix('index')->group(function () {
     Route::any('/', 'index\IndexController@index');
     Route::any('/ClassLest', 'index\IndexController@ClassLest');
 
     Route::any('/list', 'index\ListController@list');
+    Route::any('/list2', 'index\ListController@list2');
+
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
     Route::any('/shopping', 'index\ShoppingController@shopping');
@@ -19,7 +20,6 @@ Route::get('index/login','index\LoginController@login');
 
 //前台注册
 Route::any('/register','index\RegisterController@register');
-
 
 /**
  * 商品后台管理系统

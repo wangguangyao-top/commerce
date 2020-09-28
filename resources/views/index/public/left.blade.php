@@ -23,23 +23,3 @@
         @endforeach
     </div>
 </div>
-<script>
-    // $(function () {
-    //     $(document).on('mouseenter', '.cate', function () {
-    //         var cate_id = $(this).attr('cate_id');
-    //         var url = '/index';
-    //         var data = {
-    //             cate_id: cate_id
-    //         };
-    //         $.ajax({
-    //             type: 'post',
-    //             url: url,
-    //             data: data,
-    //             dataType: 'json',
-    //             success: function (info) {
-    //                 console.log(info);
-    //             }
-    //         })
-    //     })
-    // })
-</script>
