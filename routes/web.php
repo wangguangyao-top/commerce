@@ -23,7 +23,7 @@ Route::prefix('index')->group(function () {
 Route::get('index/login','index\LoginController@login');
 
 //前台注册
-Route::any('/register','index\RegisterController@register');
+Route::any('index/register','index\RegisterController@register');
 
 
 /**
