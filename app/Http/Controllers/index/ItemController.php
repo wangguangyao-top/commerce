@@ -19,7 +19,7 @@ class ItemController extends Controller
             die('该商品不存在');
         }
         //相关分类
-        dd($goods_info->cate_id);
+        // dd($goods_info->cate_id);
         //渲染视图
         return view('index/item',compact('goods_info'));
     }

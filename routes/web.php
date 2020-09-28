@@ -11,6 +11,8 @@ Route::prefix('index')->group(function () {
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
     Route::any('/shopping', 'index\ShoppingController@shopping');
     Route::any('/cooperation', 'index\CooperationController@cooperation');
+    //前台支付失败
+    Route::any('/payfail','index\PayController@payfail');
     //商品详情页
     Route::get('item','index\ItemController@item');
 });
@@ -217,4 +219,6 @@ Route::prefix('admin')->middleware('checkLogin')->group(function(){
         Route::get('destroy/{id}','admin\SkuController@destroy');
         Route::any('addSku','admin\SkuController@addSku');
     });
+
+
 });
