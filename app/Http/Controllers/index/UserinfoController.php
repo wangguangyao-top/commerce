@@ -10,4 +10,7 @@ class UserinfoController extends Controller
     public function show(){
         return view ('index.userinfo');
     }
+    public function add(Request $request){
+
+    }
 }
