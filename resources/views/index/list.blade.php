@@ -231,7 +231,7 @@
                     <li class="yui3-u-1-5">
                         <div class="list-wrap">
                             <div class="p-img">
-                                <a href="" target="_blank"><img src="{{$v->goods_img[0]}}"></a>
+                                <a href="{{url('index/item?goods_id='.$v->goods_id)}}" target="_blank"><img src="{{$v->goods_img[0]}}"></a>
                             </div>
                             <div class="price">
                                 <strong>
@@ -261,30 +261,7 @@
             </div>
             <div class="fr page">
                 <div class="sui-pagination pagination-large">
-                    <ul>
-                        <li class="prev disabled">
-                            <a href="#">«上一页</a>
-                        </li>
-                        <li class="active">
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">5</a>
-                        </li>
-                        <li class="dotted"><span>...</span></li>
-                        <li class="next">
-                            <a href="#">下一页»</a>
-                        </li>
-                    </ul>
+                    {{$data->links()}}
                     <div><span>共10页&nbsp;</span><span>
       到第
       <input type="text" class="page-num">
