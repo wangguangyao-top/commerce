@@ -10,10 +10,16 @@ Route::prefix('index')->group(function () {
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
     Route::any('/shopping', 'index\ShoppingController@shopping');
+    //合作商
     Route::any('/cooperation', 'index\CooperationController@cooperation');
+    //注册
     Route::any('/reg','index\RegisterController@reg');
     Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
     Route::any('/code','index\RegisterController@code');
+    //订单
+    Route::any('/order','index\OrderController@order');
+    //支付成功
+    Route::any('/paysuccess','index\OrderController@paysuccess');
 
     //商品详情页
     Route::get('item','index\ItemController@item');

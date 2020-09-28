@@ -30,11 +30,11 @@
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">登录</h4>
                                         <div class="form-group">
-                                            <input type="email" name="logemail" class="form-style" placeholder="用户名" id="logemail" autocomplete="off"  name="user_name">
+                                            <input type="email" name="user_name" class="form-style" placeholder="用户名" id="logemail" autocomplete="off"  name="user_name">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="密码" id="logpass" autocomplete="off" name="password">
+                                            <input type="password" name="password" class="form-style" placeholder="密码" id="logpass" autocomplete="off" name="password">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
                                         <button type="button" class="btn mt-4">提交</button>

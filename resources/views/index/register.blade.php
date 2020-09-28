@@ -8,8 +8,8 @@
 	<title>个人注册</title>
 
 
-    <link rel="stylesheet" type="text/css" href="index/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="index/css/pages-register.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/pages-register.css" />
 </head>
 
 <body>
