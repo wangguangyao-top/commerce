@@ -10,14 +10,26 @@ Route::prefix('index')->group(function () {
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
     Route::any('/shopping', 'index\ShoppingController@shopping');
+    //合作商
     Route::any('/cooperation', 'index\CooperationController@cooperation');
-    //前台支付失败
-    Route::any('/payfail','index\PayController@payfail');
     Route::any('/reg','index\RegisterController@reg');
     Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
     Route::any('/code','index\RegisterController@code');
+    //注册
+    Route::any('/reg','index\RegisterController@reg');
+    Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
+    Route::any('/code','index\RegisterController@code');
+    //订单
+    Route::any('/order','index\OrderController@order');
+    //支付成功
+    Route::any('/paysuccess','index\OrderController@paysuccess');
+     //支付失败
+    Route::any('/payfail','index\OrderController@payfail');
     //商品详情页
     Route::get('item','index\ItemController@item');
+    //收货地址
+    Route::any('/address','index\AddressController@create');
+    Route::any('/store','index\AddressController@store');
 
 });
 //前台
