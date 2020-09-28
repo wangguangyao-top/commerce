@@ -4,15 +4,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::prefix('index')->group(function () {
+    //首页
     Route::any('/', 'index\IndexController@index');
+    //分类列表
     Route::any('/ClassLest', 'index\IndexController@ClassLest');
-
+    //商品列表
     Route::any('/list', 'index\ListController@list');
+    //列表品牌
     Route::any('/list2', 'index\ListController@list2');
-
+    //商品详情描述
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
+    //商品详情
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
+    //加入购物车成功页面
     Route::any('/shopping', 'index\ShoppingController@shopping');
+    //合作商
     Route::any('/cooperation', 'index\CooperationController@cooperation');
 });
 //前台

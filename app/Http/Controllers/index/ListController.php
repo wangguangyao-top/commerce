@@ -15,7 +15,7 @@ class ListController extends Controller
         //列表商品数据
         $goods = GoodsModel::where(['is_del'=>1])->paginate(10);
         foreach($goods as $v){
-            $v->goods_name = mb_substr($v['goods_name'],0,12)."...";
+            $v->goods_name = mb_substr($v->goods_name,0,12)."...";
             $v->goods_img=explode(',',$v->goods_img);
         }
         //价格区间
@@ -31,14 +31,23 @@ class ListController extends Controller
         return view('index/list',['data'=>$goods],compact('navdata','bran','arr'));
     }
     public function list2(Request $request){
-        $brand_id=$request->brand_id;
+        $data=$request->all();
         $where=[];
-        if($brand_id){
-            $where[]=['brand_id','=',$brand_id];
+        if(isset($data['brand_id'])){
+            $where[]=['brand_id','=',$data['brand_id']];
+        }
+        if(isset($data['goods_price'])){
+            $goods_price=explode('-',$data['goods_price']);
+            $where[]=['goods_price','>=',$goods_price[0]];
+            $where[]=['goods_price','<=',$goods_price[1]];
         }
         $where[]=['is_del','=',1];
-        $goods=GoodsModel::where($where)->get()->toArray();
-
+        $goods = GoodsModel::where($where)->get()->toarray();
+        foreach($goods as &$v){
+            $v['goods_name'] = mb_substr($v['goods_name'],0,12)."...";
+            $v['goods_img']=explode(',',$v['goods_img']);
+        }
+        return ['code'=>200,'msg'=>'OK','data'=>$goods];
     }
 
 }
