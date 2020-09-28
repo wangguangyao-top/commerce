@@ -11,14 +11,19 @@ Route::prefix('index')->group(function () {
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
     Route::any('/shopping', 'index\ShoppingController@shopping');
     Route::any('/cooperation', 'index\CooperationController@cooperation');
+    Route::any('/reg','index\RegisterController@reg');
+    Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
+    Route::any('/code','index\RegisterController@code');
+
     //商品详情页
     Route::get('item','index\ItemController@item');
+
 });
 //前台
 Route::get('index/login','index\LoginController@login');
 
 //前台注册
-Route::any('/register','index\RegisterController@register');
+Route::any('index/register','index\RegisterController@register');
 
 
 /**

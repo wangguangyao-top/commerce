@@ -1,88 +1,82 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en" >
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<title>品优购运营商运营管理后台</title>
-	 <link rel="icon" href="../assets/img/favicon.ico">
+    <meta charset="UTF-8">
+    <title>CodePen - Log In / Sign Up - pure css - #12</title>
 
+    <link rel='stylesheet' href='/css/bootstrap.min.css'>
 
-    <link rel="stylesheet" type="text/css" href="/admin/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="/admin/css/pages-login-manage.css" />
+    <!---图标库--->
+    <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
-
 <body>
-	<div class="loginmanage">
-		<div class="py-container">
-			<h4 class="manage-title">品优购运营商运营管理后台</h4>
-			<div class="loginform">
-
-				<ul class="sui-nav nav-tabs tab-wraped">
-					<li>
-						<a href="#index" data-toggle="tab">
-							<h3>扫描登录</h3>
-						</a>
-					</li>
-					<li class="active">
-						<a href="#profile" data-toggle="tab">
-							<h3>账户登录</h3>
-						</a>
-					</li>
-				</ul>
-				<div class="tab-content tab-wraped">
-					<div id="index" class="tab-pane">
-						<p>二维码登录，暂为官网二维码</p>
-						<img src="../admin/img/wx_cz.jpg" />
-					</div>
-					<div id="profile" class="tab-pane  active">
-						<form class="sui-form">
-							<div class="input-prepend"><span class="add-on loginname"></span>
-								<input id="prependedInput" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat" name="user_name">
-							</div>
-							<div class="input-prepend"><span class="add-on loginpwd"></span>
-								<input id="prependedInput" type="password" placeholder="请输入密码" class="span2 input-xfat" name="password">
-							</div>
-
-							<div class="logined">
-								<button type="button" class="sui-btn btn-block btn-xlarge btn-danger" >登 录</button>
-							</div>
-						</form>
-
-					</div>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
 
 
-	<!--foot-->
-	<div class="py-container copyright">
-		<ul>
-			<li>关于我们</li>
-			<li>联系我们</li>
-			<li>联系客服</li>
-			<li>商家入驻</li>
-			<li>营销中心</li>
-			<li>手机品优购</li>
-			<li>销售联盟</li>
-			<li>品优购社区</li>
-		</ul>
-		<div class="address">地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100</div>
-		<div class="beian">京ICP备08001421号京公网安备110108007702
-		</div>
-	</div>
+<div class="section">
+    <div class="container">
+        <div class="row full-height justify-content-center">
+            <div class="col-12 text-center align-self-center py-5">
+                <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                    <h6 class="mb-0 pb-3"><span>登录</span><span>注册</span></h6>
+                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+                    <label for="reg-log"></label>
+                    <div class="card-3d-wrap mx-auto">
+                        <div class="card-3d-wrapper">
+                            <div class="card-front">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <h4 class="mb-4 pb-3">登录</h4>
+                                        <div class="form-group">
+                                            <input type="email" name="logemail" class="form-style" placeholder="用户名" id="logemail" autocomplete="off"  name="user_name">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="password" name="logpass" class="form-style" placeholder="密码" id="logpass" autocomplete="off" name="password">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                        <button type="button" class="btn mt-4">提交</button>
+                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">忘记密码?</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <h4 class="mb-4 pb-3">注册</h4>
+                                        <div class="form-group">
+                                            <input type="text" name="logname" class="form-style" placeholder="名称" id="logname" autocomplete="off">
+                                            <i class="input-icon uil uil-user"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="email" name="logemail" class="form-style" placeholder="邮箱" id="logemail" autocomplete="off">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="password" name="logpass" class="form-style" placeholder="密码" id="logpass" autocomplete="off">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                        <button type="button" class="btn mt-4">提交</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+</body>
+</html>
+<script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
 
-<script type="text/javascript" src="/admin/js/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/admin/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="/admin/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script src="/admin/js/pages/jquery.slideunlock.js"></script>
 <script>
     $(document).ready(function() {
-        $(".sui-btn").click(function() {
+        $(".mt-4").click(function() {
             // alert(111);
             var data = {};
             data.username = $("input[name = 'user_name']").val();
