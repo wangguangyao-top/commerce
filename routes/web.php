@@ -21,6 +21,8 @@ Route::prefix('index')->group(function () {
 });
 //前台
 Route::get('index/login','index\LoginController@login');
+//执行登录
+Route::post('index/loginDo','index\LoginController@loginDo');
 
 //前台注册
 Route::any('index/register','index\RegisterController@register');

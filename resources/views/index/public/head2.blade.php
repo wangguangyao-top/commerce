@@ -2,7 +2,7 @@
     <div class="shortcut">
         <ul class="fl">
             <li class="f-item">品优购欢迎您！</li>
-            <li class="f-item">请<a href="{{url('index/login')}}">登录</a>　<span><a href="{{url('index/register')}}">免费注册</a></span></li>
+            <li class="f-item">请先<a href="{{url('index/login')}}">登录</a>　<span><a href="{{url('index/register')}}">免费注册</a></span></li>
         </ul>
         <ul class="fr">
             <li class="f-item">我的订单</li>
