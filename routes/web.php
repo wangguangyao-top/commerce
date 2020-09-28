@@ -14,6 +14,10 @@ Route::prefix('index')->group(function () {
     Route::any('/reg','index\RegisterController@reg');
     Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
     Route::any('/code','index\RegisterController@code');
+
+    //商品详情页
+    Route::get('item','index\ItemController@item');
+
 });
 //前台
 Route::get('index/login','index\LoginController@login');
