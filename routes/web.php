@@ -31,6 +31,9 @@ Route::prefix('index')->group(function () {
     Route::any('/address','index\AddressController@create');
     Route::any('/store','index\AddressController@store');
 
+    //用户个人中心
+    Route::any('/show','index\UserinfoController@show');
+
 });
 //前台
 Route::get('index/login','index\LoginController@login');
