@@ -243,8 +243,6 @@
                         </ul>
                     </li>
                     <li id="admin-login">
-                        <a href="{{url('admin/category')}}" target="iframe">
-                            <i class="fa fa-circle-o"></i> 角色管理
                         <a href="#">
                             <i class="fa fa-folder"></i>
                             <span>角色管理</span>

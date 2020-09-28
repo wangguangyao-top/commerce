@@ -11,6 +11,9 @@ Route::prefix('index')->group(function () {
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
     Route::any('/shopping', 'index\ShoppingController@shopping');
     Route::any('/cooperation', 'index\CooperationController@cooperation');
+    Route::any('/reg','index\RegisterController@reg');
+    Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
+    Route::any('/code','index\RegisterController@code');
 });
 //前台
 Route::get('index/login','index\LoginController@login');
