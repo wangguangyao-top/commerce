@@ -26,6 +26,8 @@ Route::prefix('index')->group(function () {
 
     //用户个人中心
     Route::any('/show','index\UserinfoController@show');
+    Route::any('/addimg','index\UserinfoController@addimg');
+    Route::any('/add','index\UserinfoController@add');
 
 });
 //前台

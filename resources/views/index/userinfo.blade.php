@@ -10,6 +10,10 @@
 
     <link rel="stylesheet" type="text/css" href="css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="css/pages-seckillOrder.css" />
+
+    <link rel="stylesheet" href="/uploadify/uploadify.css">
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+    <script src="/uploadify/jquery.uploadify.js"></script>
 </head>
 
 <body>
@@ -122,7 +126,6 @@
     </div>
 </div>
 
-<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
         $("#service").hover(function(){
@@ -227,9 +230,8 @@
                                 <div class="control-group">
                                     <label for="inputPassword" class="control-label">生日：</label>
                                     <div class="controls">
-                                        <select id="select_year2" rel="1990" name="my_birthday1"></select>年
-                                        <select id="select_month2" rel="4" name="my_birthday2"></select>月
-                                        <select id="select_day2" rel="3" name="my_birthday3"></select>日
+
+                                        <input type ="date" name ="my_birthday" value ="<？php echo date（'Y-m-d'）;？&"/>
                                     </div>
                                 </div>
 
@@ -239,7 +241,12 @@
                                     <div class="controls">
                                         <div data-toggle="distpicker">
                                             <div class="form-group area">
-                                                <select class="form-control" id="province1" name="my_site1"></select>
+                                                <select class="form-control" id="province1" name="my_site1">
+                                                    <option>--请选择--</option>
+                                                    @foreach($area as $k=>$v)
+                                                    <option value="{{$v->id}}">{{$v->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="form-group area">
                                                 <select class="form-control" id="city1" name="my_site2"></select>
@@ -254,7 +261,7 @@
                                 <div class="control-group">
                                     <label for="sanwei" class="control-label"></label>
                                     <div class="controls">
-                                        <button type="submit" class="sui-btn btn-primary">立即注册</button>
+                                        <button type="button" class="sui-btn btn-primary">立即注册</button>
                                     </div>
                                 </div>
                             </form>
@@ -265,7 +272,9 @@
                                 <p>当前头像：</p>
                                 <div class="upload">
                                     <img id="imgShow_WU_FILE_0" width="100" height="100" src="img/_/photo_icon.png" alt="">
-                                    <input type="file" id="up_img_WU_FILE_0" name=""/>
+                                    <input type="file" id="img_path">
+                                    <div class="showimg"></div>
+                                    <input type="hidden" name="my_img" id="my_img">
                                 </div>
 
                             </div>
@@ -411,6 +420,69 @@
 </div>
 <!--页面底部END-->
 
-undefined
-
 </html>
+<script>
+    $(document).ready(function(){
+        $(document).on("click",".sui-btn",function(){
+            var data = {};
+            data.user_name = $("input[name = 'user_name']").val();
+            data.my_sex = $("input[name='my_sex']").val();
+            data.my_img = $("input[name = 'my_img']").val();
+            data.my_birthday = $("input[name = 'my_birthday']").val();
+            data.my_site1 = $("select[name = 'my_site1']").val();
+            data.my_site2 = $("select[name = 'my_site2']").val();
+            data.my_site3 = $("select[name = 'my_site3']").val();
+
+            var url = "/index/add";
+            $.ajax({
+                type:"post",
+                data:data,
+                url:url,
+                dataType:"json",
+                success:function (msg) {
+                    if(msg.success == true){
+                        window.location.href = "/index/show";
+                    }
+                }
+            })
+        })
+        //三级联动
+        $(document).on('change','select',function(){
+            // alert(123);
+            var id = $(this).val();
+            var obj = $(this);
+            // alert(id);
+            if(id =='请选择'){
+                var str = '<option>--请选择--</option>';
+                obj.siblings('select').html(str);return;
+            }
+            obj.nextAll('select').html("<option value=''>--请选择--</option>");
+            $.get(
+                "{{url('/index/area')}}/"+id,
+                function(res){
+                    console.log(res);
+                    if($res.code=='00000'){
+                        var str = '<option>--请选择--</option>';
+                        $.each(res.data,function(i,k){
+                            str+='<option value='+ k.id+'>'+k.name+'</option>';
+                        });
+                        obj.next('select').html(str);
+                    }
+                },
+                'json'
+            )
+        })
+        //图片上传
+        $("#img_path").uploadify({
+            uploader: "/index/addimg",
+            swf: "/uploadify/uploadify.swf",
+            onUploadSuccess:function(res,data,msg){
+                var imgPath  = data;
+                var imgstr = "<img src='"+imgPath+"' style='width: 50px;height: 50px;'>";
+                $("input[name='my_img']").val(imgPath);
+                $(".showimg").append(imgstr);
+
+            }
+        });
+    });
+</script>
