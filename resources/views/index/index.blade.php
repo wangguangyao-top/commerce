@@ -1,5 +1,5 @@
 <!-- 头部栏位 -->
-@extends('../index/public.common')
+@extends('../index/public/common')
 <!--页面顶部-->
 @section('title','品优购，优质！优质！')
 @section('subject')

@@ -19,6 +19,28 @@ Route::prefix('index')->group(function () {
     Route::any('/reg','index\RegisterController@reg');
     Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
     Route::any('/code','index\RegisterController@code');
+    // 个人中心首页
+    Route::any('/orderHome','index\HomeController@index');
+    // 订单详情页
+    Route::any('/orderDetail','index\DetailController@index');
+    // 订单待评价页
+    Route::any('/orderEvaluate','index\EvaluateController@index');
+    // 订单待付款页
+    Route::any('/orderPay','index\PayController@index');
+    // 订单待发货页
+    Route::any('/orderSend','index\SendController@index');
+    // 订单待收货页
+    Route::any('/orderReceive','index\ReceiveController@index');
+    // 订单我的收藏页
+    Route::any('/orderPerson','index\PersonController@index');
+    // 订单我的足迹页
+    Route::any('/orderFootmark','index\FootmarkController@index');
+    // 订单设置个人信息页
+    Route::any('/orderInfo','index\InfoController@index');
+    // 订单设置地址管理页
+    Route::any('/orderAddress','index\AddressController@index');
+    // 订单设置安全管理页
+    Route::any('/orderSafe','index\SafeController@index');
     //订单
     Route::any('/order','index\OrderController@order');
     //支付成功
@@ -37,6 +59,8 @@ Route::prefix('index')->group(function () {
     Route::any('/Fdel','index\AddressController@Fdel');
     //用户个人中心
     Route::any('/show','index\UserinfoController@show');
+    Route::any('/addimg','index\UserinfoController@addimg');
+    Route::any('/add','index\UserinfoController@add');
 
 });
 //前台

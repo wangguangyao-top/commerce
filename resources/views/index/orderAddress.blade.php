@@ -5,20 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>设置-个人信息</title>
-    <link rel="icon" href="/assets/img/favicon.ico">
+    <title>设置-地址管理</title>
+     <link rel="icon" href="assets/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="css/pages-seckillOrder.css" />
-
-    <link rel="stylesheet" href="/uploadify/uploadify.css">
-    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
-    <script src="/uploadify/jquery.uploadify.js"></script>
 </head>
 
 <body>
-<!-- 头部栏位 -->
-<!--页面顶部-->
+    <!-- 头部栏位 -->
+    <!--页面顶部-->
 <div id="nav-bottom">
     <!--顶部-->
     <div class="nav-top">
@@ -27,12 +23,12 @@
                 <div class="shortcut">
                     <ul class="fl">
                         <li class="f-item">品优购欢迎您！</li>
-                        <li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+                        <li class="f-item">请<a href="{{url('index/login')}}">登录</a>　<span><a href="{{url('index/register')}}">免费注册</a></span></li>
                     </ul>
                     <ul class="fr">
                         <li class="f-item">我的订单</li>
                         <li class="f-item space"></li>
-                        <li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
+                        <li class="f-item"><a href="{{url('index/orderHome')}}">我的品优购</a></li>
                         <li class="f-item space"></li>
                         <li class="f-item">品优购会员</li>
                         <li class="f-item space"></li>
@@ -126,168 +122,192 @@
     </div>
 </div>
 
+<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
-    $(function(){
-        $("#service").hover(function(){
-            $(".service").show();
-        },function(){
-            $(".service").hide();
-        });
-        $("#shopcar").hover(function(){
-            $("#shopcarlist").show();
-        },function(){
-            $("#shopcarlist").hide();
-        });
-
-    })
-</script>
-<script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="/index/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="/index/js/widget/nav.js"></script>
-<script type="text/javascript" src="/index/js/plugins/birthday/birthday.js"></script>
-<script type="text/javascript" src="/index/js/plugins/citypicker/distpicker.data.js"></script>
-<script type="text/javascript" src="/index/js/plugins/citypicker/distpicker.js"></script>
-<script type="text/javascript" src="/index/js/plugins/upload/uploadPreview.js"></script>
-<script type="text/javascript" src="/index/js/pages/main.js"></script>
-<script>
-    $(function() {
-        $.ms_DatePicker({
-            YearSelector: "#select_year2",
-            MonthSelector: "#select_month2",
-            DaySelector: "#select_day2"
-        });
+$(function(){
+    $("#service").hover(function(){
+        $(".service").show();
+    },function(){
+        $(".service").hide();
     });
+    $("#shopcar").hover(function(){
+        $("#shopcarlist").show();
+    },function(){
+        $("#shopcarlist").hide();
+    });
+
+})
 </script>
+<script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="js/widget/nav.js"></script>
+<script type="text/javascript" src="pages/userInfo/distpicker.data.js"></script>
+<script type="text/javascript" src="pages/userInfo/distpicker.js"></script>
+<script type="text/javascript" src="pages/userInfo/main.js"></script>
 </body>
-<!--header-->
-<div id="account">
-    <div class="py-container">
-        <div class="yui3-g home">
-            <!--左侧列表-->
-            <div class="yui3-u-1-6 list">
+    <!--header-->
+    <div id="account">
+        <div class="py-container">
+            <div class="yui3-g home">
+                <!--左侧列表-->
+                <div class="yui3-u-1-6 list">
 
-                <div class="person-info">
-                    <div class="person-photo"><img src="img/_/photo.png" alt=""></div>
-                    <div class="person-account">
-                        <span class="name">Michelle</span>
-                        <span class="safe">账户安全</span>
+                    <div class="person-info">
+                        <div class="person-photo"><img src="img/_/photo.png" alt=""></div>
+                        <div class="person-account">
+                            <span class="name">Michelle</span>
+                            <span class="safe">账户安全</span>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div class="list-items">
+                        <dl>
+                            <dt><i>·</i> 订单中心</dt>
+                            <dd ><a href="{{url('index/orderHome')}}" >我的订单</a></dd>
+                            <dd><a href="{{url('index/orderPay')}}" >待付款</a></dd>
+                            <dd><a href="{{url('index/orderSend')}}"  >待发货</a></dd>
+                            <dd><a href="{{url('index/orderReceive')}}" >待收货</a></dd>
+                            <dd><a href="{{url('index/orderEvaluate')}}" >待评价</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 我的中心</dt>
+                            <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
+                            <dd><a href="{{url('index/orderFootmark')}}">我的足迹</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 物流消息</dt>
+                        </dl>
+                        <dl>
+                            <dt><i>·</i> 设置</dt>
+                            <dd><a href="{{url('index/orderInfo')}}">个人信息</a></dd>
+                            <dd><a href="{{url('index/orderAddress')}}" class="list-active" >地址管理</a></dd>
+                            <dd><a href="{{url('index/orderSafe')}}" >安全管理</a></dd>
+                        </dl>
+                    </div>
                 </div>
-                <div class="list-items">
-                    <dl>
-                        <dt><i>·</i> 订单中心</dt>
-                        <dd ><a href="home-index.html"   >我的订单</a></dd>
-                        <dd><a href="home-order-pay.html" >待付款</a></dd>
-                        <dd><a href="home-order-send.html"  >待发货</a></dd>
-                        <dd><a href="home-order-receive.html" >待收货</a></dd>
-                        <dd><a href="home-order-evaluate.html" >待评价</a></dd>
-                    </dl>
-                    <dl>
-                        <dt><i>·</i> 我的中心</dt>
-                        <dd><a href="home-person-collect.html" >我的收藏</a></dd>
-                        <dd><a href="home-person-footmark.html" >我的足迹</a></dd>
-                    </dl>
-                    <dl>
-                        <dt><i>·</i> 物流消息</dt>
-                    </dl>
-                    <dl>
-                        <dt><i>·</i> 设置</dt>
-                        <dd><a href="home-setting-info.html" class="list-active">个人信息</a></dd>
-                        <dd><a href="home-setting-address.html"  >地址管理</a></dd>
-                        <dd><a href="home-setting-safe.html" >安全管理</a></dd>
-                    </dl>
-                </div>
-            </div>
-            <!--右侧主内容-->
-            <div class="yui3-u-5-6">
-                <div class="body userInfo">
-                    <ul class="sui-nav nav-tabs nav-large nav-primary ">
-                        <li class="active"><a href="#one" data-toggle="tab">基本资料</a></li>
-                        <li><a href="#two" data-toggle="tab">头像照片</a></li>
-                    </ul>
-                    <div class="tab-content ">
-                        <div id="one" class="tab-pane active">
-                            <form id="form-msg" class="sui-form form-horizontal">
-                                <div class="control-group">
-                                    <label for="inputName" class="control-label" >昵称：</label>
-                                    <div class="controls">
-                                        <input type="text" id="inputName" name="user_name" placeholder="昵称">
+                <!--右侧主内容-->
+                <div class="yui3-u-5-6">
+                    <div class="body userAddress">
+                        <div class="address-title">
+                            <span class="title">地址管理</span>
+                            <a data-toggle="modal" data-target=".edit" data-keyboard="false"   class="sui-btn  btn-info add-new">添加新地址</a>
+                            <span class="clearfix"></span>
+                        </div>
+                        <div class="address-detail">
+                            <table class="sui-table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>姓名</th>
+                                        <th>地址</th>
+                                        <th>联系电话</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>刘田田</td>
+                                        <td>北京 北京市 海淀区 上地街道东北旺西路8号中关村软件园9号楼</td>
+                                        <td>1774***********4</td>
+                                        <td>
+                                            <a href="#">编辑</a>
+                                            <a href="#">删除</a>
+                                            默认地址
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>沈沉</td>
+                                        <td>北京 北京市 海淀区 上地街道东北旺西路8号中关村软件园9号楼</td>
+                                        <td>1774***********4</td>
+                                        <td>
+                                            <a href="#">编辑</a>
+                                            <a href="#">删除</a>
+                                            <a href="#">设为默认</a>
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>                          
+                        </div>
+                        <!--新增地址弹出层-->
+                         <div  tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade edit" style="width:580px;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+                                        <h4 id="myModalLabel" class="modal-title">新增地址</h4>
                                     </div>
-                                </div>
-                                <div class="control-group">
-                                    <label for="inputGender" class="control-label">性别：</label>
-                                    <div class="controls">
-                                        <label data-toggle="radio" class="radio-pretty inline">
-                                            <input type="radio" name="my_sex" value="1"><span>男</span>
-                                        </label>
-                                        <label data-toggle="radio" class="radio-pretty inline">
-                                            <input type="radio" name="my_sex" value="2"><span>女</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label for="inputPassword" class="control-label">生日：</label>
-                                    <div class="controls">
-
-                                        <input type ="date" name ="my_birthday" value ="<？php echo date（'Y-m-d'）;？&"/>
-                                    </div>
-                                </div>
-
-
-                                <div class="control-group">
-                                    <label for="inputPassword" class="control-label">所在地：</label>
-                                    <div class="controls">
-                                        <div data-toggle="distpicker">
-                                            <div class="form-group area">
-                                                <select class="form-control" id="province1" name="my_site1">
-                                                    <option>--请选择--</option>
-                                                    @foreach($area as $k=>$v)
-                                                    <option value="{{$v->id}}">{{$v->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="form-group area">
-                                                <select class="form-control" id="city1" name="my_site2"></select>
-                                            </div>
-                                            <div class="form-group area">
-                                                <select class="form-control" id="district1" name="my_site3"></select>
+                                    <div class="modal-body">
+                                        <form action="" class="sui-form form-horizontal">
+                                            <div class="control-group">
+                                            <label class="control-label">收货人：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-medium">
                                             </div>
                                         </div>
+                                        <div class="control-group">
+                                            <label class="control-label">所在地区：</label>
+                                            <div class="controls">
+                                                <div data-toggle="distpicker">
+                                                <div class="form-group area">
+                                                    <select class="form-control" id="province1"></select>
+                                                </div>
+                                                <div class="form-group area">
+                                                    <select class="form-control" id="city1"></select>
+                                                </div>
+                                                <div class="form-group area">
+                                                    <select class="form-control" id="district1"></select>
+                                                </div>
+                                            </div>
+                                            </div>                                   
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">详细地址：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">联系电话：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-medium">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">邮箱：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-medium">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">地址别名：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-medium">
+                                            </div>
+                                            <div class="othername">
+                                                建议填写常用地址：<a href="#" class="sui-btn btn-default">家里</a>　<a href="#" class="sui-btn btn-default">父母家</a>　<a href="#" class="sui-btn btn-default">公司</a>
+                                            </div>
+                                        </div>
+                                        
+                                        </form>
+                                        
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large">确定</button>
+                                        <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">取消</button>
                                     </div>
                                 </div>
-
-                                <div class="control-group">
-                                    <label for="sanwei" class="control-label"></label>
-                                    <div class="controls">
-                                        <button type="button" class="sui-btn btn-primary">立即注册</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div id="two" class="tab-pane">
-
-                            <div class="new-photo">
-                                <p>当前头像：</p>
-                                <div class="upload">
-                                    <img id="imgShow_WU_FILE_0" width="100" height="100" src="img/_/photo_icon.png" alt="">
-                                    <input type="file" id="img_path">
-                                    <div class="showimg"></div>
-                                    <input type="hidden" name="my_img" id="my_img">
-                                </div>
-
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- 底部栏位 -->
-<!--页面底部-->
+    <!-- 底部栏位 -->
+    <!--页面底部-->
 <div class="clearfix footer">
     <div class="py-container">
         <div class="footlink">
@@ -420,69 +440,8 @@
 </div>
 <!--页面底部END-->
 
+
+
+undefined
+
 </html>
-<script>
-    $(document).ready(function(){
-        $(document).on("click",".sui-btn",function(){
-            var data = {};
-            data.user_name = $("input[name = 'user_name']").val();
-            data.my_sex = $("input[name='my_sex']").val();
-            data.my_img = $("input[name = 'my_img']").val();
-            data.my_birthday = $("input[name = 'my_birthday']").val();
-            data.my_site1 = $("select[name = 'my_site1']").val();
-            data.my_site2 = $("select[name = 'my_site2']").val();
-            data.my_site3 = $("select[name = 'my_site3']").val();
-
-            var url = "/index/add";
-            $.ajax({
-                type:"post",
-                data:data,
-                url:url,
-                dataType:"json",
-                success:function (msg) {
-                    if(msg.success == true){
-                        window.location.href = "/index/show";
-                    }
-                }
-            })
-        })
-        //三级联动
-        $(document).on('change','select',function(){
-            // alert(123);
-            var id = $(this).val();
-            var obj = $(this);
-            // alert(id);
-            if(id =='请选择'){
-                var str = '<option>--请选择--</option>';
-                obj.siblings('select').html(str);return;
-            }
-            obj.nextAll('select').html("<option value=''>--请选择--</option>");
-            $.get(
-                "{{url('/index/area')}}/"+id,
-                function(res){
-                    console.log(res);
-                    if($res.code=='00000'){
-                        var str = '<option>--请选择--</option>';
-                        $.each(res.data,function(i,k){
-                            str+='<option value='+ k.id+'>'+k.name+'</option>';
-                        });
-                        obj.next('select').html(str);
-                    }
-                },
-                'json'
-            )
-        })
-        //图片上传
-        $("#img_path").uploadify({
-            uploader: "/index/addimg",
-            swf: "/uploadify/uploadify.swf",
-            onUploadSuccess:function(res,data,msg){
-                var imgPath  = data;
-                var imgstr = "<img src='"+imgPath+"' style='width: 50px;height: 50px;'>";
-                $("input[name='my_img']").val(imgPath);
-                $(".showimg").append(imgstr);
-
-            }
-        });
-    });
-</script>
