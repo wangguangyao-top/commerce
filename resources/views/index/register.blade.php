@@ -8,8 +8,8 @@
 	<title>个人注册</title>
 
 
-    <link rel="stylesheet" type="text/css" href="index/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="index/css/pages-register.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/pages-register.css" />
 </head>
 
 <body>
@@ -91,11 +91,11 @@
 	</div>
 
 
-<script type="text/javascript" src="index/js/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="index/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="index/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="index/js/pages/register.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="/index/js/pages/register.js"></script>
 </body>
 
 </html>
@@ -130,7 +130,7 @@
             }else{
 
                 $.ajax({
-                    url:"{{url('index/sendSmsCode')}}",
+                    url:"{{url('/index/sendSmsCode')}}",
                     type:'post',
                     data:{user_tel:user_tel},
                     dataType:'json',
@@ -166,7 +166,7 @@
                 alert('不能为空');
             }else{
                 $.ajax({
-                    url:"{{url('index/reg')}}",
+                    url:"{{url('/index/reg')}}",
                     type:'post',
                     data:{user_name:user_name,user_tel:user_tel,user_pwd:user_pwd,user_repwd:user_repwd,code:code},
                     dataType:'json',
@@ -179,7 +179,7 @@
                         }
                         if(res.status == 000000){
                             alert(res.msg);
-                            window.location.href="{{url('index/login')}}";
+                            window.location.href="{{url('/index/login')}}";
                         }
                     }
                 })
