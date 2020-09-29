@@ -10,7 +10,9 @@ Route::prefix('index')->group(function () {
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
     Route::any('/shopping', 'index\ShoppingController@shopping');
+    //合作商
     Route::any('/cooperation', 'index\CooperationController@cooperation');
+    //注册
     Route::any('/reg','index\RegisterController@reg');
     Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
     Route::any('/code','index\RegisterController@code');
@@ -36,13 +38,24 @@ Route::prefix('index')->group(function () {
     Route::any('/orderAddress','index\AddressController@index');
     // 订单设置安全管理页
     Route::any('/orderSafe','index\SafeController@index');
+    //订单
+    Route::any('/order','index\OrderController@order');
+    //支付成功
+    Route::any('/paysuccess','index\OrderController@paysuccess');
 
     //商品详情页
     Route::get('item','index\ItemController@item');
 
+    //用户个人中心
+    Route::any('/show','index\UserinfoController@show');
+    Route::any('/addimg','index\UserinfoController@addimg');
+    Route::any('/add','index\UserinfoController@add');
+
 });
 //前台
 Route::get('index/login','index\LoginController@login');
+//执行登录
+Route::post('index/loginDo','index\LoginController@loginDo');
 
 //前台注册
 Route::any('index/register','index\RegisterController@register');
