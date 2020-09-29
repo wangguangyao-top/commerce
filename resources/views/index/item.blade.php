@@ -668,19 +668,23 @@
                         <div class="tbar-panel-main">
                             <div class="tbar-panel-content J-panel-content">
                                 <div class="jt-history-wrap">
+
                                     <ul>
-                                        <!--<li class="jth-item">
-                                            <a href="#" class="img-wrap"> <img src=".portal/img/like_03.png" height="100" width="100" /> </a>
-                                            <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
-                                            <a href="#" target="_blank" class="price">￥498.00</a>
-                                        </li>
+                                        @if(!empty($historyList))
+                                        @foreach($historyList as $k=>$v)
                                         <li class="jth-item">
-                                            <a href="#" class="img-wrap"> <img src="portal/img/like_02.png" height="100" width="100" /></a>
+                                            @php
+                                                $goods_img=explode(',',$v['goods_img']);
+                                                $v['goods_img']=array_shift($goods_img);
+                                            @endphp
+                                            <a href="#" class="img-wrap"> <img src="{{$v['goods_img']}}" height="100" width="100" /> </a>
                                             <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
-                                            <a href="#" target="_blank" class="price">￥498.00</a>
-                                        </li>-->
+                                            <a href="#" target="_blank" class="price">￥{{$v['goods_price']}}</a>
+                                        </li>
+                                        @endforeach
+                                        @endif
                                     </ul>
-                                    <a href="#" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
+                                    <a href="{{url('index/history')}}" class="history-bottom-more">查看更多足迹商品 &gt;&gt;</a>
                                 </div>
                             </div>
                         </div>

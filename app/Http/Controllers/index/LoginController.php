@@ -13,6 +13,9 @@ class LoginController extends Controller
         return view('index.login');
     }
 
+    /** 执行登录
+     * @return string 返回类型为：json字符串
+     */
     public function loginDo(){
         //接值
         $user=request()->all();
@@ -58,5 +61,11 @@ class LoginController extends Controller
         }else{
             return json_encode(['status'=>'40002','msg'=>'用户名/手机号或密码错误，请重新填写。'],JSON_UNESCAPED_UNICODE);
         }
+    }
+
+    public function quit(){
+        //清除session
+        session(['user'=>null]);
+        return redirect('index/login');
     }
 }

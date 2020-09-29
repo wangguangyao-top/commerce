@@ -49,6 +49,10 @@ Route::prefix('index')->group(function () {
     Route::any('/payfail','index\OrderController@payfail');
     //商品详情页
     Route::get('item','index\ItemController@item');
+
+    //浏览记录
+    Route::get('history','index\HistoryController@index');
+
     //收货地址
     Route::any('/address','index\AddressController@create');
     // 执行添加
@@ -67,6 +71,8 @@ Route::prefix('index')->group(function () {
 Route::get('index/login','index\LoginController@login');
 //执行登录
 Route::post('index/loginDo','index\LoginController@loginDo');
+//退出登录
+Route::get('index/quit','index\LoginController@quit');
 
 //前台注册
 Route::any('index/register','index\RegisterController@register');
@@ -268,6 +274,4 @@ Route::prefix('admin')->middleware('checkLogin')->group(function(){
         Route::get('destroy/{id}','admin\SkuController@destroy');
         Route::any('addSku','admin\SkuController@addSku');
     });
-
-
 });
