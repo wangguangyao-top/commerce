@@ -1,16 +1,16 @@
 
 <!DOCTYPE html>
-<html>
+<html>                  
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>设置-个人信息</title>
-     <link rel="icon" href="assets/img/favicon.ico">
+     <!-- <link rel="icon" href="assets/img/favicon.ico"> -->
 
-    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="css/pages-seckillOrder.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/pages-seckillOrder.css" />
 </head>
 
 <body>
@@ -123,7 +123,7 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#service").hover(function(){
@@ -139,10 +139,10 @@ $(function(){
 
 })
 </script>
-<script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="js/widget/nav.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="/index/js/widget/nav.js"></script>
 <script type="text/javascript" src="pages/userInfo/distpicker.data.js"></script>
 <script type="text/javascript" src="pages/userInfo/distpicker.js"></script>
 <script type="text/javascript" src="pages/userInfo/main.js"></script>
@@ -205,17 +205,21 @@ $(function(){
                                         <th>操作</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                               <tbody>
+                                    @foreach($addressInfo as $k=>$v)
                                     <tr>
-                                        <td>刘田田</td>
-                                        <td>北京 北京市 海淀区 上地街道东北旺西路8号中关村软件园9号楼</td>
-                                        <td>1774***********4</td>
+                                        <td>{{$v->take_name}}</td>
+                                        <td>{{$v->adddress_detail}}</td>
+                                        <td>{{$v->is_tel}}</td>
+                                        <td>{{date("Y-m-d",$v->add_time)}}</td>
                                         <td>
-                                            <a href="#">编辑</a>
-                                            <a href="#">删除</a>
+                                        
+                                            <button class="del" id="{{$v->id}}">删除</button>
+                                             <a data-toggle="modal" data-target=".hei">编辑</a>
                                             默认地址
                                         </td>
                                     </tr>  
+                                    @endforeach
                                 </tbody>
                             </table>                          
                         </div>
@@ -228,7 +232,7 @@ $(function(){
                                         <h4 id="myModalLabel" class="modal-title">新增地址</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="" class="sui-form form-horizontal">
+                                        <form action="{{url('/index/store')}}" method="post" class="sui-form form-horizontal">
                                             <div class="control-group">
                                             <label class="control-label">收货人：</label>
                                             <div class="controls">
@@ -239,14 +243,23 @@ $(function(){
                                             <label class="control-label">所在地区：</label>
                                             <div class="controls">
                                                 <div data-toggle="distpicker">
-                                                <div class="form-group area">
-                                                    <select class="form-control" id="is_province"></select>
+                                                <div class="form-group">
+                                                    <select class="area" id="area" name="area">
+                                                    	<option value="0">请选择...</option>
+                                                    	@foreach($data as $k=>$v)
+                                    						<option value="{{$v->id}}">{{$v->name}}</option>
+                                    					@endforeach
+                                                    </select>
+                                               
+                                                    <select class="form-control area" id="city" value="" name="city">
+                                                        
+                                                    	<option>请选择</option>
+                                                    </select>
+        
+                                                    <select class="form-control area" id="province" value="" name="province">
+                                                    	<option>请选择</option>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group area">
-                                                    <select class="form-control" id="is_city"></select>
-                                                </div>
-                                                <div class="form-group area">
-                                                    <select class="form-control" id="is_region"></select>
                                                 </div>
                                             </div>
                                             </div>									 
@@ -269,18 +282,162 @@ $(function(){
                                         
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large">确定</button>
+                                        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large" id="sub">确定</button>
+                                       
                                         <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">取消</button>
                                     </div>
                                 </div>
                             </div>
 						</div>
+                        <!-- 修改地址弹出 -->
+                         <div  tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade hei" style="width:580px;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+                                        <h4 id="myModalLabel" class="modal-title">修改地址</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{url('/index/store')}}" method="post" class="sui-form form-horizontal">
+                                            <div class="control-group">
+                                            <label class="control-label">收货人：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-medium" id="take_name" >
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">所在地区：</label>
+                                            <div class="controls">
+                                                <div data-toggle="distpicker">
+                                                <div class="form-group">
+                                                    <select class="area" id="area" name="area">
+                                                        <option value="0">请选择...</option>
+                                                        @foreach($data as $k=>$v)
+                                                            <option value="{{$v->id}}">{{$v->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                               
+                                                    <select class="form-control area" id="city" value="" name="city">
+                                                        
+                                                        <option>请选择</option>
+                                                    </select>
+        
+                                                    <select class="form-control area" id="province" value="" name="province">
+                                                        <option>请选择</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>                                   
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">详细地址：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-large" id="adddress_detail">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label">联系电话：</label>
+                                            <div class="controls">
+                                                <input type="text" class="input-medium" id="is_tel">
+                                            </div>
+                                        </div>
+                                        
+                                        </form>
+                                        
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large" id="sub">确定</button>
+                                       
+                                        <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+
+    <script>
+        $(function(){
+            // 添加
+           $(document).on("click","#sub",function(){
+                var take_name = $("#take_name").val();
+                var city = $("#city").val();
+                var area = $("#area").val();
+                var province = $("#province").val();
+                var adddress_detail = $("#adddress_detail").val();
+                var is_tel = $("#is_tel").val();
+                var url = "/index/store";
+                var data={};
+                data.take_name = take_name;
+                data.city =city;
+                data.area=area;
+                data.province=province;
+                data.adddress_detail=adddress_detail;
+                data.is_tel=is_tel;
+                // console.log(data.is_tel);
+                $.ajax({
+                    url:url,
+                    data:data,
+                    type:"post",
+                    dataType:"json",
+                    success: function(res){
+                       if(res.success == 200){
+                        alert(res.msg);
+                        }
+                    }
+                });
+})
+            $(document).on('change','.area',function(){
+                // alert(123);
+                var _this = $(this);
+
+                _this.nextAll('select').html("<option value=''>请选择...</option>");
+                var id = _this.val();
+                // alert(id);
+                $.ajax({
+                    url : "/index/area",
+                    type : "post",
+                    data : {id : id},
+                    dataType:'json',
+                    success:function(res){
+                        if(res.status=='200'){
+                            _this.next().html(res.data)
+                        }
+                    }
+                })
+            });
+
+            // 删除
+            $(document).on("click",".del",function(){
+            var id = $(this).attr("id");
+            var data = {id:id};
+            var url = "{{url('/index/Fdel')}}";
+            if(window.confirm("是否删除")){
+                $.ajax({
+                    type:"post",
+                    data:data,
+                    url:url,
+                    dateType:"json",
+                    success:function(res){
+                        if(res.success==true){
+                            alert(res.message);
+                            //页面刷新
+                            // history.go(0);
+                            window.location.reload();
+                        }
+                    }
+                })
+            }
+    })
+        });
+    </script>
     <!-- 底部栏位 -->
     <!--页面底部-->
 	@include('../index/public.foot');

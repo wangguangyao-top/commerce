@@ -29,8 +29,12 @@ Route::prefix('index')->group(function () {
     Route::get('item','index\ItemController@item');
     //收货地址
     Route::any('/address','index\AddressController@create');
+    // 执行添加
     Route::any('/store','index\AddressController@store');
-
+    Route::any('/area','index\AddressController@area');
+    Route::any('/index','index\AddressController@index');
+    // 删除地址
+    Route::any('/Fdel','index\AddressController@Fdel');
     //用户个人中心
     Route::any('/show','index\UserinfoController@show');
 
