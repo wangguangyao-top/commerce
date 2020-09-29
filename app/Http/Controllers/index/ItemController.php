@@ -26,6 +26,7 @@ class ItemController extends Controller
         if(empty($goods_info)){
             die('该商品不存在');
         }
+
         //查询导航数据
         $navdata = NavModel::where('is_del',1)->get();
         //调用展示浏览记录方法

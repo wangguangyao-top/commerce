@@ -13,4 +13,7 @@ class OrderController extends Controller
     public function paysuccess(){
         return view('index.paysuccess');
     }
+     public function payfail(){
+       return view('index.payfail');
+    }
 }
