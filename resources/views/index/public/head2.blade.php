@@ -2,6 +2,10 @@
     <div class="shortcut">
         <ul class="fl">
             <li class="f-item">品优购欢迎您！</li>
+
+            {{session('user')['user_name']}}
+
+
             @php
                 $user=json_decode(session('user'));
             @endphp
@@ -10,6 +14,7 @@
             @else
                 <li class="f-item"><span><a>{{$user->user_name}}</a></span>&nbsp;|&nbsp;<a href="{{url('index/quit')}}">退出</a></li>
             @endif
+
         </ul>
         <ul class="fr">
             @if(!empty($user))
