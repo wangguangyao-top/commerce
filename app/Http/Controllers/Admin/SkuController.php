@@ -67,6 +67,7 @@ class SkuController extends Controller
                 $data1[]=$v;
             };
             $cart=$this->CartesianProduct($data1);
+            $cart2=json_encode($cart,JSON_UNESCAPED_UNICODE);
             $count=count($cart);
             $data2=[];
             foreach($cart as $k1=>$v1){

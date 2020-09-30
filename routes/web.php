@@ -3,27 +3,74 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::prefix('index')->group(function () {
+    //首页
     Route::any('/', 'index\IndexController@index');
+    //分类列表
+    Route::any('/ClassLest', 'index\IndexController@ClassLest');
+    //商品列表
     Route::any('/list', 'index\ListController@list');
+    //列表品牌
+    Route::any('/list2', 'index\ListController@list2');
+    //商品详情描述
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
+    //商品详情
     Route::any('/GoodsParticulars', 'index\ParticularsController@particulars');
+    //加入购物车成功页面
     Route::any('/shopping', 'index\ShoppingController@shopping');
     //合作商
     Route::any('/cooperation', 'index\CooperationController@cooperation');
+
     //注册
     Route::any('/reg','index\RegisterController@reg');
     Route::any('/sendSmsCode','index\RegisterController@sendSmsCode');
     Route::any('/code','index\RegisterController@code');
+    // 个人中心首页
+    Route::any('/orderHome','index\HomeController@index');
+    // 订单详情页
+    Route::any('/orderDetail','index\DetailController@index');
+    // 订单待评价页
+    Route::any('/orderEvaluate','index\EvaluateController@index');
+    // 订单待付款页
+    Route::any('/orderPay','index\PayController@index');
+    // 订单待发货页
+    Route::any('/orderSend','index\SendController@index');
+    // 订单待收货页
+    Route::any('/orderReceive','index\ReceiveController@index');
+    // 订单我的收藏页
+    Route::any('/orderPerson','index\PersonController@index');
+    // 订单我的足迹页
+    Route::any('/orderFootmark','index\FootmarkController@index');
+    // 订单设置个人信息页
+    Route::any('/orderInfo','index\InfoController@index');
+    // 订单设置地址管理页
+    Route::any('/orderAddress','index\AddressController@index');
+    // 订单设置安全管理页
+    Route::any('/orderSafe','index\SafeController@index');
     //订单
     Route::any('/order','index\OrderController@order');
     //支付成功
     Route::any('/paysuccess','index\OrderController@paysuccess');
-
+    //商品详情页
+    Route::get('item','index\ItemController@item');
+    //商品详情SKU
+    Route::any('/item_sku', 'index\ItemController@item_sku');
+     //支付失败
+    Route::any('/payfail','index\OrderController@payfail');
     //商品详情页
     Route::get('item','index\ItemController@item');
 
+    //浏览记录
+    Route::get('history','index\HistoryController@index');
+
+    //收货地址
+    Route::any('/address','index\AddressController@create');
+    // 执行添加
+    Route::any('/store','index\AddressController@store');
+    Route::any('/area','index\AddressController@area');
+    Route::any('/index','index\AddressController@index');
+    // 删除地址
+    Route::any('/Fdel','index\AddressController@Fdel');
     //用户个人中心
     //验证唯一性
     Route::any('/user_name','index\UserinfoController@user_name')->middleware('checkindexlogin');
@@ -38,10 +85,15 @@ Route::prefix('index')->group(function () {
 Route::get('index/login','index\LoginController@login');
 //执行登录
 Route::post('index/loginDo','index\LoginController@loginDo');
+//退出登录
+Route::get('index/quit','index\LoginController@quit');
 
 //前台注册
 Route::any('index/register','index\RegisterController@register');
-
+//注册
+Route::any('index/reg','index\RegisterController@reg');
+Route::any('index/sendSmsCode','index\RegisterController@sendSmsCode');
+Route::any('index/code','index\RegisterController@code');
 
 /**
  * 商品后台管理系统

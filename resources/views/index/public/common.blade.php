@@ -8,6 +8,7 @@
 </head>
 <body>
 @include('index.public.head')
+
 @section('subject')
     
 @show

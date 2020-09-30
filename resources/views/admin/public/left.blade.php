@@ -362,12 +362,12 @@
                 </a>
                 <ul class="treeview-menu">
                     <li id="admin-login">
-                        <a href="/admin/category/create" target="iframe">
+                        <a href="/admin/category/create">
                             <i class="fa fa-circle-o"></i>新增分类
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="/admin/category" target="iframe">
+                        <a href="/admin/category">
                             <i class="fa fa-circle-o"></i>分类展示
                         </a>
                     </li>
