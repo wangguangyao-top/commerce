@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -8,12 +9,23 @@
     <title>设置-个人信息</title>
     <link rel="icon" href="/assets/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="css/pages-seckillOrder.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/pages-seckillOrder.css" />
 
     <link rel="stylesheet" href="/uploadify/uploadify.css">
-    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
     <script src="/uploadify/jquery.uploadify.js"></script>
+
+    <script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="/index/js/widget/nav.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/birthday/birthday.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/citypicker/distpicker.data.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/citypicker/distpicker.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/upload/uploadPreview.js"></script>
+    <script type="text/javascript" src="/index/js/pages/main.js"></script>
 </head>
 
 <body>
@@ -141,15 +153,7 @@
 
     })
 </script>
-<script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="/index/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="/index/js/widget/nav.js"></script>
-<script type="text/javascript" src="/index/js/plugins/birthday/birthday.js"></script>
-<script type="text/javascript" src="/index/js/plugins/citypicker/distpicker.data.js"></script>
-<script type="text/javascript" src="/index/js/plugins/citypicker/distpicker.js"></script>
-<script type="text/javascript" src="/index/js/plugins/upload/uploadPreview.js"></script>
-<script type="text/javascript" src="/index/js/pages/main.js"></script>
+
 <script>
     $(function() {
         $.ms_DatePicker({
@@ -210,24 +214,20 @@
                     <div class="tab-content">
                         <div id="one" class="tab-pane active" >
                             <form id="form-msg" class="sui-form form-horizontal">
-                                @php
-                               session('user')['user_id'];
-
-                                @endphp
-                                <input type="hidden" value="{{session('user')['user_id']}}" id="user_id">
+                                <input type="hidden" value="{{$myinfo->my_id}}" name="my_id">
                                 <div class="control-group">
                                     <label for="inputName" class="control-label" >昵称：</label>
                                     <div class="controls">
-                                        <input type="text" id="inputName" name="user_name" placeholder="昵称" >
+                                        <input type="text" id="inputName" name="user_name" placeholder="昵称" value="{{$myinfo['user_name']}}">
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="inputGender" class="control-label">性别：</label>
                                     <div class="controls">
-                                        <label data-toggle="radio" class="radio-pretty inline">
+                                        <label data-toggle="radio" class="radio-pretty inline {{$myinfo['my_sex']==1?'checked':''}}">
                                             <input type="radio"  name="my_sex" value="1" ><span>男</span>
                                         </label>
-                                        <label data-toggle="radio" class="radio-pretty inline ">
+                                        <label data-toggle="radio" class="radio-pretty inline {{$myinfo['my_sex']==2?'checked':''}}">
                                             <input type="radio" name="my_sex" value="2"><span>女</span>
                                         </label>
                                     </div>
@@ -236,7 +236,7 @@
                                     <label for="inputPassword" class="control-label">生日：</label>
                                     <div class="controls">
 
-                                        <input type ="date" name ="my_birthday" />
+                                        <input type ="date" name ="my_birthday" value ="{{$myinfo['my_birthday']}}"/>
                                     </div>
                                 </div>
 
@@ -247,19 +247,30 @@
                                         <select class="form-control" id="province1" name="my_site1">
                                             <option value="">--请选择--</option>
                                             @foreach($area as $k=>$v)
-                                                <option  value="{{$v->id}}">{{$v->name}}</option>
+                                                <option  value="{{$v->id}}" {{$myinfo['my_site1']==$v->id?'selected':''}}>
+                                                    {{$v->name}}
+                                                </option>
                                             @endforeach
                                         </select>
                                         <select class="form-control" id="city1" name="my_site2">
                                             <option value="">--请选择--</option>
+                                            @foreach($my_site2 as $v)
+                                                <option  value="{{$v->id}}" {{$myinfo['my_site2']==$v->id?'selected':''}}>
+                                                    {{$v->name}}
+                                                </option>
+                                            @endforeach
                                         </select>
 
                                         <select class="form-control" id="district1" name="my_site3">
                                             <option value="">--请选择--</option>
+                                            @foreach($my_site3 as $v)
+                                                <option  value="{{$v->id}}" {{$myinfo['my_site3']==$v->id?'selected':''}}>
+                                                    {{$v->name}}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="control-group">
                                     <label for="sanwei" class="control-label"></label>
                                     <div class="controls">
@@ -268,7 +279,7 @@
                                 </div>
                             </form>
                         </div>
-                        <a href="/index/update"><h1>去修改</h1></a>
+{{--                        <a href=" "><h1>前去修改</h1></a>--}}
                         <div id="two" class="tab-pane">
 
                             <div class="new-photo">
@@ -429,18 +440,16 @@
         $(document).on("click",".sui-btn",function(){
             var data = {};
             data.user_name = $("input[name = 'user_name']").val();
+            data.my_id = $("input[name = 'my_id']").val();
             data.my_sex = $("input[name='my_sex']").val();
             data.my_img = $("input[name = 'my_img']").val();
             data.my_birthday = $("input[name = 'my_birthday']").val();
             data.my_site1 = $("select[name = 'my_site1']").val();
             data.my_site2 = $("select[name = 'my_site2']").val();
             data.my_site3 = $("select[name = 'my_site3']").val();
-            data.user_id = $("#user_id").val();
+            data.user_id =1;
 
-            // console.log($("select[name = 'my_site1']").val())
-            // return false
-
-            var url = "/index/add";
+            var url = "/index/doupdate";
             $.ajax({
                 type:"post",
                 data:data,
@@ -457,7 +466,6 @@
         })
         //三级联动
         $(document).on('change','select',function(){
-            // alert(123);
             var id = $(this).val();
             var obj = $(this);
             // alert(id);
@@ -469,14 +477,13 @@
             $.get(
                 "{{url('/index/area')}}/"+id,
                 function(res){
+                    console.log(res);
                     if(res.code=='00000'){
                         var str = '<option>--请选择--</option>';
                         $.each(res.data,function(i,k){
                             str+='<option value='+ k.id+'>'+k.name+'</option>';
                         });
                         obj.next('select').html(str);
-                    }else{
-                        alert(res.msg);
                     }
                 },
                 'json'
@@ -491,7 +498,6 @@
                 var imgstr = "<img src='"+imgPath+"' style='width: 50px;height: 50px;'>";
                 $("input[name='my_img']").val(imgPath);
                 $(".showimg").append(imgstr);
-
             }
         });
     });

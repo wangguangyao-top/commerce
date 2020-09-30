@@ -25,10 +25,14 @@ Route::prefix('index')->group(function () {
     Route::get('item','index\ItemController@item');
 
     //用户个人中心
-    Route::any('/show','index\UserinfoController@show');
-    Route::any('/addimg','index\UserinfoController@addimg');
-    Route::any('/add','index\UserinfoController@add');
-
+    //验证唯一性
+    Route::any('/user_name','index\UserinfoController@user_name')->middleware('checkindexlogin');
+    Route::any('/show','index\UserinfoController@show')->middleware('checkindexlogin');
+    Route::any('/addimg','index\UserinfoController@addimg')->middleware('checkindexlogin');
+    Route::any('/add','index\UserinfoController@add')->middleware('checkindexlogin');
+    Route::any('/update','index\UserinfoController@update')->middleware('checkindexlogin');
+    Route::any('/doupdate','index\UserinfoController@doupdate')->middleware('checkindexlogin');
+    Route::any('/area/{id}','index\UserinfoController@area')->middleware('checkindexlogin');
 });
 //前台
 Route::get('index/login','index\LoginController@login');
