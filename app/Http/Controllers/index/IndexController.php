@@ -55,7 +55,7 @@ class IndexController extends Controller
         }
         return $list;
     }
-
+//商品图片
     public function goods($goods)
     {
         foreach ($goods as $k => &$v) {

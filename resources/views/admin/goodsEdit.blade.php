@@ -218,6 +218,7 @@
             var is_new=$('#is_new').val();
             var cate_id=$('#cate_id').val();
             var brand_id=$('#brand_id').val();
+            alert(brand_id);
             var goods_score=$('#goods_score').val();
             if(goods_score==''){
                 $('.span_score').text('商品积分奖励必填');
