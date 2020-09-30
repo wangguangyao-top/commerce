@@ -38,22 +38,22 @@
                         <img src="/index/img/wx_cz.jpg" />
                     </div>
                     <div id="profile" class="tab-pane  active">
-                        <form class="sui-form">
+                        <form class="sui-form" action="javascript:;">
                             <div class="input-prepend"><span class="add-on loginname"></span>
-                                <input id="prependedInput" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+                                <input id="user_name" type="text" placeholder="用户名/手机号" class="span2 input-xfat">
                             </div>
                             <div class="input-prepend"><span class="add-on loginpwd"></span>
-                                <input id="prependedInput" type="password" placeholder="请输入密码" class="span2 input-xfat">
+                                <input id="user_pwd" type="password" placeholder="请输入密码" class="span2 input-xfat">
                             </div>
                             <div class="setting">
                                 <label class="checkbox inline">
-                                    <input name="m1" type="checkbox" value="2" checked="">
+                                    <input name="m1" type="checkbox" value="1">
                                     自动登录
                                 </label>
                                 <span class="forget">忘记密码？</span>
                             </div>
                             <div class="logined">
-                                <a class="sui-btn btn-block btn-xlarge btn-danger" href="home-index.html" >登&nbsp;&nbsp;录</a>
+                                <button class="sui-btn btn-block btn-xlarge btn-danger" id="sub">登&nbsp;&nbsp;录</button>
                             </div>
                         </form>
                         <div class="otherlogin">
@@ -65,7 +65,7 @@
                                     <li><img src="/index/img/weixin.png" /></li>
                                 </ul>
                             </div>
-                            <span class="register"><a href="/index/register.html" target="_blank">立即注册</a></span>
+                            <span class="register"><a href="{{url('index/register')}}">立即注册</a></span>
                         </div>
                     </div>
                 </div>
@@ -98,3 +98,53 @@
 </body>
 
 </html>
+
+<script>
+    $(function(){
+        //登录点击事件
+        $(document).on('click','#sub',function(){
+            //获取用户名或手机号
+            var user_name=$('#user_name').val()
+            //获取密码
+            var user_pwd=$('#user_pwd').val()
+            //获取是否是自动登录
+            var m1=$("input[name='m1']:checked").val()
+            //判断非空
+            if(user_name=='' || user_pwd==''){
+                alert('用户名/手机号或密码不可为空，请填写。')
+                return false;
+            }
+            //判断是手机号还是用户名
+            //手机号正则
+            var tel_reg=/^1[3456789]\d{9}$/
+            //判断是手机号还是用户名
+            if(tel_reg.test(user_name)){
+                var name=user_name
+            }else{
+                var name=user_name
+            }
+
+            //ajax发送请求
+            $.ajax({
+                //提交地址
+                url:'/index/loginDo',
+                //提交方式
+                type:'post',
+                //发送数据
+                data:{user_name:name,user_pwd:user_pwd,m1:m1},
+                //设置同步异步
+                async:false,
+                //预期返回数据类型
+                dataType:'json',
+                //回调函数
+                success:function(res){
+                    alert(res.msg)
+                    //判断返回状态
+                    if(res.status=='200'){
+                        location.href='/index'
+                    }
+                }
+            })
+        })
+    })
+</script>

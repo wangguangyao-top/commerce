@@ -20,12 +20,30 @@ Route::prefix('index')->group(function () {
     Route::any('/shopping', 'index\ShoppingController@shopping');
     //合作商
     Route::any('/cooperation', 'index\CooperationController@cooperation');
+
+    //订单
+    Route::any('/order','index\OrderController@order');
+    //支付成功
+    Route::any('/paysuccess','index\OrderController@paysuccess');
+    //商品详情页
+    Route::get('item','index\ItemController@item');
+    //商品详情SKU
+    Route::any('/item_sku', 'index\ItemController@item_sku');
+    //用户个人中心
+    Route::any('/show','index\UserinfoController@show');
+
 });
 //前台
 Route::get('index/login','index\LoginController@login');
+//执行登录
+Route::post('index/loginDo','index\LoginController@loginDo');
 
 //前台注册
-Route::any('/register','index\RegisterController@register');
+Route::any('index/register','index\RegisterController@register');
+//注册
+Route::any('index/reg','index\RegisterController@reg');
+Route::any('index/sendSmsCode','index\RegisterController@sendSmsCode');
+Route::any('index/code','index\RegisterController@code');
 
 /**
  * 商品后台管理系统

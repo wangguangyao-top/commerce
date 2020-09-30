@@ -49,7 +49,7 @@
             </th>
                 <th>商品ID</th>
                 <th>商品名称</th>
-                <th>分类ID</th>
+                <th>分类</th>
                 <th>品牌</th>
                 <th>商品价格</th>
                 <th>商品图片</th>
@@ -71,37 +71,55 @@
                     <td><input type="checkbox"></td>
                     <td>{{$v['goods_id']}}</td>
                     <td>{{$v['goods_name']}}</td>
-                    <td>{{$v['cate_id']}}</td>
-                    <td>{{$v['brand_id']}}</td>
+                    <td>{{$v['cate_name']}}</td>
+                    <td>{{$v['brand_name']}}</td>
                     <td>{{$v['goods_price']}}</td>
                     <td>
+
                         @foreach($v['goods_img'] as $v1)
+                            @php
+                                $type=substr($v1,strpos($v1,'.')+1,strlen($v1)-strpos($v1,'.'));
+                            @endphp
+                        @if($type=='mp4')
+                            <video width="60px" controls>
+                                <source src="{{$v1}}" type="video/mp4">
+                            </video>
+                        @else
                             <img src="{{$v1}}" width="60px">
+                        @endif
                         @endforeach
                     </td>
-                    <td>{{$v['goods_store']}}</td>
-                    <td>{!! $v['goods_desc'] !!}</td>
-                    <td>{{$v['is_show']==1?'√':'×'}}</td>
-                    <td>{{$v['is_hot']==1?'√':'×'}}</td>
-                    <td>{{$v['is_up']==1?'√':'×'}}</td>
-                    <td>{{$v['is_new']==1?'√':'×'}}</td>
+                    <td>{{$v->goods_store}}</td>
+                    <td>{!! $v->goods_desc !!}</td>
+                    <td>{{$v->is_show==1?'√':'×'}}</td>
+                    <td>{{$v->is_hot==1?'√':'×'}}</td>
+                    <td>{{$v->is_up==1?'√':'×'}}</td>
+                    <td>{{$v->is_new==1?'√':'×'}}</td>
                     <td>
-                        {{$v['goods_store']}}
+                        {{$v->goods_store}}
                     </td>
-                    <td>w
+                    <td>
                         {{$v['goods_content']}}
+                    <td>w
+                        {{$v->goods_content}}
                     </td>
                     <td>
-                        {{$v['add_time']}}
+                        {{date('Y-m-d H:i:s',$v['add_time'])}}
                     </td>
                     <td class="text-center">
-                        <button type="button" id="del" data-id="{{$v['goods_id']}}" class="btn bg-olive btn-xs">删除</button>
-                        <a href="/admin/goods/goodsUpdate?goods_id={{$v['goods_id']}}" class="btn bg-olive btn-xs">修改</a>
+                        <button type="button" id="del" data-id="{{$v->goods_id}}" class="btn bg-olive btn-xs">删除</button>
+                        <a href="/admin/goods/goodsUpdate?goods_id={{$v->goods_id}}" class="btn bg-olive btn-xs">修改</a>
                     </td>
                 </tr>
+                <tr>
+                </tr>
             @endforeach
+                    
+               
             </tbody>
         </table>
+        {{$info->links()}}
+    <!--数据列表/-->
         <!--数据列表/-->
     </div>
     <!-- 数据表格 /-->
@@ -121,19 +139,9 @@
                 type:"get",
                 success: function(res){
                     $('#goods_info').html(res)
-            }
+                }
+              });
         });
-    });
-    $(function (){
-         //无刷新分页
-        $(document).on('click','.page-item a',function(){
-            var url = $(this).attr('href');
-            //alert(url);
-            $.get(url,function(res){
-            $('tbody').html(res);
-        });
-         return false;
-    })
         $(document).on('click','#del',function (){
             var goods_id=$(this).data('id');
             var url='/admin/goods/goodsDel';
@@ -155,6 +163,5 @@
                 }
             })
         })
-    })
 </script>
 @endsection

@@ -63,4 +63,5 @@ class IndexController extends Controller
         }
         return $goods;
     }
+
 }
