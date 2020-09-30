@@ -114,6 +114,7 @@
                                 <i>¥</i>
                                 <em class="price3">{{$goods_info->goods_price}}</em>
                                 <input type="hidden" class="goods_store" value="{{$goods_info->goods_store}}">
+                                <input type="hidden" class="goods_price" value="{{$goods_info->goods_price}}">
                                 <span>降价通知</span>
                             </div>
                             <div class="fr remark">
@@ -399,7 +400,7 @@
                         <div class="clearfix"></div>
                         <div class="tab-content tab-wraped">
                             <div id="one" class="tab-pane active">
-                                $goods_info->goods_desc 
+                                $goods_info->goods_desc
                                 <ul class="goods-intro unstyled">
                                     <li>分辨率：1920*1080(FHD)</li>
                                     <li>后置摄像头：1200万像素</li>
@@ -627,7 +628,7 @@
                         <div class="tbar-panel-main">
                             <div class="tbar-panel-content J-panel-content">
                                 <div class="jt-history-wrap">
-
+                                    <input type="hidden">
                                     <ul>
                                         @if(!empty($historyList))
                                         @foreach($historyList as $k=>$v)
@@ -712,6 +713,7 @@
                     if(info.code==200){
                         $('.price3').text(info.data['goods_price']);
                         $('.goods_store').val(info.data['goods_store']);
+                        $('.goods_price').val(info.data['goods_price']);
                     }else{
                         alert(info.msg);
                     }
@@ -802,6 +804,7 @@
                        if(info.code==200){
                             $('.price3').text(info.data['goods_price']);
                             $('.goods_store').val(info.data['goods_store']);
+                            $('.goods_price').val(info.data['goods_price']);
                        }else{
                            alert(info.msg);
                        }
@@ -814,6 +817,7 @@
             $(document).on('click','.but',function () {
                 var goods_id="{{$goods_info->goods_id}}";
                 var goods_name="{{$goods_info->goods_name}}";
+                var goods_price=$('.goods_price').val();
                 var goods_img="{{explode(',',$goods_info->goods_img)[0]}}";
                 var goods_order=$('#nums').val();
                 var arr=[];
