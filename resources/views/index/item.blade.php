@@ -179,7 +179,7 @@
                             <div class="fl">
                                 <ul class="btn-choose unstyled">
                                     <li>
-                                        <a target="_blank" class="sui-btn  btn-danger addshopcar but">加入购物车</a>
+                                        <a class="sui-btn  btn-danger addshopcar but">加入购物车</a>
                                     </li>
                                 </ul>
                             </div>
@@ -808,6 +808,7 @@
                     }
                 })
             })
+
             /**
              * 购物车
              */
