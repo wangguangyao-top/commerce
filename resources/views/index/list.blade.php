@@ -215,20 +215,14 @@
                 <div class="sui-navbar">
                     <div class="navbar-inner filter">
                         <ul class="sui-nav">
-                            <li class="active">
-                                <a href="#">综合</a>
+                            <li class="active active2">
+                                <a filter="synthesize">综合</a>
                             </li>
-                            <li>
-                                <a href="#">销量</a>
+                            <li class="active2">
+                                <a filter="is_hot">热门</a>
                             </li>
-                            <li>
-                                <a href="#">新品</a>
-                            </li>
-                            <li>
-                                <a href="#">评价</a>
-                            </li>
-                            <li>
-                                <a href="#">价格</a>
+                            <li class="active2">
+                                <a filter="is_new">新品</a>
                             </li>
                         </ul>
                     </div>
@@ -311,7 +305,7 @@
                         </div>
                         <div class="fr page">
                             <div class="sui-pagination pagination-large">
-                                {{$data->links()}}
+                                {{$data  ->links()}}
                                 <div><span>共10页&nbsp;</span><span>
       <input type="text" class="page-num">
       页 <button class="page-confirm" onclick="alert(1)">确定</button></span></div>
@@ -577,10 +571,12 @@
                         //获取品牌id
                         var brand_id = $(this).attr('brand_id');
                         var goods_price = $(this).parents().find('.goods_price').text();
+                        var class2=$(this).parents().find('.active').children('a').attr('filter');
                         var url = '/index/list2';
                         var data = {
                             brand_id: brand_id,
-                            goods_price: goods_price
+                            goods_price: goods_price,
+                            class2:class2
                         };
                         $.ajax({
                             type: 'post',
@@ -606,10 +602,12 @@
                         $(this).addClass('price2');
                         var brand_id = $(this).parents().find('.sty').attr('brand_id');
                         var goods_price = $(this).text();
+                        var class2=$(this).parents().find('.active').children('a').attr('filter');
                         var url = '/index/list2';
                         var data = {
                             brand_id: brand_id,
-                            goods_price: goods_price
+                            goods_price: goods_price,
+                            class2:class2
                         }
                         $.ajax({
                             type: 'post',
@@ -628,6 +626,37 @@
                             }
                         })
                     })
+                    $(document).on('click','.active2',function () {
+                        $(this).parents().find('li').removeClass('active');
+                        $(this).addClass('active');
+                        var brand_id = $(this).parents().find('.sty').attr('brand_id');
+                        var goods_price =  $(this).parents().find('.price2').text();
+                        var class2=$(this).children('a').attr('filter')
+                        var url = '/index/list2';
+                        var data = {
+                            brand_id: brand_id,
+                            goods_price: goods_price,
+                            class2: class2,
+                        }
+                        $.ajax({
+                            type: 'post',
+                            url: url,
+                            data: data,
+                            dataType: 'json',
+                            success: function (info) {
+                                console.log(info);
+                                if (info.code == 200) {
+                                    var data = info.data;
+                                    var str = '';
+                                    for (var i in data) {
+                                        str += '<li class="yui3-u-1-5"> <div class="list-wrap"> <div class="p-img"> <a href="" target="_blank"><img src="' + data[i]['goods_img'][0] + '"></a> </div> <div class="price"> <strong> <em>¥</em> <i>' + data[i]['goods_price'] + '</i> </strong> </div> <div class="attr"> <em>' + data[i]['goods_name'] + '</em> </div> <div class="cu"> <em><span>促</span>满一件可参加超值换购</em> </div> <div class="commit"> <i class="command">已有2000人评价</i> </div> <div class="operate"> <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a> </div> </div> </li>'
+                                    }
+                                    $('.list2').html(str);
+                                }
+                            }
+                        })
+                    })
+
                 })
             </script>
 @endsection
