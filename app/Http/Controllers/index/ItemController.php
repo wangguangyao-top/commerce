@@ -84,7 +84,7 @@ class ItemController extends Controller
      */
     public function GoodsHistoryList(){
         //获取用户ID
-        $user=json_decode(session('user'));
+        $user=session('user');
         //判断是否登录
         if(empty($user)){
             //未登录 取cookie数据
@@ -107,7 +107,7 @@ class ItemController extends Controller
         }else{
             //登录取数据库
             //根据用户ID获取该用户的浏览记录
-            $goods_id=HistoryModel::where(['user_id'=>$user->user_id])->orderBy('hi_time','desc')->get(['goods_id'])->Toarray();
+            $goods_id=HistoryModel::where(['user_id'=>$user['user_id']])->orderBy('hi_time','desc')->get(['goods_id'])->Toarray();
             //数组截取一段
             $goods_id=array_slice($goods_id,0,10);
             //空变量
@@ -130,7 +130,7 @@ class ItemController extends Controller
      */
     public function GoodsHistory($goods_id,$goods_info){
         //获取用户ID
-        $user=json_decode(session('user'));
+        $user=session('user');
         //判断是否登录
         if(empty($user)){
             //取出cookie中的数据
@@ -148,12 +148,12 @@ class ItemController extends Controller
         }else{
             //登录 存入数据库
             //判断是否有该浏览记录
-            $history=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user->user_id])->first();
+            $history=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user['user_id']])->first();
             if(empty($history)){
                 //没有记录添加
                 //组合数据
                 $history=[
-                    'user_id'=>$user->user_id,
+                    'user_id'=>$user['user_id'],
                     'goods_id'=>$goods_id,
                     'hi_time'=>time()
                 ];
@@ -165,7 +165,7 @@ class ItemController extends Controller
                 }
             }else{
                 //有记录 修改浏览时间
-                $bol=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user->user_id])->update(['hi_time'=>time()]);
+                $bol=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user['user_id']])->update(['hi_time'=>time()]);
                 //判断
                 if($bol!==false){
                     return 'ok';

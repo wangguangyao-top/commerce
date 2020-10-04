@@ -180,7 +180,7 @@
                             <div class="fl">
                                 <ul class="btn-choose unstyled">
                                     <li>
-                                        <a class="sui-btn  btn-danger addshopcar but">加入购物车</a>
+                                        <a class="sui-btn  btn-danger addshopcar but" id="addCart">加入购物车</a>
                                     </li>
                                 </ul>
                             </div>
@@ -400,7 +400,6 @@
                         <div class="clearfix"></div>
                         <div class="tab-content tab-wraped">
                             <div id="one" class="tab-pane active">
-                                $goods_info->goods_desc
                                 <ul class="goods-intro unstyled">
                                     <li>分辨率：1920*1080(FHD)</li>
                                     <li>后置摄像头：1200万像素</li>
@@ -815,16 +814,44 @@
             /**
              * 购物车
              */
-            $(document).on('click','.but',function () {
+            $(document).on('click','#addCart',function () {
+                //获取商品id
                 var goods_id="{{$goods_info->goods_id}}";
-                var goods_name="{{$goods_info->goods_name}}";
-                var goods_price=$('.goods_price').val();
-                var goods_img="{{explode(',',$goods_info->goods_img)[0]}}";
-                var goods_order=$('#nums').val();
-                var arr=[];
-                $('.selected').each(function () {
-                    arr.push($(this).data('id'));
-                });
+                //空字符拼接属性值ID
+                var sku=''
+                //循环获取商品属性值ID
+                $('.selected').each(function(){
+                    sku+=$(this).data('id')+','
+                })
+                //取出多余字符
+                sku=sku.substr(0,sku.length-1)
+                //获取购买数量
+                var nums=$('#nums').val()
+                //发送请求
+                $.ajax({
+                    //提交地址
+                    url:'addCart',
+                    //提交方式
+                    type:'post',
+                    //提交数据
+                    data:{goods_id:goods_id,sku:sku,nums:nums},
+                    //设置同步异步
+                    async:false,
+                    //预期返回数据类型
+                    dataType:'json',
+                    //回调函数
+                    success:function(res){
+                        if(res.status=='400011'){
+                            alert(res.msg)
+                            location.href='/index/login?url=/index/item?goods_id='+goods_id
+                        }
+                        if(res.status=='200'){
+                            if(confirm(res.msg+'要去购物车吗？')){
+                                location.href='/index/cart/list'
+                            }
+                        }
+                    }
+                })
             })
         })
     </script>
