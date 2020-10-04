@@ -57,10 +57,14 @@ Route::prefix('index')->group(function () {
     Route::get('item','index\ItemController@item');
     //商品详情SKU
     Route::any('/item_sku', 'index\ItemController@item_sku');
-     //支付失败
+
+    //加入购物车
+    Route::post('addCart','index\CartController@addCart');
+    //购物车展示
+    Route::get('/cart/list','index\CartController@cartList');
+
+    //支付失败
     Route::any('/payfail','index\OrderController@payfail');
-    //商品详情页
-    Route::get('item','index\ItemController@item');
 
     //浏览记录
     Route::get('history','index\HistoryController@index');

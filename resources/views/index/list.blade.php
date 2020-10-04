@@ -305,10 +305,8 @@
                         </div>
                         <div class="fr page">
                             <div class="sui-pagination pagination-large">
-                                {{$data  ->links()}}
-                                <div><span>共10页&nbsp;</span><span>
-      <input type="text" class="page-num">
-      页 <button class="page-confirm" onclick="alert(1)">确定</button></span></div>
+                                {{$data->links()}}
+                                <div><span>共10页&nbsp;</span><span><input type="text" class="page-num">页 <button class="page-confirm" onclick="alert(1)">确定</button></span></div>
                             </div>
                         </div>
                     <!--hotsale-->
