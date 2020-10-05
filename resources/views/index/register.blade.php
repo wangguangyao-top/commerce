@@ -7,11 +7,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>个人注册</title>
 
-
     <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/index/css/pages-register.css" />
 </head>
-
 <body>
 	<div class="register py-container ">
 		<!--head-->
@@ -113,8 +111,6 @@
                 s=$(".sendVerifyCode").text(s+"s");
                 $(".sendVerifyCode").css("pointer-events", "none")
             }
-
-
         }
         $(document).on('click','#code',function(){
 //        alert(123);

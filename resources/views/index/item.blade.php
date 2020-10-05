@@ -7,6 +7,30 @@
     <link rel="stylesheet" type="text/css" href="/index/css/pages-zoom.css" />
     <link rel="stylesheet" type="text/css" href="/index/css/widget-cartPanelView.css" />
 
+    <script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/index/js/model/cartModel.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/jquery.jqzoom/jquery.jqzoom.js"></script>
+    <script type="text/javascript" src="/index/js/plugins/jquery.jqzoom/zoom.js"></script>
+    <script type="text/javascript" src="/index/js/widget/cartPanelView.js"></script>
+    <script type="text/javascript" src="/index/js/czFunction.js"></script>
+    <script type="text/javascript" src="/index/js/widget/cartPanelView.js"></script>
+    <script type="text/javascript" src="/index/js/widget/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="/index/js/widget/nav.js"></script>
+
+
+    <!--图标库-->
+    <link rel="stylesheet" href="/index/tck/css/all.min.css">
+
+    <!--图标库-->
+    <script src="/index/tck/js/all.min.js"></script>
+
+    <!--核心样式-->
+    <link rel="stylesheet" href="/index/tck/css/modallayer.min.css">
+
+    <!--插件-->
+    <script src="/index/tck/js/modallayer-ie.min.js"></script>
     <!--购物车单元格 模板-->
     <script type="text/template" id="tbar-cart-item-template">
         <div class="tbar-cart-item" >
@@ -26,7 +50,6 @@
     </script>
     <!--侧栏面板结束-->
 
-    <script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript">
         $(function(){
             $("#service").hover(function(){
@@ -42,16 +65,7 @@
 
         })
     </script>
-    <script type="text/javascript" src="/index/js/model/cartModel.js"></script>
-    <script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
-    <script type="text/javascript" src="/index/js/plugins/jquery.jqzoom/jquery.jqzoom.js"></script>
-    <script type="text/javascript" src="/index/js/plugins/jquery.jqzoom/zoom.js"></script>
-    <script type="text/javascript" src="/index/js/widget/cartPanelView.js"></script>
-    <script type="text/javascript" src="/index/js/czFunction.js"></script>
-    <script type="text/javascript" src="/index/js/widget/cartPanelView.js"></script>
-    <script type="text/javascript" src="/index/js/widget/jquery.autocomplete.js"></script>
-    <script type="text/javascript" src="/index/js/widget/nav.js"></script>
+
 
     <div class="py-container">
         <div id="item">
@@ -111,7 +125,9 @@
                             </div>
                             <div class="fl price">
                                 <i>¥</i>
-                                <em>{{$goods_info->goods_price}}</em>
+                                <em class="price3">{{$goods_info->goods_price}}</em>
+                                <input type="hidden" class="goods_store" value="{{$goods_info->goods_store}}">
+                                <input type="hidden" class="goods_price" value="{{$goods_info->goods_price}}">
                                 <span>降价通知</span>
                             </div>
                             <div class="fr remark">
@@ -149,62 +165,19 @@
                     </div>
                     <div class="clearfix choose">
                         <div id="specification" class="summary-wrap clearfix">
+                            @foreach($sku as $k7=>$v7)
                             <dl>
                                 <dt>
                                 <div class="fl title">
-                                    <i>选择颜色</i>
+                                    <i>{{$v7['attr_name']}}</i>
                                 </div>
                                 </dt>
-                                <dd><a href="javascript:;" class="selected">金色<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-                                <dd><a href="javascript:;">银色</a></dd>
-                                <dd><a href="javascript:;">黑色</a></dd>
+                                @foreach($v7['att2'] as $k8=>$v8)
+                                    <dd><a href="javascript:;" data-id="{{$v8['id']}}" class="{{$k8==0?'selected sku':'sku'}}">{{$v8['attrval_name']}}<span title="点击取消选择">&nbsp;</span>
+                                        </a></dd>
+                                @endforeach
                             </dl>
-                            <dl>
-                                <dt>
-                                <div class="fl title">
-                                    <i>内存容量</i>
-                                </div>
-                                </dt>
-                                <dd><a href="javascript:;" class="selected">16G<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-                                <dd><a href="javascript:;">64G</a></dd>
-                                <dd><a href="javascript:;" class="locked">128G</a></dd>
-                            </dl>
-                            <dl>
-                                <dt>
-                                <div class="fl title">
-                                    <i>选择版本</i>
-                                </div>
-                                </dt>
-                                <dd><a href="javascript:;" class="selected">公开版<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-                                <dd><a href="javascript:;">移动版</a></dd>
-                            </dl>
-                            <dl>
-                                <dt>
-                                <div class="fl title">
-                                    <i>购买方式</i>
-                                </div>
-                                </dt>
-                                <dd><a href="javascript:;" class="selected">官方标配<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-                                <dd><a href="javascript:;">移动优惠版</a></dd>
-                                <dd><a href="javascript:;"  class="locked">电信优惠版</a></dd>
-                            </dl>
-                            <dl>
-                                <dt>
-                                <div class="fl title">
-                                    <i>套　　装</i>
-                                </div>
-                                </dt>
-                                <dd><a href="javascript:;" class="selected">保护套装<span title="点击取消选择">&nbsp;</span>
-                                    </a></dd>
-                                <dd><a href="javascript:;"  class="locked">充电套装</a></dd>
-
-                            </dl>
-
-
+                            @endforeach
                         </div>
 
                         <div class="summary-wrap">
@@ -220,7 +193,7 @@
                             <div class="fl">
                                 <ul class="btn-choose unstyled">
                                     <li>
-                                        <a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+                                        <a class="sui-btn  btn-danger addshopcar but" id="addCart">加入购物车</a>
                                     </li>
                                 </ul>
                             </div>
@@ -440,7 +413,7 @@
                         <div class="clearfix"></div>
                         <div class="tab-content tab-wraped">
                             <div id="one" class="tab-pane active">
-                                $goods_info->goods_desc 
+                                {!! $goods_info->goods_content !!}
                                 <ul class="goods-intro unstyled">
                                     <li>分辨率：1920*1080(FHD)</li>
                                     <li>后置摄像头：1200万像素</li>
@@ -668,7 +641,7 @@
                         <div class="tbar-panel-main">
                             <div class="tbar-panel-content J-panel-content">
                                 <div class="jt-history-wrap">
-
+                                    <input type="hidden">
                                     <ul>
                                         @if(!empty($historyList))
                                         @foreach($historyList as $k=>$v)
@@ -729,58 +702,184 @@
     </div>
 
     <script>
-        /**
-         * 加号点击事件
-         */
-        $(document).on('click','#jia',function(){
-            //获取购买数量值
-            var num=$('#nums').val()
-            //购买数量加1
-            jnum=parseInt(num)+1
-            //文本框赋值
-            $('#nums').val(jnum)
-        })
+        $(function () {
+            /**
+             * sku计算价格
+             */
+            var arr=[];
+            var goods_id={{$goods_info->goods_id}};
+            var sku=$('.selected').each(function () {
+                arr.push($(this).data('id'));
+            });
 
-        /**
-         * 减号点击事件
-         */
-        $(document).on('click','#jian',function(){
-            //获取购买数量
-            var num=$('#nums').val()
-            //判断是否等于1
-            if(num==1){
-                //等于1 赋值1
-                $('#nums').val(num)
-            }else{
-                //不等于1  减1
-                jnum=parseInt(num)-1
-                //赋值
+            var url='/index/item_sku';
+            var data={
+                id:arr,
+                goods_id:goods_id
+            };
+            $.ajax({
+                type:'post',
+                url:url,
+                data:data,
+                dataType:'json',
+                success:function (info) {
+                    if(info.code==200){
+                        $('.price3').text(info.data['goods_price']);
+                        $('.goods_store').val(info.data['goods_store']);
+                        $('.goods_price').val(info.data['goods_price']);
+                    }else{
+                        // alert(info.msg);
+                    }
+                }
+            })
+            /**
+             * 加号点击事件
+             */
+            $(document).on('click','#jia',function(){
+                //获取购买数量值
+                var num=$('#nums').val()
+                //购买数量加1
+                jnum=parseInt(num)+1
+                var goods_store=$('.goods_store').val();
+                if(jnum>goods_store){
+                    jnum=goods_store;
+                }
+                //文本框赋值
                 $('#nums').val(jnum)
-            }
-        })
-
-        /**
-         * 文本框失焦事件
-         */
-        $(document).on('blur','#nums',function(){
-            //获取购买数量
-            var num=$('#nums').val()
-            //正则
-            var reg=/^[0-9]{1,}$/
-            //匹配正则
-            if(!reg.test(num)){
-                //匹配不成功 赋值1
-                $('#nums').val(1)
-            }else{
-                //匹配成功 判断是否小于等于0
-                if(num<=0){
-                    //小于等于0 赋值1
+            })
+            /**
+             * 减号点击事件
+             */
+            $(document).on('click','#jian',function(){
+                //获取购买数量
+                var num=$('#nums').val()
+                //判断是否等于1
+                if(num==1){
+                    //等于1 赋值1
+                    $('#nums').val(num)
+                }else{
+                    //不等于1  减1
+                    jnum=parseInt(num)-1
+                    //赋值
+                    $('#nums').val(jnum)
+                }
+            })
+            /**
+             * 文本框失焦事件
+             */
+            $(document).on('blur','#nums',function(){
+                //获取购买数量
+                var num=$('#nums').val()
+                //正则
+                var reg=/^[0-9]{1,}$/
+                //匹配正则
+                if(!reg.test(num)){
+                    //匹配不成功 赋值1
                     $('#nums').val(1)
                 }else{
-                    //不小于等于0 赋值
-                    $('#nums').val(parseInt(num))
+                    //匹配成功 判断是否小于等于0
+                    if(num<=0){
+                        //小于等于0 赋值1
+                        $('#nums').val(1)
+                    }else{
+                        var goods_store=$('.goods_store').val();
+                        var jnum2=parseInt(num);
+                        if(jnum2>goods_store){
+                            jnum2=goods_store;
+                        }
+                        //不小于等于0 赋值
+                        $('#nums').val(parseInt(jnum2))
+                    }
                 }
-            }
+            })
+            /**
+             * SKU选择
+             */
+            $(document).on('click','.sku',function () {
+                $(this).parent().siblings().children().removeClass('selected sku2');
+                $(this).parent().children().addClass('selected sku2');
+                var arr=[];
+                var goods_id="{{$goods_info->goods_id}}";
+                var sku=$('.selected').each(function () {
+                    arr.push($(this).data('id'));
+                });
+                var url='/index/item_sku';
+                var data={
+                    id:arr,
+                    goods_id:goods_id
+                };
+                $.ajax({
+                    type:'post',
+                    url:url,
+                    data:data,
+                    dataType:'json',
+                    success:function (info) {
+                       if(info.code==200){
+                            $('.price3').text(info.data['goods_price']);
+                            $('.goods_store').val(info.data['goods_store']);
+                            $('.goods_price').val(info.data['goods_price']);
+                       }else{
+                           alert(info.msg);
+                       }
+                    }
+                })
+            })
+
+            /**
+             * 购物车
+             */
+            $(document).on('click','#addCart',function () {
+                //获取商品id
+                var goods_id="{{$goods_info->goods_id}}";
+                //空字符拼接属性值ID
+                var sku=''
+                //循环获取商品属性值ID
+                $('.selected').each(function(){
+                    sku+=$(this).data('id')+','
+                })
+                //取出多余字符
+                sku=sku.substr(0,sku.length-1)
+                //获取购买数量
+                var nums=$('#nums').val()
+                //发送请求
+                $.ajax({
+                    //提交地址
+                    url:'addCart',
+                    //提交方式
+                    type:'post',
+                    //提交数据
+                    data:{goods_id:goods_id,sku:sku,nums:nums},
+                    //设置同步异步
+                    async:false,
+                    //预期返回数据类型
+                    dataType:'json',
+                    //回调函数
+                    success:function(res){
+                        if(res.status=='400011'){
+                            alert(res.msg)
+                            location.href='/index/login?url=/index/item?goods_id='+goods_id
+                        }
+                        if(res.status=='200'){
+                                let option = {
+                                    popupTime: 2,
+                                    hook: {
+                                        initStart: function () {
+                                            // 检查之前老旧实例如果存在则销毁
+                                            if (document.querySelector('#modal-layer-container'))
+                                                ModalLayer.removeAll();
+                                        }
+                                    },
+                                    displayProgressBar: true,
+                                    displayProgressBarPos: 'top',
+                                    displayProgressBarColor: 'red',
+                                    content: '<i class="fas fa-check" style="color: deepskyblue"></i>加入购物车成功',
+                                };
+                                ModalLayer.msg(option);
+                                location.href='/index/cart/list'
+                        }
+                    }
+                })
+            })
         })
     </script>
     @endsection

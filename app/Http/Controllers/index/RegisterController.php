@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\index;
 
 use App\Http\Controllers\Controller;
+use App\models\NavModel;
 use App\models\CodeModel;
 use App\models\IndexUserModel;
 use Illuminate\Http\Request;
@@ -10,7 +11,8 @@ use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     public function register(){
-    	return view('index.register');
+        $navdata = NavModel::where('is_del',1)->get()->toArray();
+        return view('index.register',['navdata'=>$navdata]);
     }
     //注册
     public function reg(Request $request)

@@ -60,15 +60,22 @@ class SkuController extends Controller
      */
     public function store($goods_id,Request $request)
     {
+<<<<<<< HEAD
             $data=$request->all();
             dd($data);
 
+=======
+            $data=$request->sku;
+>>>>>>> 253eb1dcf99029f1b6ffd7aa8cf8dc613dd19420
             //添加时间戳
             $data1=array();
             foreach($data as $k=>$v){
-                $data1[]=$v;
+                $data2=explode(':',$v);
+                $data1[$data2[0]][]=$data2[1];
             };
+            $data1=array_values($data1);  //把二维数组下标重置0
             $cart=$this->CartesianProduct($data1);
+            $cart2=json_encode($cart,JSON_UNESCAPED_UNICODE);
             $count=count($cart);
             $data2=[];
             foreach($cart as $k1=>$v1){
@@ -115,17 +122,19 @@ class SkuController extends Controller
     public  function CartesianProduct($sets){
         // 循环遍历集合数据
         $result = array();
-        for($i=0,$count=count($sets); $i<$count-1; $i++){
+
+        for($i=0,$count=count($sets); $i<$count-1;$i++){
             // 初始化
             if($i==0){
                 $result = $sets[$i];
             }
+
             // 保存临时数据
             $tmp = array();
             // 结果与下一个集合计算笛卡尔积
             foreach($result as $res){
                 foreach($sets[$i+1] as $set){
-                    $tmp[] =    $res.','.$set;
+                    $tmp[] =   $res.','.$set;
                 }
             }
 //            // 将笛卡尔积写入结果
