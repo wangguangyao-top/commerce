@@ -3,9 +3,7 @@
         <ul class="fl">
             <li class="f-item">品优购欢迎您！</li>
 
-            {{session('user')['user_name']}}
-
-
+{{--            {{session('user')['user_name']}}--}}
             @php
                 $user=json_decode(session('user'));
             @endphp
