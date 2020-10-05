@@ -13,6 +13,9 @@ class LoginController extends Controller
         return view('index.login');
     }
 
+    /** 执行登录
+     * @return string 返回类型为：json字符串
+     */
     public function loginDo(){
         //接值
         $user=request()->all();
@@ -46,10 +49,9 @@ class LoginController extends Controller
             //用户名正确 验证密码
             if($user['user_pwd']==decrypt($user_data->user_pwd)){
                 //用户信息存入session
-                session(['user'=>json_encode([
-                    'user_id'=>$user_data->user_id,
-                    'user_name'=>$user_data->user_name
-                ],JSON_UNESCAPED_UNICODE)]);
+                $user=json_encode(['user_id'=>$user_data->user_id, 'user_name'=>$user_data->user_name],JSON_UNESCAPED_UNICODE);
+                $user=json_decode($user,true);
+                session(['user'=>$user]);
                 //进入主页
                 return json_encode(['status'=>'200','msg'=>'登录成功。'],JSON_UNESCAPED_UNICODE);
             }else{
@@ -58,5 +60,11 @@ class LoginController extends Controller
         }else{
             return json_encode(['status'=>'40002','msg'=>'用户名/手机号或密码错误，请重新填写。'],JSON_UNESCAPED_UNICODE);
         }
+    }
+
+    public function quit(){
+        //清除session
+        session(['user'=>null]);
+        return redirect('index/login');
     }
 }

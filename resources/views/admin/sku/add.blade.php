@@ -73,19 +73,9 @@
                 //获取商品ID
                 var goods_id = $('#attr_id').val()
                 //获取选中的复选框
-                var arr = [];
-                var arr2 = [];
-                var arr3 = [];
+                var arr =[];
                 $('.sku:checked').each(function () {
-                    if ($(this).attr('attr_id') == 1) {
-                        arr.push($(this).val())
-                    }
-                    if ($(this).attr('attr_id') == 2) {
-                        arr2.push($(this).val())
-                    }
-                    if ($(this).attr('attr_id') == 3) {
-                        arr3.push($(this).val())
-                    }
+                    arr.push($(this).attr('attr_id')+":"+$(this).val())
                 })
                 //通过ajax传送值
                 $.ajax({
@@ -94,7 +84,7 @@
                     //请求方式
                     type: "post",
                     //请求数据
-                    data: {sku: arr, sku1: arr2, sku2: arr3},
+                    data: {sku: arr},
                     //预期返回数据类型
                     dataType: 'json',
                     //回调函数
@@ -107,7 +97,6 @@
                             }
                             str += '</table>';
                             $('.sku').append(str);
-
                         } else {
 
                         }
