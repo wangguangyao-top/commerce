@@ -39,6 +39,7 @@
                     </div>
                     <div id="profile" class="tab-pane  active">
                         <form class="sui-form" action="javascript:;">
+                            <input type="hidden" id="url" name="url" @if(isset(request()->url)) value="{{request()->url}} @endif">
                             <div class="input-prepend"><span class="add-on loginname"></span>
                                 <input id="user_name" type="text" placeholder="用户名/手机号" class="span2 input-xfat">
                             </div>
@@ -141,7 +142,11 @@
                     alert(res.msg)
                     //判断返回状态
                     if(res.status=='200'){
-                        location.href='/index'
+                        if($('#url')!=''){
+                            location.href=$('#url').val()
+                        }else{
+                            location.href='/index'
+                        }
                     }
                 }
             })

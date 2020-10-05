@@ -18,6 +18,19 @@
     <script type="text/javascript" src="/index/js/widget/cartPanelView.js"></script>
     <script type="text/javascript" src="/index/js/widget/jquery.autocomplete.js"></script>
     <script type="text/javascript" src="/index/js/widget/nav.js"></script>
+
+
+    <!--图标库-->
+    <link rel="stylesheet" href="/index/tck/css/all.min.css">
+
+    <!--图标库-->
+    <script src="/index/tck/js/all.min.js"></script>
+
+    <!--核心样式-->
+    <link rel="stylesheet" href="/index/tck/css/modallayer.min.css">
+
+    <!--插件-->
+    <script src="/index/tck/js/modallayer-ie.min.js"></script>
     <!--购物车单元格 模板-->
     <script type="text/template" id="tbar-cart-item-template">
         <div class="tbar-cart-item" >
@@ -114,6 +127,7 @@
                                 <i>¥</i>
                                 <em class="price3">{{$goods_info->goods_price}}</em>
                                 <input type="hidden" class="goods_store" value="{{$goods_info->goods_store}}">
+                                <input type="hidden" class="goods_price" value="{{$goods_info->goods_price}}">
                                 <span>降价通知</span>
                             </div>
                             <div class="fr remark">
@@ -179,7 +193,7 @@
                             <div class="fl">
                                 <ul class="btn-choose unstyled">
                                     <li>
-                                        <a target="_blank" class="sui-btn  btn-danger addshopcar but">加入购物车</a>
+                                        <a class="sui-btn  btn-danger addshopcar but" id="addCart">加入购物车</a>
                                     </li>
                                 </ul>
                             </div>
@@ -399,7 +413,7 @@
                         <div class="clearfix"></div>
                         <div class="tab-content tab-wraped">
                             <div id="one" class="tab-pane active">
-                                $goods_info->goods_desc 
+                                {!! $goods_info->goods_content !!}
                                 <ul class="goods-intro unstyled">
                                     <li>分辨率：1920*1080(FHD)</li>
                                     <li>后置摄像头：1200万像素</li>
@@ -627,7 +641,7 @@
                         <div class="tbar-panel-main">
                             <div class="tbar-panel-content J-panel-content">
                                 <div class="jt-history-wrap">
-
+                                    <input type="hidden">
                                     <ul>
                                         @if(!empty($historyList))
                                         @foreach($historyList as $k=>$v)
@@ -712,8 +726,9 @@
                     if(info.code==200){
                         $('.price3').text(info.data['goods_price']);
                         $('.goods_store').val(info.data['goods_store']);
+                        $('.goods_price').val(info.data['goods_price']);
                     }else{
-                        alert(info.msg);
+                        // alert(info.msg);
                     }
                 }
             })
@@ -784,7 +799,7 @@
                 $(this).parent().siblings().children().removeClass('selected sku2');
                 $(this).parent().children().addClass('selected sku2');
                 var arr=[];
-                var goods_id={{$goods_info->goods_id}};
+                var goods_id="{{$goods_info->goods_id}}";
                 var sku=$('.selected').each(function () {
                     arr.push($(this).data('id'));
                 });
@@ -802,24 +817,68 @@
                        if(info.code==200){
                             $('.price3').text(info.data['goods_price']);
                             $('.goods_store').val(info.data['goods_store']);
+                            $('.goods_price').val(info.data['goods_price']);
                        }else{
                            alert(info.msg);
                        }
                     }
                 })
             })
+
             /**
              * 购物车
              */
-            $(document).on('click','.but',function () {
+            $(document).on('click','#addCart',function () {
+                //获取商品id
                 var goods_id="{{$goods_info->goods_id}}";
-                var goods_name="{{$goods_info->goods_name}}";
-                var goods_img="{{explode(',',$goods_info->goods_img)[0]}}";
-                var goods_order=$('#nums').val();
-                var arr=[];
-                $('.selected').each(function () {
-                    arr.push($(this).data('id'));
-                });
+                //空字符拼接属性值ID
+                var sku=''
+                //循环获取商品属性值ID
+                $('.selected').each(function(){
+                    sku+=$(this).data('id')+','
+                })
+                //取出多余字符
+                sku=sku.substr(0,sku.length-1)
+                //获取购买数量
+                var nums=$('#nums').val()
+                //发送请求
+                $.ajax({
+                    //提交地址
+                    url:'addCart',
+                    //提交方式
+                    type:'post',
+                    //提交数据
+                    data:{goods_id:goods_id,sku:sku,nums:nums},
+                    //设置同步异步
+                    async:false,
+                    //预期返回数据类型
+                    dataType:'json',
+                    //回调函数
+                    success:function(res){
+                        if(res.status=='400011'){
+                            alert(res.msg)
+                            location.href='/index/login?url=/index/item?goods_id='+goods_id
+                        }
+                        if(res.status=='200'){
+                                let option = {
+                                    popupTime: 2,
+                                    hook: {
+                                        initStart: function () {
+                                            // 检查之前老旧实例如果存在则销毁
+                                            if (document.querySelector('#modal-layer-container'))
+                                                ModalLayer.removeAll();
+                                        }
+                                    },
+                                    displayProgressBar: true,
+                                    displayProgressBarPos: 'top',
+                                    displayProgressBarColor: 'red',
+                                    content: '<i class="fas fa-check" style="color: deepskyblue"></i>加入购物车成功',
+                                };
+                                ModalLayer.msg(option);
+                                location.href='/index/cart/list'
+                        }
+                    }
+                })
             })
         })
     </script>

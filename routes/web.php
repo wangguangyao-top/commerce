@@ -12,6 +12,8 @@ Route::prefix('index')->group(function () {
     Route::any('/list', 'index\ListController@list');
     //列表品牌
     Route::any('/list2', 'index\ListController@list2');
+    //列表分类
+    Route::any('/listClass', 'index\ListController@listClass');
     //商品详情描述
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
     //商品详情
@@ -55,10 +57,14 @@ Route::prefix('index')->group(function () {
     Route::get('item','index\ItemController@item');
     //商品详情SKU
     Route::any('/item_sku', 'index\ItemController@item_sku');
-     //支付失败
+
+    //加入购物车
+    Route::post('addCart','index\CartController@addCart');
+    //购物车展示
+    Route::get('/cart/list','index\CartController@cartList');
+
+    //支付失败
     Route::any('/payfail','index\OrderController@payfail');
-    //商品详情页
-    Route::get('item','index\ItemController@item');
 
     //浏览记录
     Route::get('history','index\HistoryController@index');

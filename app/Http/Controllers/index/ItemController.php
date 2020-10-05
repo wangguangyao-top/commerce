@@ -36,21 +36,23 @@ class ItemController extends Controller
         $history=$this->GoodsHistory($goods_id,$goods_info);
         //渲染视图
         $goods=SKU::where('goods_id',$goods_id)->get()->toArray();
-        foreach ($goods as $k=>&$v) {
-            $arr3[]=explode(',',$v['sku']);
+        $arr=[];
+        if(!empty($goods)){
+            foreach ($goods as $k=>&$v) {
+                $arr3[]=explode(',',$v['sku']);
 //            $v['sku1']=SKU2::select('attrval_name','attr_id')->whereIn('id',$v['sku'])->get()->toArray();
-            $v['sku2']=SKU2::whereIn('id',$arr3)->get('attr_id')->toArray();
-            $arr=SKU3::select('shop_attr.id','shop_attr.attr_name')->whereIn('shop_attr.id', $v['sku2'])->get()->toArray();
-
-        }
-        foreach ($arr as $k1=>&$v1) {
-            $arr2=SKU2::select('id','attr_id','attrval_name')->where('attr_id',$v1['id'])->get()->toarray();
-            $v1['att']=$arr2;
-            foreach ($arr3 as $k2=>$v2) {
-                foreach ($v2 as $v4) {
-                    foreach ($v1['att'] as $k3=>&$v3) {
-                        if($v4==$v3['id']){
-                            $v1['att2'][$k3]=$v3;
+                $v['sku2']=SKU2::whereIn('id',$arr3)->get('attr_id')->toArray();
+                $arr=SKU3::select('shop_attr.id','shop_attr.attr_name')->whereIn('shop_attr.id', $v['sku2'])->get()->toArray();
+            }
+            foreach ($arr as $k1=>&$v1) {
+                $arr2=SKU2::select('id','attr_id','attrval_name')->where('attr_id',$v1['id'])->get()->toarray();
+                $v1['att']=$arr2;
+                foreach ($arr3 as $k2=>$v2) {
+                    foreach ($v2 as $v4) {
+                        foreach ($v1['att'] as $k3=>&$v3) {
+                            if($v4==$v3['id']){
+                                $v1['att2'][$k3]=$v3;
+                            }
                         }
                     }
                 }
@@ -84,7 +86,7 @@ class ItemController extends Controller
      */
     public function GoodsHistoryList(){
         //获取用户ID
-        $user=json_decode(session('user'));
+        $user=session('user');
         //判断是否登录
         if(empty($user)){
             //未登录 取cookie数据
@@ -107,7 +109,7 @@ class ItemController extends Controller
         }else{
             //登录取数据库
             //根据用户ID获取该用户的浏览记录
-            $goods_id=HistoryModel::where(['user_id'=>$user->user_id])->orderBy('hi_time','desc')->get(['goods_id'])->Toarray();
+            $goods_id=HistoryModel::where(['user_id'=>$user['user_id']])->orderBy('hi_time','desc')->get(['goods_id'])->Toarray();
             //数组截取一段
             $goods_id=array_slice($goods_id,0,10);
             //空变量
@@ -130,7 +132,7 @@ class ItemController extends Controller
      */
     public function GoodsHistory($goods_id,$goods_info){
         //获取用户ID
-        $user=json_decode(session('user'));
+        $user=session('user');
         //判断是否登录
         if(empty($user)){
             //取出cookie中的数据
@@ -148,12 +150,12 @@ class ItemController extends Controller
         }else{
             //登录 存入数据库
             //判断是否有该浏览记录
-            $history=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user->user_id])->first();
+            $history=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user['user_id']])->first();
             if(empty($history)){
                 //没有记录添加
                 //组合数据
                 $history=[
-                    'user_id'=>$user->user_id,
+                    'user_id'=>$user['user_id'],
                     'goods_id'=>$goods_id,
                     'hi_time'=>time()
                 ];
@@ -165,7 +167,7 @@ class ItemController extends Controller
                 }
             }else{
                 //有记录 修改浏览时间
-                $bol=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user->user_id])->update(['hi_time'=>time()]);
+                $bol=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user['user_id']])->update(['hi_time'=>time()]);
                 //判断
                 if($bol!==false){
                     return 'ok';
