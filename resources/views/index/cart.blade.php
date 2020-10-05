@@ -430,13 +430,11 @@
         //重新获取总价方法
         function getAllPrice(){
             //空字符串 拼接商品id sku
-            var goods_info=''
+            var goods_info=[]
             //获取所选中的商品
             $('.cart_goods:checked').each(function(i){
-                goods_info+=$(this).parents('.cart-list').attr('goods_id')+':'+$(this).parents('.cart-list').attr('sku')+'。'
+                goods_info.push($(this).parents('.cart-list').attr('goods_id')+':'+$(this).parents('.cart-list').attr('sku'))
             })
-            //去除多余字符串
-            goods_info=goods_info.substr(0,goods_info.length-1)
             //ajax发送请求
             $.ajax({
                 //请求地址
@@ -450,7 +448,11 @@
                 dataType:'json',
                 //回调函数
                 success:function(data){
-                    console.log(data)
+                    if(data.code==200){
+                        $('.summoney').text("￥"+data.data+".00")
+                    }else{
+                        alert(data.msg)
+                    }
                 }
             })
         }

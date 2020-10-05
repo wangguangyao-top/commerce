@@ -132,24 +132,22 @@ class CartController extends Controller
         $data=request()->goods_info;
         //判断是否为空
         if(!empty($data)){
-            //不为空 计算总价
-            //分割数组
-            $data=explode('。',$data);
-            //空数组
             $goods_info=[];
             //循环分割二维数组
             foreach($data as $k=>$v){
-                $data[$k]=explode(':',$v);
-                dump($v);
-//                $goods_info[]=['goods_id'=>$v[0],'sku'=>$v[2]];
+                $info=explode(':',$v);
+                $info1=Shop_cart::select('cart_nums')->where([['goods_id','=',$info[0]],['sku','=',$info[1]]])->first();
+                $info1=json_decode($info1,true);
+                $info2=Shop_skuModel::select('goods_id','goods_price')->where([['goods_id','=',$info[0]],['sku','=',$info[1]]])->first();
+                $info2=json_decode($info2,true);
+                $goods_info[]=$info2['goods_price']*$info1['cart_nums'];
             }
-//            //循环修改为二维关联数组
-//            foreach($data as $k=>$v){
-//                $data[$k]['goods_id']=$v[0];
-//                $data[$k]['sku']=$v[1];
-//            }
-//            dump($goods_info);
-//            dd($data);
+            $goods_info=array_sum($goods_info);
+            if($goods_info){
+                return ['code'=>200,'msg'=>'OK','data'=>$goods_info];
+            }else{
+                return ['code'=>1000,'msg'=>'NO','data'=>0];
+            }
         }else{
             //为空 返回0
         }
