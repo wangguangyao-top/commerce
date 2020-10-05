@@ -142,7 +142,7 @@
                     alert(res.msg)
                     //判断返回状态
                     if(res.status=='200'){
-                        if($('#url')!=''){
+                        if($('#url').val()!=''){
                             location.href=$('#url').val()
                         }else{
                             location.href='/index'

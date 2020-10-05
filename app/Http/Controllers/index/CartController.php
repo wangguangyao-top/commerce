@@ -83,6 +83,9 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * 购物车展示页面
+     */
     public function cartList(){
         //获取用户ID
         $user=session('user');
@@ -101,14 +104,12 @@ class CartController extends Controller
                     $v->goods_price=Shop_skuModel::where(['goods_id'=>$v->goods_id,'sku'=>$v->sku])->value('goods_price');
                     //sku转换数组
                     $sku=explode(',',$v->sku);
-                    //清空
-                    $v->sku='';
                     //循环找属性名称
                     foreach($sku as $k1=>$v1){
                         $attrval=Attrval::where(['id'=>$v1])->first();
                         $attr=attr::where(['id'=>$attrval->attr_id])->first();
                         //拼接商品属性名称
-                        $v->sku.=$attr->attr_name.':'.$attrval->attrval_name.',';
+                        $v->sku_name.=$attr->attr_name.':'.$attrval->attrval_name.',';
                     }
                     //去除多余字符
                     $v->sku=trim($v->sku,',');
@@ -121,5 +122,36 @@ class CartController extends Controller
         }
         //渲染视图
         return view('index/cart',compact('cart_info'));
+    }
+
+    /**
+     * 重新结算总价
+     */
+    public function getAllPrice(){
+        //接值
+        $data=request()->goods_info;
+        //判断是否为空
+        if(!empty($data)){
+            //不为空 计算总价
+            //分割数组
+            $data=explode('。',$data);
+            //空数组
+            $goods_info=[];
+            //循环分割二维数组
+            foreach($data as $k=>$v){
+                $data[$k]=explode(':',$v);
+                dump($v);
+//                $goods_info[]=['goods_id'=>$v[0],'sku'=>$v[2]];
+            }
+//            //循环修改为二维关联数组
+//            foreach($data as $k=>$v){
+//                $data[$k]['goods_id']=$v[0];
+//                $data[$k]['sku']=$v[1];
+//            }
+//            dump($goods_info);
+//            dd($data);
+        }else{
+            //为空 返回0
+        }
     }
 }
