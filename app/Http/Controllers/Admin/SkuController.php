@@ -60,8 +60,6 @@ class SkuController extends Controller
      */
     public function store($goods_id,Request $request)
     {
-            $data=$request->all();
-            dd($data);
             $data=$request->sku;
 
             //添加时间戳
