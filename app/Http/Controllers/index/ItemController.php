@@ -36,21 +36,23 @@ class ItemController extends Controller
         $history=$this->GoodsHistory($goods_id,$goods_info);
         //渲染视图
         $goods=SKU::where('goods_id',$goods_id)->get()->toArray();
-        foreach ($goods as $k=>&$v) {
-            $arr3[]=explode(',',$v['sku']);
+        $arr=[];
+        if(!empty($goods)){
+            foreach ($goods as $k=>&$v) {
+                $arr3[]=explode(',',$v['sku']);
 //            $v['sku1']=SKU2::select('attrval_name','attr_id')->whereIn('id',$v['sku'])->get()->toArray();
-            $v['sku2']=SKU2::whereIn('id',$arr3)->get('attr_id')->toArray();
-            $arr=SKU3::select('shop_attr.id','shop_attr.attr_name')->whereIn('shop_attr.id', $v['sku2'])->get()->toArray();
-
-        }
-        foreach ($arr as $k1=>&$v1) {
-            $arr2=SKU2::select('id','attr_id','attrval_name')->where('attr_id',$v1['id'])->get()->toarray();
-            $v1['att']=$arr2;
-            foreach ($arr3 as $k2=>$v2) {
-                foreach ($v2 as $v4) {
-                    foreach ($v1['att'] as $k3=>&$v3) {
-                        if($v4==$v3['id']){
-                            $v1['att2'][$k3]=$v3;
+                $v['sku2']=SKU2::whereIn('id',$arr3)->get('attr_id')->toArray();
+                $arr=SKU3::select('shop_attr.id','shop_attr.attr_name')->whereIn('shop_attr.id', $v['sku2'])->get()->toArray();
+            }
+            foreach ($arr as $k1=>&$v1) {
+                $arr2=SKU2::select('id','attr_id','attrval_name')->where('attr_id',$v1['id'])->get()->toarray();
+                $v1['att']=$arr2;
+                foreach ($arr3 as $k2=>$v2) {
+                    foreach ($v2 as $v4) {
+                        foreach ($v1['att'] as $k3=>&$v3) {
+                            if($v4==$v3['id']){
+                                $v1['att2'][$k3]=$v3;
+                            }
                         }
                     }
                 }

@@ -12,6 +12,8 @@ Route::prefix('index')->group(function () {
     Route::any('/list', 'index\ListController@list');
     //列表品牌
     Route::any('/list2', 'index\ListController@list2');
+    //列表分类
+    Route::any('/listClass', 'index\ListController@listClass');
     //商品详情描述
     Route::any('/GoodsSeckilling', 'index\ParticularsController@seckilling');
     //商品详情

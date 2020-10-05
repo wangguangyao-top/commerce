@@ -18,6 +18,19 @@
     <script type="text/javascript" src="/index/js/widget/cartPanelView.js"></script>
     <script type="text/javascript" src="/index/js/widget/jquery.autocomplete.js"></script>
     <script type="text/javascript" src="/index/js/widget/nav.js"></script>
+
+
+    <!--图标库-->
+    <link rel="stylesheet" href="/index/tck/css/all.min.css">
+
+    <!--图标库-->
+    <script src="/index/tck/js/all.min.js"></script>
+
+    <!--核心样式-->
+    <link rel="stylesheet" href="/index/tck/css/modallayer.min.css">
+
+    <!--插件-->
+    <script src="/index/tck/js/modallayer-ie.min.js"></script>
     <!--购物车单元格 模板-->
     <script type="text/template" id="tbar-cart-item-template">
         <div class="tbar-cart-item" >
@@ -400,6 +413,7 @@
                         <div class="clearfix"></div>
                         <div class="tab-content tab-wraped">
                             <div id="one" class="tab-pane active">
+                                {!! $goods_info->goods_content !!}
                                 <ul class="goods-intro unstyled">
                                     <li>分辨率：1920*1080(FHD)</li>
                                     <li>后置摄像头：1200万像素</li>
@@ -714,7 +728,7 @@
                         $('.goods_store').val(info.data['goods_store']);
                         $('.goods_price').val(info.data['goods_price']);
                     }else{
-                        alert(info.msg);
+                        // alert(info.msg);
                     }
                 }
             })
@@ -785,7 +799,7 @@
                 $(this).parent().siblings().children().removeClass('selected sku2');
                 $(this).parent().children().addClass('selected sku2');
                 var arr=[];
-                var goods_id={{$goods_info->goods_id}};
+                var goods_id="{{$goods_info->goods_id}}";
                 var sku=$('.selected').each(function () {
                     arr.push($(this).data('id'));
                 });
@@ -846,9 +860,22 @@
                             location.href='/index/login?url=/index/item?goods_id='+goods_id
                         }
                         if(res.status=='200'){
-                            if(confirm(res.msg+'要去购物车吗？')){
+                                let option = {
+                                    popupTime: 2,
+                                    hook: {
+                                        initStart: function () {
+                                            // 检查之前老旧实例如果存在则销毁
+                                            if (document.querySelector('#modal-layer-container'))
+                                                ModalLayer.removeAll();
+                                        }
+                                    },
+                                    displayProgressBar: true,
+                                    displayProgressBarPos: 'top',
+                                    displayProgressBarColor: 'red',
+                                    content: '<i class="fas fa-check" style="color: deepskyblue"></i>加入购物车成功',
+                                };
+                                ModalLayer.msg(option);
                                 location.href='/index/cart/list'
-                            }
                         }
                     }
                 })

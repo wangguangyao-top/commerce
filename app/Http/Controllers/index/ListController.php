@@ -7,6 +7,7 @@ use App\models\NavModel;
 use Illuminate\Http\Request;
 use App\models\GoodsModel;
 use App\Model\BrandModel;
+use App\Model\HistoryModel;
 
 class ListController extends Controller
 {
@@ -38,12 +39,28 @@ class ListController extends Controller
         $data = $request->all();
         $where = [];
         if (isset($data['brand_id'])) {
-            $where[] = ['brand_id', '=', $data['brand_id']];
+            if (!empty($data['brand_id'])) {
+                $where[] = ['brand_id', '=', $data['brand_id']];
+            }
         }
         if (isset($data['goods_price'])) {
-            $goods_price = explode('-', $data['goods_price']);
-            $where[] = ['goods_price', '>=', $goods_price[0]];
-            $where[] = ['goods_price', '<=', $goods_price[1]];
+            if (!empty($data['goods_price'])) {
+                $goods_price = explode('-', $data['goods_price']);
+                $where[] = ['goods_price', '>=', $goods_price[0]];
+                $where[] = ['goods_price', '<=', $goods_price[1]];
+            }
+
+        }
+        if (isset($data['class2'])) {
+            if (!empty($data['class2'])) {
+                switch ($data['class2']) {
+                    case 'synthesize';
+
+                        break;
+                    default;
+                        $where[] = [$data['class2'], '=', 1];
+                }
+            }
         }
         $where[] = ['is_del', '=', 1];
         $goods = GoodsModel::where($where)->get()->toarray();
@@ -53,5 +70,4 @@ class ListController extends Controller
         }
         return ['code' => 200, 'msg' => 'OK', 'data' => $goods];
     }
-
 }
