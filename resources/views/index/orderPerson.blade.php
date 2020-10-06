@@ -170,22 +170,22 @@ $(function(){
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
                             <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
-                            <dd><a href="{{url('index/orderFootmark')}}" class="list-active" >我的足迹</a></dd>
+                            <dd><a href="{{url('index/histroy')}}" class="list-active" >我的足迹</a></dd>
 						</dl>
 						<dl>
 							<dt><i>·</i> 物流消息</dt>
 						</dl>
 						<dl>
 							<dt><i>·</i> 设置</dt>
-                            <dd><a href="{{url('index/orderInfo')}}">个人信息</a></dd>
-                            <dd><a href="{{url('index/orderAddress')}}"  >地址管理</a></dd>
+                            <dd><a href="{{url('index/show')}}">个人信息</a></dd>
+                            <dd><a href="{{url('index/address')}}"  >地址管理</a></dd>
                             <dd><a href="{{url('index/orderSafe')}}" >安全管理</a></dd>
 						</dl>
                     </div>
                 </div>
                 <!--右侧主内容-->
                 <div class="yui3-u-5-6 goods">
-                    <div class="body">                   
+                    <div class="body">
                             <h4>收藏的商品</h4>
                             <div class="goods-list">
                                 <ul class="yui3-g"  id="goods-list">
@@ -269,8 +269,8 @@ $(function(){
                                     </li >
                                 </ul>
                             </div>
-                      
-                        
+
+
                         <!--猜你喜欢-->
                         <div class="like-title">
                             <div class="mt">

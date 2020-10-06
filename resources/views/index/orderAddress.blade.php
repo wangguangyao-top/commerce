@@ -173,15 +173,15 @@ $(function(){
                         <dl>
                             <dt><i>·</i> 我的中心</dt>
                             <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
-                            <dd><a href="{{url('index/orderFootmark')}}">我的足迹</a></dd>
+                            <dd><a href="{{url('index/history')}}">我的足迹</a></dd>
                         </dl>
                         <dl>
                             <dt><i>·</i> 物流消息</dt>
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="{{url('index/orderInfo')}}">个人信息</a></dd>
-                            <dd><a href="{{url('index/orderAddress')}}" class="list-active" >地址管理</a></dd>
+                            <dd><a href="{{url('index/show')}}">个人信息</a></dd>
+                            <dd><a href="{{url('index/address')}}" class="list-active" >地址管理</a></dd>
                             <dd><a href="{{url('index/orderSafe')}}" >安全管理</a></dd>
                         </dl>
                     </div>
@@ -225,9 +225,9 @@ $(function(){
                                             <a href="#">设为默认</a>
                                         </td>
                                     </tr>
-                                    
+
                                 </tbody>
-                            </table>                          
+                            </table>
                         </div>
                         <!--新增地址弹出层-->
                          <div  tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade edit" style="width:580px;">
@@ -259,7 +259,7 @@ $(function(){
                                                     <select class="form-control" id="district1"></select>
                                                 </div>
                                             </div>
-                                            </div>                                   
+                                            </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">详细地址：</label>
@@ -288,10 +288,10 @@ $(function(){
                                                 建议填写常用地址：<a href="#" class="sui-btn btn-default">家里</a>　<a href="#" class="sui-btn btn-default">父母家</a>　<a href="#" class="sui-btn btn-default">公司</a>
                                             </div>
                                         </div>
-                                        
+
                                         </form>
-                                        
-                                        
+
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large">确定</button>

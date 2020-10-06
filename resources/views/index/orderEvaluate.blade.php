@@ -170,15 +170,15 @@ $(function(){
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
                             <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
-                            <dd><a href="{{url('index/orderFootmark')}}">我的足迹</a></dd>
+                            <dd><a href="{{url('index/history')}}">我的足迹</a></dd>
 						</dl>
 						<dl>
 							<dt><i>·</i> 物流消息</dt>
 						</dl>
 						<dl>
 							<dt><i>·</i> 设置</dt>
-                            <dd><a href="{{url('index/orderInfo')}}">个人信息</a></dd>
-                            <dd><a href="{{url('index/orderAddress')}}"  >地址管理</a></dd>
+                            <dd><a href="{{url('index/show')}}">个人信息</a></dd>
+                            <dd><a href="{{url('index/address')}}"  >地址管理</a></dd>
                             <dd><a href="{{url('index/orderSafe')}}" >安全管理</a></dd>
 						</dl>
                     </div>
@@ -217,7 +217,7 @@ $(function(){
                                     <label data-toggle="checkbox" class="checkbox-pretty ">
                                            <input type="checkbox" checked="checked"><span>2017-02-11 11:59　订单编号：7867473872181848  店铺：哇哈哈 <a>和我联系</a></span>
                                      </label>
-                                    <a class="sui-btn btn-info share-btn">删除订单</a> <a class="sui-btn btn-info share-btn">分享</a> 
+                                    <a class="sui-btn btn-info share-btn">删除订单</a> <a class="sui-btn btn-info share-btn">分享</a>
                                 </div>
                                 <table class="sui-table table-bordered order-datatable">
                                     <tbody>
@@ -248,7 +248,7 @@ $(function(){
                                             </td>
                                             <td width="10%" class="center">
                                                 <ul class="unstyled">
-                                                    <li>交易成功</li>                                                  
+                                                    <li>交易成功</li>
                                                     <li><a href="{{url('index/orderDetail')}}" class="btn">订单详情 </a></li>
                                                 </ul>
                                             </td>
@@ -297,7 +297,7 @@ $(function(){
                                             </td>
                                             <td width="10%" class="center">
                                                 <ul class="unstyled">
-                                                    <li>交易成功</li>                                                  
+                                                    <li>交易成功</li>
                                                     <li><a href="{{url('index/orderDetail')}}" class="btn">订单详情 </a></li>
                                                 </ul>
                                             </td>
