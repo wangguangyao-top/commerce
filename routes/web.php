@@ -49,6 +49,7 @@ Route::prefix('index')->group(function () {
     Route::any('/orderAddress','index\AddressController@index');
     // 订单设置安全管理页
     Route::any('/orderSafe','index\SafeController@index');
+    Route::any('/create','index\SafeController@create');
     //订单
     Route::any('/order','index\OrderController@order');
     //支付成功
@@ -62,6 +63,8 @@ Route::prefix('index')->group(function () {
     Route::post('addCart','index\CartController@addCart');
     //购物车展示
     Route::get('/cart/list','index\CartController@cartList');
+    //计算总价
+    Route::post('/getAllPrice','index\CartController@getAllPrice');
 
     //支付失败
     Route::any('/payfail','index\OrderController@payfail');
