@@ -233,7 +233,7 @@
                             <li class="yui3-u-1-5">
                                 <div class="list-wrap">
                                     <div class="p-img">
-                                        <a href="" target="_blank"><img src="{{$v->goods_img[0]}}"></a>
+                                        <a href="/index/item?goods_id={{$v->goods_id}}" target="_blank"><img src="{{$v->goods_img[0]}}"></a>
                                     </div>
                                     <div class="price">
                                         <strong>
