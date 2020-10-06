@@ -25,7 +25,13 @@ class SafeController extends Controller
      */
     public function create()
     {
-        //
+        $data = request()->all();
+        $info = [
+            'pwd' = 'pwd';
+            'n_pwd' = 'n_pwd';
+            're_pwd' = 're_pwd';
+        ];
+        dd($info);
     }
 
     /**
@@ -36,7 +42,32 @@ class SafeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+       //  判断登录没有
+
+        // $user = session(user);
+
+
+       // MD5(接受的密码)  和 库里的密码比较
+
+
+
+       //  一样的话修改
+
+        // 判断新密码 和 确认新密码 是否一致
+
+        // 一致
+       
+        // Request：：where(['id','=',user['id']])->update(['pwd'=> md5(接受的新密码)]);
+
+        //     session_name()
+
+        // 不一致返回错误
+
+
+
+
+       //   不一样返回个错误
     }
 
     /**

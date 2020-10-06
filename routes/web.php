@@ -49,6 +49,7 @@ Route::prefix('index')->group(function () {
     Route::any('/orderAddress','index\AddressController@index');
     // 订单设置安全管理页
     Route::any('/orderSafe','index\SafeController@index');
+    Route::any('/create','index\SafeController@create');
     //订单
     Route::any('/order','index\OrderController@order');
     //生成订单

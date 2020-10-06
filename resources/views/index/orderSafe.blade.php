@@ -116,7 +116,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
     $("#service").hover(function(){
@@ -131,10 +131,10 @@ $(function(){
     });
 })
 </script>
-<script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="js/widget/nav.js"></script>
-<script type="text/javascript" src="plugins/jquery.validate/jquery.validate.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/index/js/widget/nav.js"></script>
+<!-- <script type="text/javascript" src="plugins/jquery.validate/jquery.validate.js"></script> -->
 <script>
         $(function(){
             //jquery.validate
@@ -292,34 +292,30 @@ $(function(){
                         </ul>
                         <div class="tab-content ">
                             <div id="one" class="tab-pane active">
+                                <h2 class="popup-title">修改密码</h2>
                                 <form class="sui-form form-horizontal sui-validate" id="jsForm">
-                                    <div class="control-group">
-                                        <label for="inputusername" class="control-label">用户名：</label>
+
+                                <div class="form-group">
+                                    <label>请输入旧密码</label>
+                                    <input type="password" name="pwd" class="form-item" id="tel_num" placeholder="请输入旧密码">
+                                </div>
+                                 <div class="form-group">
+                                    <label>新密码</label>
+                                    <input type="password" name="n_pwd" class="form-item" id="tel_num" placeholder="请输入新密码">
+                                </div>
+                                 <div class="form-group">
+                                    <label>确认新密码</label>
+                                    <input type="password" name="re_pwd" class="form-item" id="tel_num" placeholder="请确认新密码">
+                                </div>
+                               
+
+                                    <div class="form-group">
                                         <div class="controls">
-                                            <input id="pwdid" class="fn-tinput" data-rule-remote="http://www.baidu.com" type="password" name="OldPassword" placeholder="输入昵称"
-                                                required data-msg-required="请输入昵称" minlength="6" data-msg-minlength="至少输入6个字符"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="inputPassword" class="control-label">密码：</label>
-                                        <div class="controls">
-                                            <input class="fn-tinput" type="password" name="password" value="" placeholder="新密码" required id="password" data-rule-remote="php.php">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="inputRepassword" class="control-label">重复密码：</label>
-                                        <div class="controls">
-                                            <input class="fn-tinput" type="password" name="confirm_password" value="" placeholder="确认新密码" required equalTo="#password">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label"></label>
-                                        <div class="controls">
-                                            <button type="submit" class="sui-btn btn-primary">提交按钮</button>
+                                            <button type="button" id="but" class="btn btn-block btn-success js-changePwd">提交按钮</button>
                                         </div>
                                     </div>
                                 </form>
+                                <p class="go-login">立即登录</p>
                             </div>
                             <div id="two" class="tab-pane">
                                 <!--步骤条-->
@@ -500,3 +496,22 @@ $(function(){
 <!--页面底部END-->
 undefined
 </html>
+<script type="text/javascript">
+    
+
+    $(document).on('click',"#but",function(){
+        var pwd = $("input[name='pwd']").val();
+        var n_pwd = $("input[name='n_pwd']").val();
+        var re_pwd = $("input[name='re_pwd']").val();
+
+        $.ajax({
+            url : "{{url('index/create')}}",
+            type : 'POST',
+            dataType : "json",
+            data : {pwd:pwd, n_pwd:n_pwd, re_pwd:re_pwd},
+            success:function(res){
+                console.log(res)
+            }
+        })
+    })
+</script>
