@@ -38,7 +38,6 @@
             border-top: 1px solid #F00;
             border-bottom: 1px solid #F00;
             border-right: 1px solid #F00;
-
             cursor: pointer;
         }
 
@@ -47,7 +46,6 @@
             border-top: 1px solid #00F;
             border-bottom: 1px solid #00F;
             border-right: 1px solid #00F;
-
             cursor: pointer;
         }
     </style>
@@ -306,7 +304,6 @@
                         <div class="fr page">
                             <div class="sui-pagination pagination-large">
                                 {{$data->links()}}
-                                <div><span>共10页&nbsp;</span><span><input type="text" class="page-num">页 <button class="page-confirm" onclick="alert(1)">确定</button></span></div>
                             </div>
                         </div>
                     <!--hotsale-->
@@ -586,7 +583,7 @@
                                     var data = info.data;
                                     var str = '';
                                     for (var i in data) {
-                                        str += '<li class="yui3-u-1-5"> <div class="list-wrap"> <div class="p-img"> <a href="" target="_blank"><img src="' + data[i]['goods_img'][0] + '"></a> </div> <div class="price"> <strong> <em>¥</em> <i>' + data[i]['goods_price'] + '</i> </strong> </div> <div class="attr"> <em>' + data[i]['goods_name'] + '</em> </div> <div class="cu"> <em><span>促</span>满一件可参加超值换购</em> </div> <div class="commit"> <i class="command">已有2000人评价</i> </div> <div class="operate"> <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a> </div> </div> </li>'
+                                        str += '<li class="yui3-u-1-5"> <div class="list-wrap"> <div class="p-img"> <a href="/index/item?goods_id='+ data[i]['goods_id'] +'" target="_blank"><img src="' + data[i]['goods_img'][0] + '"></a> </div> <div class="price"> <strong> <em>¥</em> <i>' + data[i]['goods_price'] + '</i> </strong> </div> <div class="attr"> <em>' + data[i]['goods_name'] + '</em> </div> <div class="cu"> <em><span>促</span>满一件可参加超值换购</em> </div> <div class="commit"> <i class="command">已有2000人评价</i> </div> <div class="operate"> <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a> </div> </div> </li>'
                                     }
                                     $('.list2').html(str);
                                 }
@@ -617,7 +614,7 @@
                                     var data = info.data;
                                     var str = '';
                                     for (var i in data) {
-                                        str += '<li class="yui3-u-1-5"> <div class="list-wrap"> <div class="p-img"> <a href="" target="_blank"><img src="' + data[i]['goods_img'][0] + '"></a> </div> <div class="price"> <strong> <em>¥</em> <i>' + data[i]['goods_price'] + '</i> </strong> </div> <div class="attr"> <em>' + data[i]['goods_name'] + '</em> </div> <div class="cu"> <em><span>促</span>满一件可参加超值换购</em> </div> <div class="commit"> <i class="command">已有2000人评价</i> </div> <div class="operate"> <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a> </div> </div> </li>'
+                                        str += '<li class="yui3-u-1-5"> <div class="list-wrap"> <div class="p-img"> <a href="/index/item?goods_id='+ data[i]['goods_id'] +'" target="_blank"><img src="' + data[i]['goods_img'][0] + '"></a> </div> <div class="price"> <strong> <em>¥</em> <i>' + data[i]['goods_price'] + '</i> </strong> </div> <div class="attr"> <em>' + data[i]['goods_name'] + '</em> </div> <div class="cu"> <em><span>促</span>满一件可参加超值换购</em> </div> <div class="commit"> <i class="command">已有2000人评价</i> </div> <div class="operate"> <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a> </div> </div> </li>'
                                     }
                                     $('.list2').html(str);
                                 }
@@ -647,7 +644,7 @@
                                     var data = info.data;
                                     var str = '';
                                     for (var i in data) {
-                                        str += '<li class="yui3-u-1-5"> <div class="list-wrap"> <div class="p-img"> <a href="" target="_blank"><img src="' + data[i]['goods_img'][0] + '"></a> </div> <div class="price"> <strong> <em>¥</em> <i>' + data[i]['goods_price'] + '</i> </strong> </div> <div class="attr"> <em>' + data[i]['goods_name'] + '</em> </div> <div class="cu"> <em><span>促</span>满一件可参加超值换购</em> </div> <div class="commit"> <i class="command">已有2000人评价</i> </div> <div class="operate"> <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a> </div> </div> </li>'
+                                        str += '<li class="yui3-u-1-5"> <div class="list-wrap"> <div class="p-img"> <a href="/index/item?goods_id='+ data[i]['goods_id'] +'" target="_blank"><img src="' + data[i]['goods_img'][0] + '"></a> </div> <div class="price"> <strong> <em>¥</em> <i>' + data[i]['goods_price'] + '</i> </strong> </div> <div class="attr"> <em>' + data[i]['goods_name'] + '</em> </div> <div class="cu"> <em><span>促</span>满一件可参加超值换购</em> </div> <div class="commit"> <i class="command">已有2000人评价</i> </div> <div class="operate"> <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a> <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a> </div> </div> </li>'
                                     }
                                     $('.list2').html(str);
                                 }
