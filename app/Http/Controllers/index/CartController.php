@@ -176,6 +176,7 @@ class CartController extends Controller
         }
         //判断是否为空
         if(!empty($goods_info)){
+            $user=json_decode($user,true);
             //切割
             $goods_info=explode('。',$goods_info);
             //循环
@@ -219,6 +220,9 @@ class CartController extends Controller
                             ->orderBy('is_default','desc')
                             ->get()
                             ->Toarray();
+            if(empty($user_address)){
+                dd(133);
+            }
             //循环获取收货地址 省、市、区/县
             foreach($user_address as $k=>&$v){
                 //省
