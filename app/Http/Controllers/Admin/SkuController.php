@@ -60,50 +60,44 @@ class SkuController extends Controller
      */
     public function store($goods_id,Request $request)
     {
-            $data=$request->sku;
-            //添加时间戳
-            $data1=array();
-            foreach($data as $k=>$v){
-                $data2=explode(':',$v);
-                $data1[$data2[0]][]=$data2[1];
-            };
-            $data1=array_values($data1);  //把二维数组下标重置0
-            $cart=$this->CartesianProduct($data1);
-            $cart2=json_encode($cart,JSON_UNESCAPED_UNICODE);
-            $count=count($cart);
-            $data2=[];
-            foreach($cart as $k1=>$v1){
-                $data2[$k1]['sku']=$v1;
-                $data2[$k1]['goods_id']=$goods_id;
-                $data2[$k1]['add_time']=time();
+        $data=$request->sku;
+        //添加时间戳
+        $data1=array();
+        foreach($data as $k=>$v){
+            $data2=explode(':',$v);
+            $data1[$data2[0]][]=$data2[1];
+        };
+        $data1=array_values($data1);  //把二维数组下标重置0
+        if(count($data1)==1){
+            foreach ($data1[0] as $k=>$v) {
+                $add3[$k]['sku']=$v;
+                $add3[$k]['goods_id']=$goods_id;
+                $add3[$k]['add_time']=time();
             }
-            //实例化 model
-            $sku=new Shop_skuModel();
-            $bol=$sku->insertData($data2);
-            if($bol){
-                //调用model进行添加
-                $info=$sku::join('shop_goods','shop_goods.goods_id','=','shop_sku.goods_id')->select('shop_sku.id','shop_sku.goods_id','shop_sku.sku','shop_goods.goods_name')->where('shop_sku.is_del',1)->orderBy('shop_sku.add_time','desc')->limit($count)->get()->toArray();
-                $attrval=new Shop_attrval;
-                $Shop_attrModel=new Shop_attrModel;
-                foreach($info as $kk3=>&$vv3){
-                    $vv3['sku']=explode(',',$vv3['sku']);
-                    $vv3['sku']=$attrval::select('attr_id','attrval_name')->whereIn('id',$vv3['sku'])->get()->toArray();
-                    $str='';
-                    foreach($vv3['sku'] as $kkk2=>&$vvv2){
-                        $arr5=($Shop_attrModel::where(['is_del'=>1,'id'=>$vvv2['attr_id']])->get('attr_name'));
-                        foreach($arr5 as $kkk3=>$vvv3){
-                            $vvv2['attr_id']=$vvv3->attr_name.'：'.$vvv2['attrval_name'];
-                        }
-                        $str.=$vvv2['attr_id'].',';
-                        $vvv2['attr_id']=$str;
-                    }
-                    $vv3['sku']=array_pop($vv3['sku']);
-                    $vv3['sku']=$vv3['sku']['attr_id'];
-                }
-                return ['code'=>200,'msg'=>'OK','data'=>$info];
+            $add=$this->add(count($add3),$add3);
+            if($add['code']==200){
+                return $add;
             }else{
-                return ['code'=>1000,'msg'=>'NO','data'=>[]];
+                return $add;
             }
+        }
+        $cart=$this->CartesianProduct($data1);
+        $cart2=json_encode($cart,JSON_UNESCAPED_UNICODE);
+        $count=count($cart);
+        $data2=[];
+        foreach($cart as $k1=>$v1){
+            $data2[$k1]['sku']=$v1;
+            $data2[$k1]['goods_id']=$goods_id;
+            $data2[$k1]['add_time']=time();
+        }
+        $add=$this->add($count,$data2);
+        if($add['code']==200){
+            return $add;
+        }else{
+            return $add;
+        }
+        //实例化 model
+
 
         //返回结果
     }
@@ -137,7 +131,35 @@ class SkuController extends Controller
         }
         return $result;
     }
-
+    //执行添加
+    public function add($count,$data2){
+        $sku=new Shop_skuModel();
+        $bol=$sku->insertData($data2);
+        if($bol){
+            //调用model进行添加
+            $info=$sku::join('shop_goods','shop_goods.goods_id','=','shop_sku.goods_id')->select('shop_sku.id','shop_sku.goods_id','shop_sku.sku','shop_goods.goods_name')->where('shop_sku.is_del',1)->orderBy('shop_sku.add_time','desc')->limit($count)->get()->toArray();
+            $attrval=new Shop_attrval;
+            $Shop_attrModel=new Shop_attrModel;
+            foreach($info as $kk3=>&$vv3){
+                $vv3['sku']=explode(',',$vv3['sku']);
+                $vv3['sku']=$attrval::select('attr_id','attrval_name')->whereIn('id',$vv3['sku'])->get()->toArray();
+                $str='';
+                foreach($vv3['sku'] as $kkk2=>&$vvv2){
+                    $arr5=($Shop_attrModel::where(['is_del'=>1,'id'=>$vvv2['attr_id']])->get('attr_name'));
+                    foreach($arr5 as $kkk3=>$vvv3){
+                        $vvv2['attr_id']=$vvv3->attr_name.'：'.$vvv2['attrval_name'];
+                    }
+                    $str.=$vvv2['attr_id'].',';
+                    $vvv2['attr_id']=$str;
+                }
+                $vv3['sku']=array_pop($vv3['sku']);
+                $vv3['sku']=$vv3['sku']['attr_id'];
+            }
+            return ['code'=>200,'msg'=>'OK','data'=>$info];
+        }else{
+            return ['code'=>1000,'msg'=>'NO','data'=>[]];
+        }
+    }
     /**
      * Display the specified resource.
      * 预览详情
@@ -195,4 +217,5 @@ class SkuController extends Controller
             return ['code'=>1000,'msg'=>'NO','data'=>[]];
         }
     }
+
 }
