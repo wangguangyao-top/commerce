@@ -18,6 +18,12 @@
     <script type="text/javascript" src="../index/js/widget/cartPanelView.js"></script>
     <script type="text/javascript" src="../index/js/widget/jquery.autocomplete.js"></script>
     <script type="text/javascript" src="../index/js/widget/nav.js"></script>
+    <style>
+        .img2{
+            width:740px;
+            height:460px
+        }
+    </style>
     <div class="sort">
         <div class="py-container">
             <div class="yui3-g SortList ">
@@ -32,9 +38,9 @@
                         </ol>
                         <div class="carousel-inner">
                             @foreach($img as $kk3=>$vv3)
-                            <div class="{{$kk3==0?'active item':'item'}}"   width="750px" height="470px">
+                            <div class="{{$kk3==0?'active item':'item'}}" >
                                 <a href="http://baidu2.wypxj.com/" >
-                                    <img width="740px" height="460px" src="{{$vv3['slide_log']}}"/>
+                                    <img class="img2" src="{{$vv3['slide_log']}}"/>
                                 </a>
                             </div>
                             @endforeach

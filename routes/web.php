@@ -52,6 +52,10 @@ Route::prefix('index')->group(function () {
     Route::any('/create','index\SafeController@create');
     //订单
     Route::any('/order','index\OrderController@order');
+    //生成订单
+    Route::any('/createOnlyId','index\OrderController@createOnlyId');
+    //测试
+    Route::any('/abc','index\OrderController@abc');
     //支付成功
     Route::any('/paysuccess','index\OrderController@paysuccess');
     //商品详情页
