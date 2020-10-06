@@ -12,13 +12,7 @@ class UserinfoController extends Controller
     public function show()
     {
         $area = AreaModel::where(['pid' => 0])->get();
-//        $myinfo = UserinfoModel::where('user_id',2)->first();
-//        $myinfo=json_decode($myinfo,true);
-//        $arr[]=$myinfo['my_site1'];
-//        $arr[]=$myinfo['my_site2'];
-//        $arr[]=$myinfo['my_site3'];
-//        $info=AreaModel::whereIN('name',$arr)->get()->toarray();
-//        dd($info);
+
         return view('index.userinfo', ['area' => $area]);
     }
 

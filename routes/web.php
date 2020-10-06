@@ -49,8 +49,13 @@ Route::prefix('index')->group(function () {
     Route::any('/orderAddress','index\AddressController@index');
     // 订单设置安全管理页
     Route::any('/orderSafe','index\SafeController@index');
+    Route::any('/create','index\SafeController@create');
     //订单
     Route::any('/order','index\OrderController@order');
+    //生成订单
+    Route::any('/createOnlyId','index\OrderController@createOnlyId');
+    //测试
+    Route::any('/abc','index\OrderController@abc');
     //支付成功
     Route::any('/paysuccess','index\OrderController@paysuccess');
     //商品详情页
