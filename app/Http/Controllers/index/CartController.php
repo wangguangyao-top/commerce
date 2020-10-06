@@ -196,13 +196,15 @@ class CartController extends Controller
                     $attr=attr::where(['id'=>$attrval['attr_id']])->first()->Toarray();
                     $v['sku_name']=$attr['attr_name'].':'.$attrval['attrval_name'];
                 }
+                //商品价格为sku的商品价格
+                $v['goods_price']=Shop_skuModel::where(['goods_id'=>$v['goods_id'],'sku'=>$v['sku']])->value('goods_price');
             }
             //总价
             $money=0;
             //购买数量
             $nums=0;
             //计算总价 购买商品的数量
-            foreach($goods_info as $k=>$v){
+            foreach($goods_info as $k=>&$v){
                 $money+=$v['cart_nums']*$v['goods_price'];
                 //购买数量相加
                 $nums+=$v['cart_nums'];

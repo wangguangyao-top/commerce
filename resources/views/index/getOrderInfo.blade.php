@@ -430,7 +430,12 @@
                 dataType:'json',
                 //回调函数
                 success:function(res){
-                    console.log(res)
+                    alert(res.msg)
+                    //判断返回结果
+                    if(res.status=='200'){
+                        //跳转地址
+                        location.href='/index/pay?order_on='+res.data
+                    }
                 }
             })
         })
