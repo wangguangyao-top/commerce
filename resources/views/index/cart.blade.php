@@ -56,7 +56,7 @@
         <h4>全部商品<span>11</span></h4>
         <div class="cart-main">
             <div class="yui3-g cart-th">
-                <div class="yui3-u-1-4"><input type="checkbox" name="" id="" value="" /> 全部</div>
+                <div class="yui3-u-1-4"><input type="checkbox" name="all_cart_shop" class="cart_shop" id="" value="" /> 全部</div>
                 <div class="yui3-u-1-4">商品</div>
                 <div class="yui3-u-1-8">单价（元）</div>
                 <div class="yui3-u-1-8">数量</div>
@@ -67,10 +67,10 @@
                 <div class="cart-body">
                     @if(!empty($cart_info))
                         @foreach($cart_info as $k=>$v)
-                        <div class="cart-list">
+                        <div class="cart-list" goods_id="{{$v->goods_id}}" sku="{{$v->sku}}">
                         <ul class="goods-list yui3-g">
                             <li class="yui3-u-1-24">
-                                <input type="checkbox" name="" id="" value="" />
+                                <input type="checkbox" class="cart_shop cart_goods" name="" id="" value="" />
                             </li>
                             <li class="yui3-u-11-24">
                                 <div class="good-item">
@@ -78,8 +78,8 @@
                                         $goods_img=explode(',',$v->goods_img);
                                         $v->goods_img=array_shift($goods_img);
                                     @endphp
-                                    <div class="item-img"><img src="{{$v->goods_img}}" /></div>
-                                    <div class="item-msg">{{$v->goods_name}}<br>{{$v->sku}}</div>
+                                    <div class="item-img"><img src="{{$v->goods_img}}" style="width: 80px;" /></div>
+                                    <div class="item-msg">{{$v->goods_name}}<br>{{$v->sku_name}}</div>
                                 </div>
                             </li>
 
@@ -103,7 +103,7 @@
         </div>
         <div class="cart-tool">
             <div class="select-all">
-                <input type="checkbox" name="" id="" value="" />
+                <input type="checkbox" name="all_cart_shop" class="cart_shop" id="" value="" />
                 <span>全选</span>
             </div>
             <div class="option">
@@ -114,7 +114,7 @@
             <div class="toolbar">
                 <div class="chosed">已选择<span>0</span>件商品</div>
                 <div class="sumprice">
-                    <span><em>总价（不含运费） ：</em><i class="summoney">¥16283.00</i></span>
+                    <span><em>总价（不含运费） ：</em><i class="summoney">¥0.00</i></span>
                     <span><em>已节省：</em><i>-¥20.00</i></span>
                 </div>
                 <div class="sumbtn">
@@ -414,3 +414,47 @@
 </body>
 
 </html>
+
+<script>
+    $(function(){
+        //全选点击事件
+        $(document).on('click','input[name="all_cart_shop"]',function(){
+            //获取当前状态
+            var status=$(this).prop('checked')
+            //给所有复选框状态改变
+            $('.cart_shop').prop('checked',status)
+            //重新计算总价
+            getAllPrice()
+        })
+
+        //重新获取总价方法
+        function getAllPrice(){
+            //空字符串 拼接商品id sku
+            var goods_info=[]
+            //获取所选中的商品
+            $('.cart_goods:checked').each(function(i){
+                goods_info.push($(this).parents('.cart-list').attr('goods_id')+':'+$(this).parents('.cart-list').attr('sku'))
+            })
+            //ajax发送请求
+            $.ajax({
+                //请求地址
+                url:'/index/getAllPrice',
+                //请求方式
+                type:'post',
+                //发送数据
+                data:{goods_info:goods_info},
+                //设置同步异步
+                //预期返回数据类型
+                dataType:'json',
+                //回调函数
+                success:function(data){
+                    if(data.code==200){
+                        $('.summoney').text("￥"+data.data+".00")
+                    }else{
+                        alert(data.msg)
+                    }
+                }
+            })
+        }
+    })
+</script>
