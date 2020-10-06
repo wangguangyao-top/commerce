@@ -894,6 +894,8 @@
                             };
                             ModalLayer.msg(option);
                             location.href = '/index/cart/list'
+                        }else{
+                            alert(res.msg)
                         }
                     }
                 })

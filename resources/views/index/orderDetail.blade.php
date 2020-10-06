@@ -170,15 +170,15 @@ $(function(){
                         <dl>
                             <dt><i>·</i> 我的中心</dt>
                             <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
-                            <dd><a href="{{url('index/orderFootmark')}}">我的足迹</a></dd>
+                            <dd><a href="{{url('index/history')}}">我的足迹</a></dd>
                         </dl>
                         <dl>
                             <dt><i>·</i> 物流消息</dt>
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="{{url('index/orderInfo')}}">个人信息</a></dd>
-                            <dd><a href="{{url('index/orderAddress')}}"  >地址管理</a></dd>
+                            <dd><a href="{{url('index/show')}}">个人信息</a></dd>
+                            <dd><a href="{{url('index/address')}}"  >地址管理</a></dd>
                             <dd><a href="{{url('index/orderSafe')}}" >安全管理</a></dd>
                         </dl>
                     </div>
@@ -234,7 +234,7 @@ $(function(){
                                             <span>13:03:53</span>
                                         </label>
                                     </div>
-                                    
+
                                     <div class="todo last">
                                         <div class="wrap">
                                         <div class="round">5</div>
@@ -269,9 +269,9 @@ $(function(){
                                         <th class="center" >数量</th>
                                         <th class="center" >优惠</th>
                                         <th class="center" >状态</th>
-                                    </thead>                                   
-                             
-                                <tbody>                               
+                                    </thead>
+
+                                <tbody>
                                     <tr>
                                         <td colspan="5">订单编号：787587819591509</td>
                                     </tr>
@@ -284,8 +284,8 @@ $(function(){
                                         </td>
                                         <td>
                                             <ul class="unstyled">
-                                                    <li class="o-price">¥599.00</li>	
-                                                    <li>¥299.00</li>											
+                                                    <li class="o-price">¥599.00</li>
+                                                    <li>¥299.00</li>
                                                 </ul>
                                         </td>
                                         <td>1</td>

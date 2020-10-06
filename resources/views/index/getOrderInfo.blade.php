@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>结算页</title>
 
-    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="css/pages-getOrderInfo.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/pages-getOrderInfo.css" />
 </head>
 
 <body>
@@ -18,12 +18,22 @@
         <div class="shortcut">
             <ul class="fl">
                 <li class="f-item">品优购欢迎您！</li>
-                <li class="f-item">请登录　<span><a href="#">免费注册</a></span></li>
+                @php
+                $user=session('user');
+                @endphp
+                @if(empty($user))
+                    <li class="f-item">请先<a href="{{url('index/login')}}">登录</a>　<span><a href="{{url('index/register')}}">免费注册</a></span></li>
+                @else
+                    <li class="f-item"><span><a>{{$user['user_name']}}</a></span>&nbsp;|&nbsp;<a href="{{url('index/quit')}}">退出</a></li>
+                @endif
+
             </ul>
             <ul class="fr">
-                <li class="f-item">我的订单</li>
-                <li class="f-item space"></li>
-                <li class="f-item"><a href="{{url('index/orderHome')}}">我的品优购</a></li>
+                @if(!empty($user))
+                    <li class="f-item"><a href="{{url('index/order')}}">我的订单</a></li>
+                    <li class="f-item space"></li>
+                @endif
+                <li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
                 <li class="f-item space"></li>
                 <li class="f-item">品优购会员</li>
                 <li class="f-item space"></li>
@@ -31,13 +41,22 @@
                 <li class="f-item space"></li>
                 <li class="f-item">关注品优购</li>
                 <li class="f-item space"></li>
-                <li class="f-item">客户服务</li>
+                <li class="f-item" id="service">
+                    <span>客户服务</span>
+                    <ul class="service">
+                        <li><a href="cooperation.html" target="_blank">合作招商</a></li>
+                        <li><a href="shoplogin.html" target="_blank">商家后台</a></li>
+                        <li><a href="cooperation.html" target="_blank">合作招商</a></li>
+                        <li><a href="#">商家后台</a></li>
+                    </ul>
+                </li>
                 <li class="f-item space"></li>
                 <li class="f-item">网站导航</li>
             </ul>
         </div>
     </div>
 </div>
+
 <div class="cart py-container">
     <!--logoArea-->
     <div class="logoArea">
@@ -65,30 +84,18 @@
                 <div class="addressInfo">
                     <ul class="addr-detail">
                         <li class="addr-item">
-
-                            <div>
-                                <div class="con name selected"><a href="javascript:;" >张默<span title="点击取消选择">&nbsp;</a></div>
-                                <div class="con address">张默 北京市海淀区三环内 中关村软件园9号楼 <span>159****3201</span>
-                                    <span class="base">默认地址</span>
+                            @if(!empty($user_address))
+                            @foreach($user_address as $k=>$v)
+                            <div class="user_address">
+                                <div @if($v['is_default']==2) class="con name selected" @else class="con name" @endif address_id="{{$v['id']}}" style="width: 120px;"><a href="javascript:;" >{{$v['take_name']}}<span title="点击取消选择">&nbsp;</a></div>
+                                <div class="con address">{{$v['take_name']}} {{$v['area']}}{{$v['city']}}{{$v['province']}} {{$v['adddress_detail']}} <span>{{substr_replace($v['is_tel'],'****',3,4)}}</span>
+                                    @if($v['is_default']==2)<span class="base">默认地址</span>@endif
                                     <span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            <div>
-                                <div class="con name"><a href="javascript:;">李煜<span title="点击取消选择">&nbsp;</a></div>
-                                <div class="con address">李煜 北京市海淀区三环内 中关村软件园8号楼 <span>187****4201</span>
-                                    <span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-
-                            <div>
-                                <div class="con name"><a href="javascript:;">王希<span title="点击取消选择">&nbsp;</a></div>
-                                <div class="con address">王希 北京市海淀区三环内 中关村软件园6号楼  <span>156****5681</span>
-                                    <span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+                            @endforeach
+                            @endif
                         </li>
 
 
@@ -162,8 +169,9 @@
                 </div>
                 <div class="step-cont">
                     <ul class="payType">
-                        <li class="selected">微信付款<span title="点击取消选择"></span></li>
-                        <li>货到付款<span title="点击取消选择"></span></li>
+                        <li class="selected" pay_type="1">微信付款<span title="点击取消选择"></span></li>
+                        <li pay_type="2">货到付款<span title="点击取消选择"></span></li>
+                        <li pay_type="3">支付宝<span title="点击取消选择"></span></li>
                     </ul>
                 </div>
                 <div class="hr"></div>
@@ -172,23 +180,27 @@
                 </div>
                 <div class="step-cont">
                     <ul class="send-detail">
+                        @foreach($goods_info as $k=>$v)
                         <li>
-
                             <div class="sendGoods">
 
                                 <ul class="yui3-g">
                                     <li class="yui3-u-1-6">
-                                        <span><img src="img/goods.png"/></span>
+                                        @php
+                                            $img=explode(',',$v['goods_img']);
+                                            $v['goods_img']=array_shift($img);
+                                        @endphp
+                                        <span><img src="{{$v['goods_img']}}" width="80px;"/></span>
                                     </li>
                                     <li class="yui3-u-7-12">
-                                        <div class="desc">Apple iPhone 6s (A1700) 64G 玫瑰金色 移动联通电信4G手机硅胶透明防摔软壳 本色系列</div>
+                                        <div class="desc">{{$v['goods_name']}}</div>
                                         <div class="seven">7天无理由退货</div>
                                     </li>
                                     <li class="yui3-u-1-12">
-                                        <div class="price">￥5399.00</div>
+                                        <div class="price">￥{{$v['goods_price']}}</div>
                                     </li>
                                     <li class="yui3-u-1-12">
-                                        <div class="num">X1</div>
+                                        <div class="num">X{{$v['cart_nums']}}</div>
                                     </li>
                                     <li class="yui3-u-1-12">
                                         <div class="exit">有货</div>
@@ -198,6 +210,7 @@
                         </li>
                         <li></li>
                         <li></li>
+                            @endforeach
                     </ul>
                 </div>
                 <div class="hr"></div>
@@ -222,8 +235,8 @@
     <div class="order-summary">
         <div class="static fr">
             <div class="list">
-                <span><i class="number">1</i>件商品，总商品金额</span>
-                <em class="allprice">¥5399.00</em>
+                <span><i class="number">{{$nums}}</i>件商品，总商品金额</span>
+                <em class="allprice">¥{{$money}}.00</em>
             </div>
             <div class="list">
                 <span>返现：</span>
@@ -236,11 +249,11 @@
         </div>
     </div>
     <div class="clearfix trade">
-        <div class="fc-price">应付金额:　<span class="price">¥5399.00</span></div>
-        <div class="fc-receiverInfo">寄送至:北京市海淀区三环内 中关村软件园9号楼 收货人：某某某 159****3201</div>
+        <div class="fc-price">应付金额:　<span class="price">¥{{$money}}.00</span></div>
+        <div class="fc-receiverInfo">寄送至:{{$user_address_info['area']}}{{$user_address_info['city']}}{{$user_address_info['province']}} {{$user_address_info['adddress_detail']}} 收货人：{{$user_address_info['take_name']}} {{substr_replace($user_address_info['is_tel'],'****',3,4)}}</div>
     </div>
     <div class="submit">
-        <a class="sui-btn btn-danger btn-xlarge" href="pay.html">提交订单</a>
+        <a class="sui-btn btn-danger btn-xlarge" href="javascript:;" id="submitOrder">提交订单</a>
     </div>
 </div>
 <!-- 底部栏位 -->
@@ -352,7 +365,7 @@
                     </div>
                     <div class="yui3-u-1-6">
                         <h4>帮助中心</h4>
-                        <img src="img/wx_cz.jpg">
+                        <img src="/index/img/wx_cz.jpg">
                     </div>
                 </div>
             </div>
@@ -377,11 +390,54 @@
 </div>
 <!--页面底部END-->
 
-<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="components/ui-modules/nav/nav-portal-top.js"></script>
-<script type="text/javascript" src="js/pages/getOrderInfo.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/index/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/index/js/pages/getOrderInfo.js"></script>
 </body>
 
 </html>
+
+<script>
+    $(function(){
+        //收货地址
+        $(document).on('click','.user_address',function(){
+            //获取当前点击对象
+            var _this=$(this)
+            //移除其他的样式
+            _this.siblings('.user_address').find('.name').removeClass('selected')
+            //给当前点击对象加样式
+            _this.find('.name').addClass('con name selected')
+        })
+
+        //提交订单点击事件
+        $(document).on('click','#submitOrder',function(){
+            //获取商品id 和 sku
+            var goods_info="{{request()->goods_info}}"
+            //获取收货地址
+            var user_address_info=$('.user_address>.selected').attr('address_id')
+            //获取付款方式
+            var pay_type=$('.payType>.selected').attr('pay_type')
+            //ajax发送请求
+            $.ajax({
+                //提交地址
+                url:'/index/confirmOrder',
+                //请求方式
+                type:'post',
+                //发送数据
+                data:{goods_info:goods_info,user_address_info:user_address_info,pay_type:pay_type},
+                //预期返回数据类型
+                dataType:'json',
+                //回调函数
+                success:function(res){
+                    alert(res.msg)
+                    //判断返回结果
+                    if(res.status=='200'){
+                        //跳转地址
+                        location.href='/index/pay?order_on='+res.data
+                    }
+                }
+            })
+        })
+    })
+</script>
