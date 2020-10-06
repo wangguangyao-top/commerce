@@ -118,7 +118,7 @@
                     <span><em>已节省：</em><i>-¥20.00</i></span>
                 </div>
                 <div class="sumbtn">
-                    <a class="sum-btn" href="getOrderInfo.html" target="_blank">结算</a>
+                    <a class="sum-btn" id="settlement" href="javascript:;">结算</a>
                 </div>
             </div>
         </div>
@@ -427,6 +427,33 @@
             getAllPrice()
         })
 
+        //复选框点击事件
+        $(document).on('click','.cart_goods',function(){
+            //调用重新获取总价方法
+            getAllPrice()
+        })
+
+        //结算点击事件
+        $(document).on('click','#settlement',function(){
+            //获取要结算的商品
+            var cart_goods=$('.cart_goods:checked')
+            //空字符串 拼接 商品id sku
+            var goods=''
+            //循环获取商品id sku
+            cart_goods.each(function(){
+                goods+=$(this).parents('.cart-list').attr('goods_id')+':'+$(this).parents('.cart-list').attr('sku')+'。'
+            })
+            //去除多余字符
+            goods=goods.substr(0,goods.length-1)
+            //判断是否有要结算的商品
+            if(goods==''){
+                alert('请选择要结算的商品')
+                return false
+            }
+            //跳转结算页面
+            location.href='/index/cart/settlement?goods_info='+goods
+        })
+
         //重新获取总价方法
         function getAllPrice(){
             //空字符串 拼接商品id sku
@@ -448,11 +475,7 @@
                 dataType:'json',
                 //回调函数
                 success:function(data){
-                    if(data.code==200){
-                        $('.summoney').text("￥"+data.data+".00")
-                    }else{
-                        alert(data.msg)
-                    }
+                    $('.summoney').text("￥"+data.data+".00")
                 }
             })
         }
