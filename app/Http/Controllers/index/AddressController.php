@@ -4,10 +4,6 @@ namespace App\Http\Controllers\index;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-
-=======
->>>>>>> 253eb1dcf99029f1b6ffd7aa8cf8dc613dd19420
 use App\models\AreaModel;
 use App\models\UseraddressModel;
 class AddressController extends Controller
@@ -81,9 +77,4 @@ class AddressController extends Controller
             ];
         }
     }
-<<<<<<< HEAD
-     
-
-=======
->>>>>>> 253eb1dcf99029f1b6ffd7aa8cf8dc613dd19420
 }
