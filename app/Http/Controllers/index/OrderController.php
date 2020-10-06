@@ -61,5 +61,10 @@ class OrderController extends Controller
                 return json_encode(['status'=>'500004','msg'=>'收货地址不存在']);
             }
         }
+        //判断是否选择支付方式
+        if(empty($pay_type)){
+            //返回
+            return json_encode(['status'=>'500005','msg'=>'请选择支付方式。']);
+        }
     }
 }
