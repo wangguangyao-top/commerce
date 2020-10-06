@@ -29,6 +29,8 @@ class CartController extends Controller
         $data=request()->all();
         //判断是否登录
         if(!empty($user)){
+            $user=json_decode($user,true);
+
             //登录 存入数据库
             //判断是否有sku
             if(empty($data['sku'])){
@@ -91,6 +93,7 @@ class CartController extends Controller
         $user=session('user');
         //判断是否登录
         if(!empty($user)){
+            $user=json_decode($user,true);
             //获取当前用户下的加入购物车的商品
             $cart_info=Shop_cart::select('shop_cart.*','goods_name','goods_img','goods_price')
                                 ->leftjoin('shop_goods','shop_cart.goods_id','=','shop_goods.goods_id')
