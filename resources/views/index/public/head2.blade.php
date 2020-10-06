@@ -17,7 +17,7 @@
                 <li class="f-item"><a href="{{url('index/order')}}">我的订单</a></li>
                 <li class="f-item space"></li>
             @endif
-            <li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
+            <li class="f-item"><a href="{{url('index/orderHome')}}">我的品优购</a></li>
             <li class="f-item space"></li>
             <li class="f-item">品优购会员</li>
             <li class="f-item space"></li>
