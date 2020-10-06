@@ -29,7 +29,7 @@
 					<ul class="fr">
 						<li class="f-item">我的订单</li>
 						<li class="f-item space"></li>
-						<li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
+						<li class="f-item"><a href="{{url('index/orderHome')}}">我的品优购</a></li>
 						<li class="f-item space"></li>
 						<li class="f-item">品优购会员</li>
 						<li class="f-item space"></li>
@@ -40,9 +40,9 @@
 						<li class="f-item" id="service">
 							<span>客户服务</span>
 							<ul class="service">
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="shoplogin.html" target="_blank">商家后台</a></li>
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
+								<li><a href="cooperation.html">合作招商</a></li>
+								<li><a href="shoplogin.html">商家后台</a></li>
+								<li><a href="cooperation.html">合作招商</a></li>
 								<li><a href="#">商家后台</a></li>
 							</ul>
 						</li>
@@ -113,7 +113,7 @@
 							<li class="f-item">闪购</li>
 							<li class="f-item">团购</li>
 							<li class="f-item">有趣</li>
-							<li class="f-item"><a href="seckill-index.html" target="_blank">秒杀</a></li>
+							<li class="f-item"><a href="seckill-index.html">秒杀</a></li>
 						</ul>
 					</div>
 					<div class="yui3-u Right"></div>
@@ -165,25 +165,25 @@ $(function(){
                     <div class="list-items">
                         <dl>
 							<dt><i>·</i> 订单中心</dt>
-							<dd ><a href="home-index.html"   >我的订单</a></dd>
-							<dd><a href="home-order-pay.html" >待付款</a></dd>
-							<dd><a href="home-order-send.html"  >待发货</a></dd>
-							<dd><a href="home-order-receive.html" >待收货</a></dd>
-							<dd><a href="home-order-evaluate.html" >待评价</a></dd>
+                        <dd ><a href="{{url('index/orderHome')}}"  >我的订单</a></dd>
+                        <dd><a href="{{url('index/orderPay')}}" >待付款</a></dd>
+                        <dd><a href="{{url('index/orderSend')}}"  >待发货</a></dd>
+                        <dd><a href="{{url('index/orderReceive')}}" >待收货</a></dd>
+                        <dd><a href="{{url('index/orderEvaluate')}}" >待评价</a></dd>
 						</dl>
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="home-person-collect.html" >我的收藏</a></dd>
-							<dd><a href="home-person-footmark.html" >我的足迹</a></dd>
+                        <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
+                        <dd><a href="{{url('index/orderFootmark')}}">我的足迹</a></dd>
 						</dl>
 						<dl>
 							<dt><i>·</i> 物流消息</dt>
 						</dl>
 						<dl>
 							<dt><i>·</i> 设置</dt>
-							<dd><a href="home-setting-info.html" >个人信息</a></dd>
-							<dd><a href="home-setting-address.html" class="list-active" >地址管理</a></dd>
-							<dd><a href="home-setting-safe.html" >安全管理</a></dd>
+                        <dd><a href="{{url('index/orderInfo')}}" >个人信息</a></dd>
+                        <dd><a href="{{url('index/orderAddress')}}" class="list-active" >地址管理</a></dd>
+                        <dd><a href="{{url('index/orderSafe')}}" >安全管理</a></dd>
 						</dl>
                     </div>
                 </div>
