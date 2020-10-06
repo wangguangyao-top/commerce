@@ -174,7 +174,7 @@
                 <div class="person-info">
                     <div class="person-photo"><img src="img/_/photo.png" alt=""></div>
                     <div class="person-account">
-                        <span class="name">{{session('user')['user_name']}}</span>
+                        <span class="name">{{json_decode(session('user'),true)['user_name']}}</span>
                         <span class="safe">账户安全</span>
                     </div>
                     <div class="clearfix"></div>
@@ -191,15 +191,15 @@
                     <dl>
                         <dt><i>·</i> 我的中心</dt>
                         <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
-                        <dd><a href="{{url('index/orderFootmark')}}">我的足迹</a></dd>
+                        <dd><a href="{{url('index/history')}}">我的足迹</a></dd>
                     </dl>
                     <dl>
                         <dt><i>·</i> 物流消息</dt>
                     </dl>
                     <dl>
                         <dt><i>·</i> 设置</dt>
-                        <dd><a href="{{url('index/orderInfo')}}" class="list-active">个人信息</a></dd>
-                        <dd><a href="{{url('index/orderAddress')}}"  >地址管理</a></dd>
+                        <dd><a href="{{url('index/show')}}" class="list-active">个人信息</a></dd>
+                        <dd><a href="{{url('index/address')}}"  >地址管理</a></dd>
                         <dd><a href="{{url('index/orderSafe')}}" >安全管理</a></dd>
                     </dl>
                 </div>

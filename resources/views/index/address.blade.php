@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>                  
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -174,15 +174,15 @@ $(function(){
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
                         <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
-                        <dd><a href="{{url('index/orderFootmark')}}">我的足迹</a></dd>
+                        <dd><a href="{{url('index/history')}}">我的足迹</a></dd>
 						</dl>
 						<dl>
 							<dt><i>·</i> 物流消息</dt>
 						</dl>
 						<dl>
 							<dt><i>·</i> 设置</dt>
-                        <dd><a href="{{url('index/orderInfo')}}" >个人信息</a></dd>
-                        <dd><a href="{{url('index/orderAddress')}}" class="list-active" >地址管理</a></dd>
+                        <dd><a href="{{url('index/show')}}" >个人信息</a></dd>
+                        <dd><a href="{{url('index/address')}}" class="list-active" >地址管理</a></dd>
                         <dd><a href="{{url('index/orderSafe')}}" >安全管理</a></dd>
 						</dl>
                     </div>
@@ -213,15 +213,15 @@ $(function(){
                                         <td>{{$v->is_tel}}</td>
                                         <td>{{date("Y-m-d",$v->add_time)}}</td>
                                         <td>
-                                        
+
                                             <button class="del" id="{{$v->id}}">删除</button>
                                              <a data-toggle="modal" data-target=".hei">编辑</a>
                                             默认地址
                                         </td>
-                                    </tr>  
+                                    </tr>
                                     @endforeach
                                 </tbody>
-                            </table>                          
+                            </table>
                         </div>
                         <!--新增地址弹出层-->
                          <div  tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade edit" style="width:580px;">
@@ -250,19 +250,19 @@ $(function(){
                                     						<option value="{{$v->id}}">{{$v->name}}</option>
                                     					@endforeach
                                                     </select>
-                                               
+
                                                     <select class="form-control area" id="city" value="" name="city">
-                                                        
+
                                                     	<option>请选择</option>
                                                     </select>
-        
+
                                                     <select class="form-control area" id="province" value="" name="province">
                                                     	<option>请选择</option>
                                                     </select>
                                                 </div>
                                                 </div>
                                             </div>
-                                            </div>									 
+                                            </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">详细地址：</label>
@@ -276,14 +276,14 @@ $(function(){
                                                 <input type="text" class="input-medium" id="is_tel">
                                             </div>
                                         </div>
-                                        
+
                                         </form>
-                                        
-                                        
+
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large" id="sub">确定</button>
-                                       
+
                                         <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">取消</button>
                                     </div>
                                 </div>
@@ -316,19 +316,19 @@ $(function(){
                                                             <option value="{{$v->id}}">{{$v->name}}</option>
                                                         @endforeach
                                                     </select>
-                                               
+
                                                     <select class="form-control area" id="city" value="" name="city">
-                                                        
+
                                                         <option>请选择</option>
                                                     </select>
-        
+
                                                     <select class="form-control area" id="province" value="" name="province">
                                                         <option>请选择</option>
                                                     </select>
                                                 </div>
                                                 </div>
                                             </div>
-                                            </div>                                   
+                                            </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">详细地址：</label>
@@ -342,14 +342,14 @@ $(function(){
                                                 <input type="text" class="input-medium" id="is_tel">
                                             </div>
                                         </div>
-                                        
+
                                         </form>
-                                        
-                                        
+
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large" id="sub">确定</button>
-                                       
+
                                         <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">取消</button>
                                     </div>
                                 </div>
@@ -361,7 +361,7 @@ $(function(){
             </div>
         </div>
     </div>
-    
+
 
     <script>
         $(function(){

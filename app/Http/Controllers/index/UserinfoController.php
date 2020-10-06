@@ -68,13 +68,17 @@ class UserinfoController extends Controller
     public function update(){
         $area = AreaModel::where(['pid' => 0])->get();
 //        获取用户id
-        $user = session('user');
+        $user = json_decode(session('user'),true);
         $myinfo = UserinfoModel::where(['user_id'=>$user['user_id']])->first();
-        //市级
-        $my_site2=AreaModel::where(['pid'=>$myinfo->my_site1])->get();
-        //区、县级
-        $my_site3=AreaModel::where(['pid'=>$myinfo->my_site2])->get();
-        return view('index.userupdate',['area'=>$area,'myinfo'=>$myinfo,'my_site2'=>$my_site2,'my_site3'=>$my_site3]);
+        if(!empty($myinfo->toArray())){
+            //市级
+            $my_site2=AreaModel::where(['pid'=>$myinfo->my_site1])->get();
+            //区、县级
+            $my_site3=AreaModel::where(['pid'=>$myinfo->my_site2])->get();
+            return view('index.userupdate',['area'=>$area,'myinfo'=>$myinfo,'my_site2'=>$my_site2,'my_site3'=>$my_site3]);
+        }
+        echo '网络未连接~';
+        die;
     }
     //执行修改
     public function doupdate(Request $request){
