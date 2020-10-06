@@ -69,6 +69,12 @@ Route::prefix('index')->group(function () {
     Route::get('/cart/list','index\CartController@cartList');
     //计算总价
     Route::post('/getAllPrice','index\CartController@getAllPrice');
+    //结算页面
+    Route::get('/cart/settlement','index\CartController@settlement');
+    //确认订单
+    Route::post('/confirmOrder','index\OrderController@confirmOrder');
+    //支付页面
+    Route::get('pay','index\PayController@pay');
 
     //支付失败
     Route::any('/payfail','index\OrderController@payfail');
