@@ -2,6 +2,7 @@
     <div class="shortcut">
         <ul class="fl">
             <li class="f-item">品优购欢迎您！</li>
+
             @php
                 $user=session('user');
             @endphp
