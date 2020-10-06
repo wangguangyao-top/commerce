@@ -107,6 +107,7 @@ class ItemController extends Controller
                 $historyList=GoodsModel::whereIn('goods_id',$historyList)->orderBy(\DB::raw('FIND_IN_SET(goods_id, "' . implode(",", $historyList) . '"' . ")"))->get();
             }
         }else{
+            $user=json_decode($user,true);
             //登录取数据库
             //根据用户ID获取该用户的浏览记录
             $goods_id=HistoryModel::where(['user_id'=>$user['user_id']])->orderBy('hi_time','desc')->get(['goods_id'])->Toarray();
@@ -150,6 +151,7 @@ class ItemController extends Controller
         }else{
             //登录 存入数据库
             //判断是否有该浏览记录
+            $user=json_decode($user,true);
             $history=HistoryModel::where(['goods_id'=>$goods_id,'user_id'=>$user['user_id']])->first();
             if(empty($history)){
                 //没有记录添加

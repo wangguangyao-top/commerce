@@ -160,7 +160,7 @@
                 </li>
                 @foreach($goods_img as $kk1=>$vv1)
                     <li class="yui3-u-5-24">
-                        <a href="" target="_blank"><img width="163px" height="248px" src="{{$vv1['goods_img']}}"/></a>
+                        <a href="/index/item?goods_id={{$vv1['goods_id']}}" target="_blank"><img width="163px" height="248px" src="{{$vv1['goods_img']}}"/></a>
                     </li>
                 @endforeach
             </ul>
@@ -180,7 +180,7 @@
                         <li class="yui3-u-1-6">
                             <dl class="picDl huozhe">
                                 <dd>
-                                    <a href="" class="pic"><img src="{{$vv2['goods_img']}}" alt=""/></a>
+                                    <a href="/index/item?goods_id={{$vv2['goods_id']}}" class="pic"><img src="{{$vv2['goods_img']}}" alt=""/></a>
                                     <div class="like-text">
                                         <p>{{$vv2['goods_name']}}</p>
                                         <h3>¥{{$vv2['goods_price']}}</h3>
