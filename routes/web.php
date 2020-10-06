@@ -63,6 +63,8 @@ Route::prefix('index')->group(function () {
     Route::post('addCart','index\CartController@addCart');
     //购物车展示
     Route::get('/cart/list','index\CartController@cartList');
+    //计算总价
+    Route::post('/getAllPrice','index\CartController@getAllPrice');
 
     //支付失败
     Route::any('/payfail','index\OrderController@payfail');

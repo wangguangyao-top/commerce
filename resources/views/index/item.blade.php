@@ -2,10 +2,10 @@
 @section('title','品优购，优质！优质！')
 @section('subject')
     <link rel="icon" href="/index/assets/img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="/index/css/pages-item.css" />
-    <link rel="stylesheet" type="text/css" href="/index/css/pages-zoom.css" />
-    <link rel="stylesheet" type="text/css" href="/index/css/widget-cartPanelView.css" />
+    <link rel="stylesheet" type="text/css" href="/index/css/webbase.css"/>
+    <link rel="stylesheet" type="text/css" href="/index/css/pages-item.css"/>
+    <link rel="stylesheet" type="text/css" href="/index/css/pages-zoom.css"/>
+    <link rel="stylesheet" type="text/css" href="/index/css/widget-cartPanelView.css"/>
 
     <script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/index/js/model/cartModel.js"></script>
@@ -33,17 +33,18 @@
     <script src="/index/tck/js/modallayer-ie.min.js"></script>
     <!--购物车单元格 模板-->
     <script type="text/template" id="tbar-cart-item-template">
-        <div class="tbar-cart-item" >
+        <div class="tbar-cart-item">
             <div class="jtc-item-promo">
                 <em class="promo-tag promo-mz">满赠<i class="arrow"></i></em>
                 <div class="promo-text">已购满600元，您可领赠品</div>
             </div>
             <div class="jtc-item-goods">
-                <span class="p-img"><a href="#" target="_blank"><img src="{2}" alt="{1}" height="50" width="50" /></a></span>
+                <span class="p-img"><a href="#" target="_blank"><img src="{2}" alt="{1}" height="50"
+                                                                     width="50"/></a></span>
                 <div class="p-name">
                     <a href="#">{1}</a>
                 </div>
-                <div class="p-price"><strong>¥{3}</strong>×{4} </div>
+                <div class="p-price"><strong>¥{3}</strong>×{4}</div>
                 <a href="#none" class="p-del J-del">删除</a>
             </div>
         </div>
@@ -51,15 +52,15 @@
     <!--侧栏面板结束-->
 
     <script type="text/javascript">
-        $(function(){
-            $("#service").hover(function(){
+        $(function () {
+            $("#service").hover(function () {
                 $(".service").show();
-            },function(){
+            }, function () {
                 $(".service").hide();
             });
-            $("#shopcar").hover(function(){
+            $("#shopcar").hover(function () {
                 $("#shopcarlist").show();
-            },function(){
+            }, function () {
                 $("#shopcarlist").hide();
             });
 
@@ -93,7 +94,8 @@
                             @php $goods_img=explode(',',$goods_info->goods_img);
                                 $goods_img=array_shift($goods_img);
                             @endphp
-                            <span class="jqzoom"><img jqimg="{{$goods_img}}" src="{{$goods_img}}" style="width: 100%;height: 100%" /></span>
+                            <span class="jqzoom"><img jqimg="{{$goods_img}}" src="{{$goods_img}}"
+                                                      style="width: 100%;height: 100%"/></span>
                         </div>
                         <!--下方的缩略图-->
                         <div class="spec-scroll">
@@ -105,7 +107,7 @@
                                         $goods_imgs=explode(',',$goods_info->goods_img);
                                     @endphp
                                     @foreach($goods_imgs as $k=>$v)
-                                            <li><img src="{{$v}}" bimg="{{$v}}" onmousemove="preview(this)" /></li>
+                                        <li><img src="{{$v}}" bimg="{{$v}}" onmousemove="preview(this)"/></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -151,7 +153,7 @@
                                 <i>支　　持</i>
                             </div>
                             <div class="fl fix-width">
-                                <em class="t-gray">以旧换新，闲置手机回收  4G套餐超值抢  礼品购</em>
+                                <em class="t-gray">以旧换新，闲置手机回收 4G套餐超值抢 礼品购</em>
                             </div>
                         </div>
                         <div class="summary-wrap">
@@ -166,17 +168,21 @@
                     <div class="clearfix choose">
                         <div id="specification" class="summary-wrap clearfix">
                             @foreach($sku as $k7=>$v7)
-                            <dl>
-                                <dt>
-                                <div class="fl title">
-                                    <i>{{$v7['attr_name']}}</i>
-                                </div>
-                                </dt>
-                                @foreach($v7['att2'] as $k8=>$v8)
-                                    <dd><a href="javascript:;" data-id="{{$v8['id']}}" class="{{$k8==0?'selected sku':'sku'}}">{{$v8['attrval_name']}}<span title="点击取消选择">&nbsp;</span>
-                                        </a></dd>
-                                @endforeach
-                            </dl>
+                                @php $str=0 @endphp
+                                <dl>
+                                    <dt>
+                                        <div class="fl title">
+                                            <i>{{$v7['attr_name']}}</i>
+                                        </div>
+                                    </dt>
+                                    @foreach($v7['att2'] as $k8=>$v8)
+                                        @php $str+=1 @endphp
+                                        <dd><a href="javascript:;" data-id="{{$v8['id']}}"
+                                               class="{{$str==1?'selected sku':'sku'}}">{{$v8['attrval_name']}}<span
+                                                    title="点击取消选择">&nbsp;</span>
+                                            </a></dd>
+                                    @endforeach
+                                </dl>
                             @endforeach
                         </div>
 
@@ -184,7 +190,8 @@
                             <div class="fl title">
                                 <div class="control-group">
                                     <div class="controls">
-                                        <input autocomplete="off" type="text" id="nums" value="1" minnum="1" class="itxt" />
+                                        <input autocomplete="off" type="text" id="nums" value="1" minnum="1"
+                                               class="itxt"/>
                                         <a href="javascript:void(0)" class="increment plus" id="jia">+</a>
                                         <a href="javascript:void(0)" class="increment mins" id="jian">-</a>
                                     </div>
@@ -232,7 +239,7 @@
                                 <li>
                                     <div class="list-wrap">
                                         <div class="p-img">
-                                            <img src="img/_/part01.png" />
+                                            <img src="img/_/part01.png"/>
                                         </div>
                                         <div class="attr">
                                             <em>Apple苹果iPhone 6s (A1699)</em>
@@ -251,7 +258,7 @@
                                 <li>
                                     <div class="list-wrap">
                                         <div class="p-img">
-                                            <img src="img/_/part02.png" />
+                                            <img src="img/_/part02.png"/>
                                         </div>
                                         <div class="attr">
                                             <em>Apple苹果iPhone 6s (A1699)</em>
@@ -270,7 +277,7 @@
                                 <li>
                                     <div class="list-wrap">
                                         <div class="p-img">
-                                            <img src="img/_/part03.png" />
+                                            <img src="img/_/part03.png"/>
                                         </div>
                                         <div class="attr">
                                             <em>Apple苹果iPhone 6s (A1699)</em>
@@ -287,7 +294,7 @@
                                     </div>
                                     <div class="list-wrap">
                                         <div class="p-img">
-                                            <img src="img/_/part02.png" />
+                                            <img src="img/_/part02.png"/>
                                         </div>
                                         <div class="attr">
                                             <em>Apple苹果iPhone 6s (A1699)</em>
@@ -304,7 +311,7 @@
                                     </div>
                                     <div class="list-wrap">
                                         <div class="p-img">
-                                            <img src="img/_/part03.png" />
+                                            <img src="img/_/part03.png"/>
                                         </div>
                                         <div class="attr">
                                             <em>Apple苹果iPhone 6s (A1699)</em>
@@ -334,7 +341,7 @@
                             <div class="fl master">
                                 <div class="list-wrap">
                                     <div class="p-img">
-                                        <img src="img/_/l-m01.png" />
+                                        <img src="img/_/l-m01.png"/>
                                     </div>
                                     <em>￥5299</em>
                                     <i>+</i>
@@ -344,7 +351,7 @@
                                 <ul class="suit-list">
                                     <li class="">
                                         <div id="">
-                                            <img src="img/_/dp01.png" />
+                                            <img src="img/_/dp01.png"/>
                                         </div>
                                         <i>Feless费勒斯VR</i>
                                         <label data-toggle="checkbox" class="checkbox-pretty">
@@ -352,21 +359,21 @@
                                         </label>
                                     </li>
                                     <li class="">
-                                        <div id=""><img src="img/_/dp02.png" /> </div>
+                                        <div id=""><img src="img/_/dp02.png"/></div>
                                         <i>Feless费勒斯VR</i>
                                         <label data-toggle="checkbox" class="checkbox-pretty">
                                             <input type="checkbox"><span>50</span>
                                         </label>
                                     </li>
                                     <li class="">
-                                        <div id=""><img src="img/_/dp03.png" /></div>
+                                        <div id=""><img src="img/_/dp03.png"/></div>
                                         <i>Feless费勒斯VR</i>
                                         <label data-toggle="checkbox" class="checkbox-pretty">
                                             <input type="checkbox"><span>59</span>
                                         </label>
                                     </li>
                                     <li class="">
-                                        <div id=""><img src="img/_/dp04.png" /></div>
+                                        <div id=""><img src="img/_/dp04.png"/></div>
                                         <i>Feless费勒斯VR</i>
                                         <label data-toggle="checkbox" class="checkbox-pretty">
                                             <input type="checkbox"><span>99</span>
@@ -431,9 +438,9 @@
                                     <li>机身内存：64GB</li>
                                 </ul>
                                 <div class="intro-detail">
-                                    <img src="img/_/intro01.png" />
-                                    <img src="img/_/intro02.png" />
-                                    <img src="img/_/intro03.png" />
+                                    <img src="img/_/intro01.png"/>
+                                    <img src="img/_/intro02.png"/>
+                                    <img src="img/_/intro03.png"/>
                                 </div>
                             </div>
                             <div id="two" class="tab-pane">
@@ -461,7 +468,7 @@
                         <li class="yui3-u-1-6">
                             <div class="list-wrap">
                                 <div class="p-img">
-                                    <img src="img/_/itemlike01.png" />
+                                    <img src="img/_/itemlike01.png"/>
                                 </div>
                                 <div class="attr">
                                     <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -480,7 +487,7 @@
                         <li class="yui3-u-1-6">
                             <div class="list-wrap">
                                 <div class="p-img">
-                                    <img src="img/_/itemlike02.png" />
+                                    <img src="img/_/itemlike02.png"/>
                                 </div>
                                 <div class="attr">
                                     <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
@@ -499,7 +506,7 @@
                         <li class="yui3-u-1-6">
                             <div class="list-wrap">
                                 <div class="p-img">
-                                    <img src="img/_/itemlike03.png" />
+                                    <img src="img/_/itemlike03.png"/>
                                 </div>
                                 <div class="attr">
                                     <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -518,7 +525,7 @@
                         <li class="yui3-u-1-6">
                             <div class="list-wrap">
                                 <div class="p-img">
-                                    <img src="img/_/itemlike04.png" />
+                                    <img src="img/_/itemlike04.png"/>
                                 </div>
                                 <div class="attr">
                                     <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -537,7 +544,7 @@
                         <li class="yui3-u-1-6">
                             <div class="list-wrap">
                                 <div class="p-img">
-                                    <img src="img/_/itemlike05.png" />
+                                    <img src="img/_/itemlike05.png"/>
                                 </div>
                                 <div class="attr">
                                     <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -556,7 +563,7 @@
                         <li class="yui3-u-1-6">
                             <div class="list-wrap">
                                 <div class="p-img">
-                                    <img src="img/_/itemlike06.png" />
+                                    <img src="img/_/itemlike06.png"/>
                                 </div>
                                 <div class="attr">
                                     <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -586,10 +593,11 @@
                 <div class="toolbar-panels J-panel">
 
                     <!-- 购物车 -->
-                    <div style="visibility: hidden;" class="J-content toolbar-panel tbar-panel-cart toolbar-animate-out">
+                    <div style="visibility: hidden;"
+                         class="J-content toolbar-panel tbar-panel-cart toolbar-animate-out">
                         <h3 class="tbar-panel-header J-panel-header">
                             <a href="" class="title"><i></i><em class="title">购物车</em></a>
-                            <span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('cart');" ></span>
+                            <span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('cart');"></span>
                         </h3>
                         <div class="tbar-panel-main">
                             <div class="tbar-panel-content J-panel-content">
@@ -609,23 +617,25 @@
                         <!-- 小计 -->
                         <div id="cart-footer" class="tbar-panel-footer J-panel-footer">
                             <div class="tbar-checkout">
-                                <div class="jtc-number"> <strong class="J-count" id="cart-number">0</strong>件商品 </div>
-                                <div class="jtc-sum"> 共计：<strong class="J-total" id="cart-sum">¥0</strong> </div>
+                                <div class="jtc-number"><strong class="J-count" id="cart-number">0</strong>件商品</div>
+                                <div class="jtc-sum"> 共计：<strong class="J-total" id="cart-sum">¥0</strong></div>
                                 <a class="jtc-btn J-btn" href="#none" target="_blank">去购物车结算</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- 我的关注 -->
-                    <div style="visibility: hidden;" data-name="follow" class="J-content toolbar-panel tbar-panel-follow">
+                    <div style="visibility: hidden;" data-name="follow"
+                         class="J-content toolbar-panel tbar-panel-follow">
                         <h3 class="tbar-panel-header J-panel-header">
                             <a href="#" target="_blank" class="title"> <i></i> <em class="title">我的关注</em> </a>
-                            <span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('follow');"></span>
+                            <span class="close-panel J-close"
+                                  onclick="cartPanelView.tbar_panel_close('follow');"></span>
                         </h3>
                         <div class="tbar-panel-main">
                             <div class="tbar-panel-content J-panel-content">
                                 <div class="tbar-tipbox2">
-                                    <div class="tip-inner"> <i class="i-loading"></i> </div>
+                                    <div class="tip-inner"><i class="i-loading"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -633,10 +643,12 @@
                     </div>
 
                     <!-- 我的足迹 -->
-                    <div style="visibility: hidden;" class="J-content toolbar-panel tbar-panel-history toolbar-animate-in">
+                    <div style="visibility: hidden;"
+                         class="J-content toolbar-panel tbar-panel-history toolbar-animate-in">
                         <h3 class="tbar-panel-header J-panel-header">
                             <a href="#" target="_blank" class="title"> <i></i> <em class="title">我的足迹</em> </a>
-                            <span class="close-panel J-close" onclick="cartPanelView.tbar_panel_close('history');"></span>
+                            <span class="close-panel J-close"
+                                  onclick="cartPanelView.tbar_panel_close('history');"></span>
                         </h3>
                         <div class="tbar-panel-main">
                             <div class="tbar-panel-content J-panel-content">
@@ -644,17 +656,18 @@
                                     <input type="hidden">
                                     <ul>
                                         @if(!empty($historyList))
-                                        @foreach($historyList as $k=>$v)
-                                        <li class="jth-item">
-                                            @php
-                                                $goods_img=explode(',',$v['goods_img']);
-                                                $v['goods_img']=array_shift($goods_img);
-                                            @endphp
-                                            <a href="#" class="img-wrap"> <img src="{{$v['goods_img']}}" height="100" width="100" /> </a>
-                                            <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
-                                            <a href="#" target="_blank" class="price">￥{{$v['goods_price']}}</a>
-                                        </li>
-                                        @endforeach
+                                            @foreach($historyList as $k=>$v)
+                                                <li class="jth-item">
+                                                    @php
+                                                        $goods_img=explode(',',$v['goods_img']);
+                                                        $v['goods_img']=array_shift($goods_img);
+                                                    @endphp
+                                                    <a href="#" class="img-wrap"> <img src="{{$v['goods_img']}}"
+                                                                                       height="100" width="100"/> </a>
+                                                    <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
+                                                    <a href="#" target="_blank" class="price">￥{{$v['goods_price']}}</a>
+                                                </li>
+                                            @endforeach
                                         @endif
                                     </ul>
                                     <a href="{{url('index/history')}}" class="history-bottom-more">查看更多足迹商品 &gt;&gt;</a>
@@ -670,17 +683,20 @@
 
                 <!-- 侧栏按钮 -->
                 <div class="toolbar-tabs J-tab">
-                    <div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车" tag="cart" >
+                    <div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车"
+                         tag="cart">
                         <i class="tab-ico"></i>
                         <em class="tab-text"></em>
                         <span class="tab-sub J-count " id="tab-sub-cart-count">0</span>
                     </div>
-                    <div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注" tag="follow" >
+                    <div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注"
+                         tag="follow">
                         <i class="tab-ico"></i>
                         <em class="tab-text"></em>
                         <span class="tab-sub J-count hide">0</span>
                     </div>
-                    <div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history" data="我的足迹" tag="history" >
+                    <div onclick="cartPanelView.tabItemClick('history')" class="toolbar-tab tbar-tab-history"
+                         data="我的足迹" tag="history">
                         <i class="tab-ico"></i>
                         <em class="tab-text"></em>
                         <span class="tab-sub J-count hide">0</span>
@@ -688,8 +704,10 @@
                 </div>
 
                 <div class="toolbar-footer">
-                    <div class="toolbar-tab tbar-tab-top" > <a href="#"> <i class="tab-ico  "></i> <em class="footer-tab-text">顶部</em> </a> </div>
-                    <div class="toolbar-tab tbar-tab-feedback" > <a href="#" target="_blank"> <i class="tab-ico"></i> <em class="footer-tab-text ">反馈</em> </a> </div>
+                    <div class="toolbar-tab tbar-tab-top"><a href="#"> <i class="tab-ico  "></i> <em
+                                class="footer-tab-text">顶部</em> </a></div>
+                    <div class="toolbar-tab tbar-tab-feedback"><a href="#" target="_blank"> <i class="tab-ico"></i> <em
+                                class="footer-tab-text ">反馈</em> </a></div>
                 </div>
 
                 <div class="toolbar-mini"></div>
@@ -706,28 +724,28 @@
             /**
              * sku计算价格
              */
-            var arr=[];
-            var goods_id={{$goods_info->goods_id}};
-            var sku=$('.selected').each(function () {
+            var arr = [];
+            var goods_id ={{$goods_info->goods_id}};
+            var sku = $('.selected').each(function () {
                 arr.push($(this).data('id'));
             });
 
-            var url='/index/item_sku';
-            var data={
-                id:arr,
-                goods_id:goods_id
+            var url = '/index/item_sku';
+            var data = {
+                id: arr,
+                goods_id: goods_id
             };
             $.ajax({
-                type:'post',
-                url:url,
-                data:data,
-                dataType:'json',
-                success:function (info) {
-                    if(info.code==200){
+                type: 'post',
+                url: url,
+                data: data,
+                dataType: 'json',
+                success: function (info) {
+                    if (info.code == 200) {
                         $('.price3').text(info.data['goods_price']);
                         $('.goods_store').val(info.data['goods_store']);
                         $('.goods_price').val(info.data['goods_price']);
-                    }else{
+                    } else {
                         // alert(info.msg);
                     }
                 }
@@ -735,14 +753,14 @@
             /**
              * 加号点击事件
              */
-            $(document).on('click','#jia',function(){
+            $(document).on('click', '#jia', function () {
                 //获取购买数量值
-                var num=$('#nums').val()
+                var num = $('#nums').val()
                 //购买数量加1
-                jnum=parseInt(num)+1
-                var goods_store=$('.goods_store').val();
-                if(jnum>goods_store){
-                    jnum=goods_store;
+                jnum = parseInt(num) + 1
+                var goods_store = $('.goods_store').val();
+                if (jnum > goods_store) {
+                    jnum = goods_store;
                 }
                 //文本框赋值
                 $('#nums').val(jnum)
@@ -750,16 +768,16 @@
             /**
              * 减号点击事件
              */
-            $(document).on('click','#jian',function(){
+            $(document).on('click', '#jian', function () {
                 //获取购买数量
-                var num=$('#nums').val()
+                var num = $('#nums').val()
                 //判断是否等于1
-                if(num==1){
+                if (num == 1) {
                     //等于1 赋值1
                     $('#nums').val(num)
-                }else{
+                } else {
                     //不等于1  减1
-                    jnum=parseInt(num)-1
+                    jnum = parseInt(num) - 1
                     //赋值
                     $('#nums').val(jnum)
                 }
@@ -767,25 +785,25 @@
             /**
              * 文本框失焦事件
              */
-            $(document).on('blur','#nums',function(){
+            $(document).on('blur', '#nums', function () {
                 //获取购买数量
-                var num=$('#nums').val()
+                var num = $('#nums').val()
                 //正则
-                var reg=/^[0-9]{1,}$/
+                var reg = /^[0-9]{1,}$/
                 //匹配正则
-                if(!reg.test(num)){
+                if (!reg.test(num)) {
                     //匹配不成功 赋值1
                     $('#nums').val(1)
-                }else{
+                } else {
                     //匹配成功 判断是否小于等于0
-                    if(num<=0){
+                    if (num <= 0) {
                         //小于等于0 赋值1
                         $('#nums').val(1)
-                    }else{
-                        var goods_store=$('.goods_store').val();
-                        var jnum2=parseInt(num);
-                        if(jnum2>goods_store){
-                            jnum2=goods_store;
+                    } else {
+                        var goods_store = $('.goods_store').val();
+                        var jnum2 = parseInt(num);
+                        if (jnum2 > goods_store) {
+                            jnum2 = goods_store;
                         }
                         //不小于等于0 赋值
                         $('#nums').val(parseInt(jnum2))
@@ -795,32 +813,32 @@
             /**
              * SKU选择
              */
-            $(document).on('click','.sku',function () {
+            $(document).on('click', '.sku', function () {
                 $(this).parent().siblings().children().removeClass('selected sku2');
                 $(this).parent().children().addClass('selected sku2');
-                var arr=[];
-                var goods_id="{{$goods_info->goods_id}}";
-                var sku=$('.selected').each(function () {
+                var arr = [];
+                var goods_id = "{{$goods_info->goods_id}}";
+                var sku = $('.selected').each(function () {
                     arr.push($(this).data('id'));
                 });
-                var url='/index/item_sku';
-                var data={
-                    id:arr,
-                    goods_id:goods_id
+                var url = '/index/item_sku';
+                var data = {
+                    id: arr,
+                    goods_id: goods_id
                 };
                 $.ajax({
-                    type:'post',
-                    url:url,
-                    data:data,
-                    dataType:'json',
-                    success:function (info) {
-                       if(info.code==200){
+                    type: 'post',
+                    url: url,
+                    data: data,
+                    dataType: 'json',
+                    success: function (info) {
+                        if (info.code == 200) {
                             $('.price3').text(info.data['goods_price']);
                             $('.goods_store').val(info.data['goods_store']);
                             $('.goods_price').val(info.data['goods_price']);
-                       }else{
-                           alert(info.msg);
-                       }
+                        } else {
+                            alert(info.msg);
+                        }
                     }
                 })
             })
@@ -828,58 +846,58 @@
             /**
              * 购物车
              */
-            $(document).on('click','#addCart',function () {
+            $(document).on('click', '#addCart', function () {
                 //获取商品id
-                var goods_id="{{$goods_info->goods_id}}";
+                var goods_id = "{{$goods_info->goods_id}}";
                 //空字符拼接属性值ID
-                var sku=''
+                var sku = ''
                 //循环获取商品属性值ID
-                $('.selected').each(function(){
-                    sku+=$(this).data('id')+','
+                $('.selected').each(function () {
+                    sku += $(this).data('id') + ','
                 })
                 //取出多余字符
-                sku=sku.substr(0,sku.length-1)
+                sku = sku.substr(0, sku.length - 1)
                 //获取购买数量
-                var nums=$('#nums').val()
+                var nums = $('#nums').val()
                 //发送请求
                 $.ajax({
                     //提交地址
-                    url:'addCart',
+                    url: 'addCart',
                     //提交方式
-                    type:'post',
+                    type: 'post',
                     //提交数据
-                    data:{goods_id:goods_id,sku:sku,nums:nums},
+                    data: {goods_id: goods_id, sku: sku, nums: nums},
                     //设置同步异步
-                    async:false,
+                    async: false,
                     //预期返回数据类型
-                    dataType:'json',
+                    dataType: 'json',
                     //回调函数
-                    success:function(res){
-                        if(res.status=='400011'){
+                    success: function (res) {
+                        if (res.status == '400011') {
                             alert(res.msg)
-                            location.href='/index/login?url=/index/item?goods_id='+goods_id
+                            location.href = '/index/login?url=/index/item?goods_id=' + goods_id
                         }
-                        if(res.status=='200'){
-                                let option = {
-                                    popupTime: 2,
-                                    hook: {
-                                        initStart: function () {
-                                            // 检查之前老旧实例如果存在则销毁
-                                            if (document.querySelector('#modal-layer-container'))
-                                                ModalLayer.removeAll();
-                                        }
-                                    },
-                                    displayProgressBar: true,
-                                    displayProgressBarPos: 'top',
-                                    displayProgressBarColor: 'red',
-                                    content: '<i class="fas fa-check" style="color: deepskyblue"></i>加入购物车成功',
-                                };
-                                ModalLayer.msg(option);
-                                location.href='/index/cart/list'
+                        if (res.status == '200') {
+                            let option = {
+                                popupTime: 2,
+                                hook: {
+                                    initStart: function () {
+                                        // 检查之前老旧实例如果存在则销毁
+                                        if (document.querySelector('#modal-layer-container'))
+                                            ModalLayer.removeAll();
+                                    }
+                                },
+                                displayProgressBar: true,
+                                displayProgressBarPos: 'top',
+                                displayProgressBarColor: 'red',
+                                content: '<i class="fas fa-check" style="color: deepskyblue"></i>加入购物车成功',
+                            };
+                            ModalLayer.msg(option);
+                            location.href = '/index/cart/list'
                         }
                     }
                 })
             })
         })
     </script>
-    @endsection
+@endsection

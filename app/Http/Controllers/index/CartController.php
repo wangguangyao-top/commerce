@@ -83,6 +83,9 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * 购物车展示页面
+     */
     public function cartList(){
         //获取用户ID
         $user=session('user');
@@ -101,14 +104,12 @@ class CartController extends Controller
                     $v->goods_price=Shop_skuModel::where(['goods_id'=>$v->goods_id,'sku'=>$v->sku])->value('goods_price');
                     //sku转换数组
                     $sku=explode(',',$v->sku);
-                    //清空
-                    $v->sku='';
                     //循环找属性名称
                     foreach($sku as $k1=>$v1){
                         $attrval=Attrval::where(['id'=>$v1])->first();
                         $attr=attr::where(['id'=>$attrval->attr_id])->first();
                         //拼接商品属性名称
-                        $v->sku.=$attr->attr_name.':'.$attrval->attrval_name.',';
+                        $v->sku_name.=$attr->attr_name.':'.$attrval->attrval_name.',';
                     }
                     //去除多余字符
                     $v->sku=trim($v->sku,',');
@@ -121,5 +122,34 @@ class CartController extends Controller
         }
         //渲染视图
         return view('index/cart',compact('cart_info'));
+    }
+
+    /**
+     * 重新结算总价
+     */
+    public function getAllPrice(){
+        //接值
+        $data=request()->goods_info;
+        //判断是否为空
+        if(!empty($data)){
+            $goods_info=[];
+            //循环分割二维数组
+            foreach($data as $k=>$v){
+                $info=explode(':',$v);
+                $info1=Shop_cart::select('cart_nums')->where([['goods_id','=',$info[0]],['sku','=',$info[1]]])->first();
+                $info1=json_decode($info1,true);
+                $info2=Shop_skuModel::select('goods_id','goods_price')->where([['goods_id','=',$info[0]],['sku','=',$info[1]]])->first();
+                $info2=json_decode($info2,true);
+                $goods_info[]=$info2['goods_price']*$info1['cart_nums'];
+            }
+            $goods_info=array_sum($goods_info);
+            if($goods_info){
+                return ['code'=>200,'msg'=>'OK','data'=>$goods_info];
+            }else{
+                return ['code'=>1000,'msg'=>'NO','data'=>0];
+            }
+        }else{
+            //为空 返回0
+        }
     }
 }
