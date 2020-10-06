@@ -269,8 +269,8 @@
                         <div><span>共10页&nbsp;</span><span>
                         <div class="goods-list">
                             <ul class="yui3-g">
-                                @foreach($data as $v)
-                                    <li class="yui3-u-1-5">
+                                    @foreach($data as $v)
+                                        <li class="yui3-u-1-5">
                                         <div class="list-wrap">
                                             <div class="p-img">
                                                 <a href="{{url('index/item?goods_id='.$v->goods_id)}}"
@@ -300,7 +300,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                @endforeach
+                                    @endforeach
                             </ul>
                         </div>
                         <div class="fr page">
