@@ -80,6 +80,7 @@ class OrderController extends Controller
             //返回
             return json_encode(['status'=>'500003','msg'=>'请选择收货地址。']);
         }else{
+            $user=json_decode($user,true);
             //查询收货地址
             $address_info=address::where(['id'=>$address,'is_del'=>1,'user_id'=>$user['user_id']])->first();
             //判断是否为空
