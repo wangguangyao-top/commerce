@@ -142,7 +142,7 @@ $(function(){
             submitHandler: function() {
                 //验证通过后 的js代码写在这里
             }
-        })      
+        })
         })
         //下面是一些常用的验证规则扩展
         /*-------------验证插件配置 懒人建站http://www.51xuediannao.com/-------------*/
@@ -156,7 +156,7 @@ $(function(){
         equalTo: "请再次输入相同的值"
         });
         /*-------------扩展验证规则使用-------------*/
-        //邮箱 
+        //邮箱
         jQuery.validator.addMethod("mail", function (value, element) {
         var mail = /^[a-z0-9._%-]+@([a-z0-9-]+\.)+[a-z]{2,4}$/;
         return this.optional(element) || (mail.test(value));
@@ -166,36 +166,36 @@ $(function(){
         var phone = /^0\d{2,3}-\d{7,8}$/;
         return this.optional(element) || (phone.test(value));
         }, "电话格式如：0371-68787027");
-        //区号验证规则  
+        //区号验证规则
         jQuery.validator.addMethod("ac", function (value, element) {
         var ac = /^0\d{2,3}$/;
         return this.optional(element) || (ac.test(value));
         }, "区号如：010或0371");
-        //无区号电话验证规则  
+        //无区号电话验证规则
         jQuery.validator.addMethod("noactel", function (value, element) {
         var noactel = /^\d{7,8}$/;
         return this.optional(element) || (noactel.test(value));
         }, "电话格式如：68787027");
-        //手机验证规则  
+        //手机验证规则
         jQuery.validator.addMethod("mobile", function (value, element) {
         var mobile = /^1[3|4|5|7|8]\d{9}$/;
         return this.optional(element) || (mobile.test(value));
         }, "手机格式不对");
-        //邮箱或手机验证规则  
+        //邮箱或手机验证规则
         jQuery.validator.addMethod("mm", function (value, element) {
         var mm = /^[a-z0-9._%-]+@([a-z0-9-]+\.)+[a-z]{2,4}$|^1[3|4|5|7|8]\d{9}$/;
         return this.optional(element) || (mm.test(value));
         }, "格式不对");
-        //电话或手机验证规则  
+        //电话或手机验证规则
         jQuery.validator.addMethod("tm", function (value, element) {
         var tm=/(^1[3|4|5|7|8]\d{9}$)|(^\d{3,4}-\d{7,8}$)|(^\d{7,8}$)|(^\d{3,4}-\d{7,8}-\d{1,4}$)|(^\d{7,8}-\d{1,4}$)/;
         return this.optional(element) || (tm.test(value));
         }, "格式不对");
         //年龄
-        jQuery.validator.addMethod("age", function(value, element) {   
+        jQuery.validator.addMethod("age", function(value, element) {
         var age = /^(?:[1-9][0-9]?|1[01][0-9]|120)$/;
         return this.optional(element) || (age.test(value));
-        }, "不能超过120岁"); 
+        }, "不能超过120岁");
         ///// 20-60   /^([2-5]\d)|60$/
         //传真
         jQuery.validator.addMethod("fax",function(value,element){
@@ -270,15 +270,15 @@ $(function(){
                         <dl>
                             <dt><i>·</i> 我的中心</dt>
                             <dd><a href="{{url('index/orderPerson')}}">我的收藏</a></dd>
-                            <dd><a href="{{url('index/orderFootmark')}}">我的足迹</a></dd>
+                            <dd><a href="{{url('index/history')}}">我的足迹</a></dd>
                         </dl>
                         <dl>
                             <dt><i>·</i> 物流消息</dt>
                         </dl>
                         <dl>
                             <dt><i>·</i> 设置</dt>
-                            <dd><a href="{{url('index/orderInfo')}}">个人信息</a></dd>
-                            <dd><a href="{{url('index/orderAddress')}}"  >地址管理</a></dd>
+                            <dd><a href="{{url('index/show')}}">个人信息</a></dd>
+                            <dd><a href="{{url('index/address')}}"  >地址管理</a></dd>
                             <dd><a href="{{url('index/orderSafe')}}"  class="list-active" >安全管理</a></dd>
                         </dl>
                     </div>
@@ -307,7 +307,7 @@ $(function(){
                                     <label>确认新密码</label>
                                     <input type="password" name="re_pwd" class="form-item" id="tel_num" placeholder="请确认新密码">
                                 </div>
-                               
+
 
                                     <div class="form-group">
                                         <div class="controls">
@@ -340,7 +340,7 @@ $(function(){
                                 <form class="sui-form form-horizontal sui-validate" data-toggle='validate' id="bind-form">
                                     <div class="control-group">
                                         <label for="inputPassword" class="control-label">验证方式：</label>
-                                        <div class="controls fixed">手机验证（138****9856）</div>                            
+                                        <div class="controls fixed">手机验证（138****9856）</div>
                                     </div>
                                      <div class="control-group">
                                         <label for="inputcode" class="control-label">验证码：</label>
@@ -497,7 +497,7 @@ $(function(){
 undefined
 </html>
 <script type="text/javascript">
-    
+
 
     $(document).on('click',"#but",function(){
         var pwd = $("input[name='pwd']").val();

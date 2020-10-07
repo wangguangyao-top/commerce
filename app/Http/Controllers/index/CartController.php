@@ -39,10 +39,13 @@ class CartController extends Controller
             //判断是否有sku
             if(empty($data['sku'])){
                 //没有sku 从商品表中获取库存
-                $nums=GoodsModel::where(['goods_id'=>$data['goods_id']])->value('goods_store');
+                return json_encode(['status'=>'1000','msg'=>'缺少SKU属性']);
             }else{
                 //有sku 则查询该对应的库存信息
                 $nums=Shop_skuModel::where(['goods_id'=>$data['goods_id'],'sku'=>$data['sku']])->value('goods_store');
+                if(empty($nums)){
+                    return json_encode(['status'=>'1000','msg'=>'缺少SKU属性']);
+                }
             }
             //查询是否加入过购物车
             $is_cart=Shop_cart::where(['user_id'=>$user['user_id'],'goods_id'=>$data['goods_id'],'sku'=>$data['sku']])->first();
@@ -173,6 +176,7 @@ class CartController extends Controller
         }
         //判断是否为空
         if(!empty($goods_info)){
+            $user=json_decode($user,true);
             //切割
             $goods_info=explode('。',$goods_info);
             //循环
@@ -221,6 +225,9 @@ class CartController extends Controller
                             ->orderBy('is_default','desc')
                             ->get()
                             ->Toarray();
+            if(empty($user_address)){
+                dd(133);
+            }
             //循环获取收货地址 省、市、区/县
             foreach($user_address as $k=>&$v){
                 //省
