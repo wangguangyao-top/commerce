@@ -19,7 +19,7 @@
             <ul class="fl">
                 <li class="f-item">品优购欢迎您！</li>
                 @php
-                $user=session('user');
+                $user=json_decode(session('user'),true);
                 @endphp
                 @if(empty($user))
                     <li class="f-item">请先<a href="{{url('index/login')}}">登录</a>　<span><a href="{{url('index/register')}}">免费注册</a></span></li>

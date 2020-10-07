@@ -876,8 +876,7 @@
                         if (res.status == '400011') {
                             alert(res.msg)
                             location.href = '/index/login?url=/index/item?goods_id=' + goods_id
-                        }
-                        if (res.status == '200') {
+                        }else if (res.status == '200') {
                             let option = {
                                 popupTime: 2,
                                 hook: {

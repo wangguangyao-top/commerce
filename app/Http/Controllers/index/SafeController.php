@@ -25,13 +25,13 @@ class SafeController extends Controller
      */
     public function create()
     {
-        $data = request()->all();
-        $info = [
-            'pwd' = 'pwd';
-            'n_pwd' = 'n_pwd';
-            're_pwd' = 're_pwd';
-        ];
-        dd($info);
+        // $data = request()->all();
+        // $info = [
+        //     'pwd' = 'pwd';
+        //     'n_pwd' = 'n_pwd';
+        //     're_pwd' = 're_pwd';
+        // ];
+        // dd($info);
     }
 
     /**

@@ -104,7 +104,7 @@ class CartController extends Controller
             //获取当前用户下的加入购物车的商品
             $cart_info=Shop_cart::select('shop_cart.*','goods_name','goods_img','goods_price')
                                 ->leftjoin('shop_goods','shop_cart.goods_id','=','shop_goods.goods_id')
-                                ->where(['user_id'=>$user['user_id']])
+                                ->where(['user_id'=>$user['user_id'],'shop_cart.is_del'=>1])
                                 ->get();
             //循环判断
             foreach($cart_info as $k=>$v){
@@ -183,6 +183,7 @@ class CartController extends Controller
             foreach($goods_info as $k=>$v){
                 //再次分割
                 $info=explode(':',$v);
+                $info[1]=$info[1] ? $info[1] : 0;
                 //查询数据
                 $goods_info[$k]=Shop_cart::select('shop_cart.*','goods_name','goods_price','goods_img')
                                 ->leftjoin('shop_goods','shop_cart.goods_id','=','shop_goods.goods_id')
@@ -194,16 +195,19 @@ class CartController extends Controller
             foreach($goods_info as $k=>&$v){
                 //分割sku
                 $sku=explode(',',$v['sku']);
-                //循环查询sku属性
-                foreach($sku as $k1=>$v1){
-                    //查询商品属性值
-                    $attrval=Attrval::where(['id'=>$v1])->first()->Toarray();
-                    //查询商品属性名称
-                    $attr=attr::where(['id'=>$attrval['attr_id']])->first()->Toarray();
-                    $v['sku_name']=$attr['attr_name'].':'.$attrval['attrval_name'];
+                //判断是否为空
+                if($sku[0]!=0){
+                    //循环查询sku属性
+                    foreach($sku as $k1=>$v1){
+                        //查询商品属性值
+                        $attrval=Attrval::where(['id'=>$v1])->first()->Toarray();
+                        //查询商品属性名称
+                        $attr=attr::where(['id'=>$attrval['attr_id']])->first()->Toarray();
+                        $v['sku_name']=$attr['attr_name'].':'.$attrval['attrval_name'];
+                    }
+                    //商品价格为sku的商品价格
+                    $v['goods_price']=Shop_skuModel::where(['goods_id'=>$v['goods_id'],'sku'=>$v['sku']])->value('goods_price');
                 }
-                //商品价格为sku的商品价格
-                $v['goods_price']=Shop_skuModel::where(['goods_id'=>$v['goods_id'],'sku'=>$v['sku']])->value('goods_price');
             }
             //总价
             $money=0;
