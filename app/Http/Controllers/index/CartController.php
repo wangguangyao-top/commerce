@@ -246,4 +246,17 @@ class CartController extends Controller
             die('系统错误');
         }
     }
+//    购物车商品删除
+public function cart_del(Request $request){
+    $cart_id= $request->all();
+//        dd($cart_id);
+    $res = Shop_cart::where("cart_id",$cart_id)->update(['is_del'=>2]);
+    if($res){
+        return $message = [
+            "code"=>00002,
+            "message"=>"删除成功",
+            "success"=>true,
+        ];
+    }
+}
 }
