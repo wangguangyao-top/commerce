@@ -50,7 +50,7 @@ class LoginController extends Controller
             if($user['user_pwd']==decrypt($user_data->user_pwd)){
                 //用户信息存入session
                 $user=json_encode(['user_id'=>$user_data->user_id, 'user_name'=>$user_data->user_name],JSON_UNESCAPED_UNICODE);
-                $user=json_decode($user,true);
+
                 session(['user'=>$user]);
                 //进入主页
                 return json_encode(['status'=>'200','msg'=>'登录成功。'],JSON_UNESCAPED_UNICODE);

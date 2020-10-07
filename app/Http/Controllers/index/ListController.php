@@ -14,15 +14,27 @@ class ListController extends Controller
     public function list()
     {
         //列表品牌
+        $cate_id=request()->cate_id;
+        $where=[];
+        if(!empty($cate_id)){
+            $where[]=['cate_id','=',$cate_id];
+        }
+        $where[]=['is_del','=',1];
         $bran = BrandModel::select('brand_log', 'brand_id')->where('is_del', 1)->limit('18')->get()->toArray();
         //列表商品数据
-        $goods = GoodsModel::where(['is_del' => 1])->paginate(10);
+        $count=GoodsModel::where($where)->get()->toArray();
+        if(!empty($count)){
+            $goods = GoodsModel::where($where)->paginate(10);
+        }else{
+            $goods=GoodsModel::where(['is_del'=>1])->paginate(10);
+        }
         foreach ($goods as $v) {
             $v->goods_name = mb_substr($v->goods_name, 0, 12) . "...";
             $v->goods_img = explode(',', $v->goods_img);
         }
         //价格区间
-        $goods_price = GoodsModel::where(['is_del' => 1])->max('goods_price');
+        $goods_price = GoodsModel::where(['is_del'=>1])->max('goods_price');
+
         $price = ceil($goods_price / 7);
         for ($i = 0; $i <= 7 - 1; $i++) {
             $str = $price * $i;

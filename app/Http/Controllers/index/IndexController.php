@@ -15,7 +15,6 @@ class IndexController extends Controller
         //商品分类导航
         $class = ClassModel::select('cate_id', 'cate_name', 'p_id')->where(['is_del' => 1])->get()->toArray();
         $class = $this->getInfo($class);
-
         //商品今日推款
         $goods_img = GoodsModel::select('goods_img', 'goods_id')->orderBy('add_time', 'desc')->limit('4')->where('is_del', 1)->get()->toArray();
         $goods_img=$this->goods($goods_img);
@@ -55,7 +54,7 @@ class IndexController extends Controller
         }
         return $list;
     }
-//商品图片
+//展示商品图片
     public function goods($goods)
     {
         foreach ($goods as $k => &$v) {

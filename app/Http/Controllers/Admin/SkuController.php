@@ -60,43 +60,43 @@ class SkuController extends Controller
      */
     public function store($goods_id,Request $request)
     {
-            $data=$request->sku;
-            //添加时间戳
-            $data1=array();
-            foreach($data as $k=>$v){
-                $data2=explode(':',$v);
-                $data1[$data2[0]][]=$data2[1];
-            };
-            $data1=array_values($data1);  //把二维数组下标重置0
-            if(count($data1)==1){
-                foreach ($data1[0] as $k=>$v) {
-                    $add3[$k]['sku']=$v;
-                    $add3[$k]['goods_id']=$goods_id;
-                    $add3[$k]['add_time']=time();
-                }
-                $add=$this->add(count($add3),$add3);
-                if($add['code']==200){
-                    return $add;
-                }else{
-                    return $add;
-                }
+        $data=$request->sku;
+        //添加时间戳
+        $data1=array();
+        foreach($data as $k=>$v){
+            $data2=explode(':',$v);
+            $data1[$data2[0]][]=$data2[1];
+        };
+        $data1=array_values($data1);  //把二维数组下标重置0
+        if(count($data1)==1){
+            foreach ($data1[0] as $k=>$v) {
+                $add3[$k]['sku']=$v;
+                $add3[$k]['goods_id']=$goods_id;
+                $add3[$k]['add_time']=time();
             }
-            $cart=$this->CartesianProduct($data1);
-            $cart2=json_encode($cart,JSON_UNESCAPED_UNICODE);
-            $count=count($cart);
-            $data2=[];
-            foreach($cart as $k1=>$v1){
-                $data2[$k1]['sku']=$v1;
-                $data2[$k1]['goods_id']=$goods_id;
-                $data2[$k1]['add_time']=time();
-            }
-            $add=$this->add($count,$data2);
+            $add=$this->add(count($add3),$add3);
             if($add['code']==200){
                 return $add;
             }else{
                 return $add;
             }
-            //实例化 model
+        }
+        $cart=$this->CartesianProduct($data1);
+        $cart2=json_encode($cart,JSON_UNESCAPED_UNICODE);
+        $count=count($cart);
+        $data2=[];
+        foreach($cart as $k1=>$v1){
+            $data2[$k1]['sku']=$v1;
+            $data2[$k1]['goods_id']=$goods_id;
+            $data2[$k1]['add_time']=time();
+        }
+        $add=$this->add($count,$data2);
+        if($add['code']==200){
+            return $add;
+        }else{
+            return $add;
+        }
+        //实例化 model
 
 
         //返回结果
