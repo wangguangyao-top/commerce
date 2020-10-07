@@ -111,8 +111,7 @@
                             </li>
                             <li class="yui3-u-1-8"><span class="sum">{{$v->subtotal}}</span></li>
                             <li class="yui3-u-1-8">
-                                <a href="#none">删除</a><br />
-                                <a href="#none">移到我的关注</a>
+                                <a type="button" class="btn"  cart_id ="{{$v->cart_id}}">删除</a><br/>
                             </li>
                         </ul>
                     </div>
@@ -126,11 +125,7 @@
                 <input type="checkbox" name="all_cart_shop" class="cart_shop" id="" value="" />
                 <span>全选</span>
             </div>
-            <div class="option">
-                <a href="#none">删除选中的商品</a>
-                <a href="#none">移到我的关注</a>
-                <a href="#none">清除下柜商品</a>
-            </div>
+
             <div class="toolbar">
                 <div class="chosed">已选择<span>0</span>件商品</div>
                 <div class="sumprice">
@@ -143,26 +138,6 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div class="deled">
-            <span>已删除商品，您可以重新购买或加关注：</span>
-            <div class="cart-list del">
-                <ul class="goods-list yui3-g">
-                    <li class="yui3-u-1-2">
-                        <div class="good-item">
-                            <div class="item-msg">Apple Macbook Air 13.3英寸笔记本电脑 银色（Corei5）处理器/8GB内存</div>
-                        </div>
-                    </li>
-                    <li class="yui3-u-1-6"><span class="price">8848.00</span></li>
-                    <li class="yui3-u-1-6">
-                        <span class="number">1</span>
-                    </li>
-                    <li class="yui3-u-1-8">
-                        <a href="#none">重新购买</a>
-                        <a href="#none">移到我的关注</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <div class="liked">
             <ul class="sui-nav nav-tabs">
                 <li class="active">
@@ -436,6 +411,31 @@
 </html>
 
 <script>
+{{--    软删除--}}
+    $(document).on("click",".btn",function(){
+        var cart_id = $(this).attr("cart_id");
+        var data = {};
+        data.cart_id = cart_id;
+        // alert(cart_id);
+        var url = "{{url('/index/cart_del')}}";
+        if(window.confirm("是否删除")){
+            $.ajax({
+                type:"post",
+                data:data,
+                url:url,
+                dateType:"json",
+                success:function(res){
+                    if(res.success==true){
+                        alert(res.message);
+                        //页面刷新
+                        // history.go(0);
+                        window.location.reload();
+                    }
+                }
+            })
+
+        }
+    })
     $(function(){
         //全选点击事件
         $(document).on('click','input[name="all_cart_shop"]',function(){
@@ -499,5 +499,9 @@
                 }
             })
         }
+    })
+//    给加号点击事件
+    $(document).on('click','.plus',function(){
+
     })
 </script>
