@@ -51,7 +51,9 @@ class OrderController extends Controller
                 $goods=explode(':',$v);
                 $v=sku::select('shop_sku.goods_id','shop_sku.sku','shop_sku.goods_price','goods_name','goods_img','cart_nums')
                                 ->leftjoin('shop_goods as goods','shop_sku.goods_id','=','goods.goods_id')
-                                ->leftjoin('shop_cart as cart','shop_sku.goods_id','=','cart.goods_id')
+                                ->leftjoin('shop_cart as cart',function($join){
+                                    $join->on('shop_sku.goods_id','=','cart.goods_id')->on('shop_sku.sku','=','cart.sku');
+                                })
                                 ->where(['shop_sku.goods_id'=>$goods[0],'shop_sku.sku'=>$goods[1]])
                                 ->first()
                                 ->Toarray();

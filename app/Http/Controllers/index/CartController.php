@@ -219,7 +219,6 @@ class CartController extends Controller
                 //购买数量相加
                 $nums+=$v['cart_nums'];
             }
-            $user=json_decode($user,true);
             //收货地址
             $user_address=address::where(['user_id'=>$user['user_id'],'is_del'=>1])
                             ->orderBy('is_default','desc')
